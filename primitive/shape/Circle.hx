@@ -1,0 +1,37 @@
+package primitive.shape;
+
+/**
+ * A circle.
+ * @author Sam Twidale (http://samcodes.co.uk/)
+ */
+class Circle extends Ellipse {
+	public function new(xBound:Int, yBound:Int) {
+		super(xBound, yBound);
+		
+		// Circle is a special case of ellipse, just make the x/y radius the same
+		rx = Std.random(32) + 1;
+		ry = rx;
+	}
+	
+	override public function mutate():Void {
+		var r = Std.random(2);
+		switch(r) {
+			case 0:
+				x = Util.clamp(x + Util.random(-16, 16), 0, xBound - 1);
+				y = Util.clamp(y + Util.random(-16, 16), 0, yBound - 1);
+			case 1:
+				var r = Util.clamp(rx + Util.random(-16, 16), 1, xBound - 1);
+				rx = r;
+				ry = r;
+		}
+	}
+	
+	override public function clone():Shape {
+		var circle = new Circle(xBound, yBound);
+		circle.x = x;
+		circle.y = y;
+		circle.rx = rx;
+		circle.ry = ry;
+		return circle;
+	}
+}

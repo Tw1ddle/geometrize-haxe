@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    <meta title="PrimitiveHaxeUnitTests" version="1.0.0" />
+    <app file="TestMain" main="TestMain" />
+
+    <set name="SWF_VERSION" value="11.8" />
+    <source path="source" />
+
+    <include path="../include.xml" />
+    <!-- <haxelib name="primitive-haxe" /> -->
+
+    <haxelib name="munit" />
+    <haxelib name="lime" />
+</project>

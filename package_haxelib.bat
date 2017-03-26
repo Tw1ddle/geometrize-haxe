@@ -1,0 +1,1 @@
+zip -0r primitive-haxe.zip primitive haxelib.json include.xml README.md LICENSE CHANGELOG.md package_haxelib.bat
