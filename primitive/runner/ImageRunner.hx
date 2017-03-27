@@ -12,27 +12,15 @@ import primitive.shape.ShapeType;
  */
 class RunParams {
 	public function new() {
-		primitiveCount = 100;
 		shapeTypes = [
-			/*ShapeType.CIRCLE,*/
-			ShapeType.ELLIPSE
-			/*ShapeType.RECTANGLE*/
+			ShapeType.RECTANGLE
 		];
 	}
 	
 	/**
-	 * The number of primitives to generate when running the runner normally.
-	 */
-	public var primitiveCount:Int;
-	/**
 	 * The types of shapes to use when generating the image (required).
 	 */
-	public var shapeTypes:Array<ShapeType>; // TODO weights?
-	
-	// TODO more options
-	// TODO shape constraints?
-	//public var outputPath:Path;
-	//public var colorRGBA:Rgba = 0xFF00FFFF;
+	public var shapeTypes:Array<ShapeType>;
 }
 
 /**
@@ -59,23 +47,6 @@ class ImageRunner {
 	 */
 	public function new(inputImage:Bitmap) {
 		model = new Model(inputImage, Primitive.getAverageImageColor(inputImage), inputImage.width); // TODO is outputsize used?
-	}
-	
-	/**
-	 * Updates runner until the number of primitives specified in the runner options are added.
-	 * @return	An array containing data about the shapes added to the model in this step.
-	 */
-	public function run():Array<ShapeResult> {
-		var results = [];
-		
-		var startTime = Date.now().getTime();
-		for (i in 0...options.primitiveCount) {
-			trace("Adding primitive " + i + "/" + options.primitiveCount);
-			results = results.concat(model.step(options.shapeTypes, 128, 0)); // TODO alpha, repeat params from config etc
-			trace("Time elapsed " + (Date.now().getTime() - startTime));
-		}
-		
-		return results;
 	}
 	
 	/**

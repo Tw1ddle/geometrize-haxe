@@ -24,7 +24,7 @@ class Ellipse implements Shape {
 	}
 	
 	public function rasterize():Array<Scanline> {
-		var lines:Array<Scanline> = []; // TODO avoid allocations
+		var lines:Array<Scanline> = [];
 		var aspect:Float = rx / ry;
 		
 		var w:Int = xBound;

@@ -113,16 +113,16 @@ class Model {
 	 * @return	An array containing data about the shapes added to the model in this step.
 	 */
 	public function step(shapeTypes:Array<ShapeType>, alpha:Int, repeat:Int):Array<ShapeResult> {
-		var state = Primitive.bestHillClimbState(shapeTypes, alpha, 1000, 100, 16, target, current, buffer); // TODO pass more params
+		var state = Primitive.bestHillClimbState(shapeTypes, alpha, 200, 40, 2, target, current, buffer, score); // TODO pass more params
 		
 		var results:Array<ShapeResult> = [];
 		
 		results.push(addShape(state.shape, state.alpha));
 		
 		for (i in 0...repeat) {
-			var before:Float = state.energy();
-			state = Primitive.hillClimb(state, 100);
-			var after:Float = state.energy();
+			var before:Float = state.energy(score);
+			state = Primitive.hillClimb(state, 100, score);
+			var after:Float = state.energy(score);
 			if (before == after) {
 				break;
 			}

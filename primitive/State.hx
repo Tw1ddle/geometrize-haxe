@@ -48,11 +48,12 @@ class State {
 	/**
 	 * Calculates a measure of the improvement drawing the primitive to the current bitmap will have.
 	 * The lower the energy, the better. The score is cached, set it to < 0 to recalculate it.
+	 * @param	lastScore	The last score recorded by the model.
 	 * @return	The energy measure.
 	 */
-	public function energy():Float {
-		if (score < 0) { // TODO? better way to deal with score?
-			score = Primitive.energy(shape, alpha, target, current, buffer, score);
+	public function energy(lastScore:Float):Float {
+		if (score < 0) {
+			score = Primitive.energy(shape, alpha, target, current, buffer, lastScore);
 		}
 		return score;
 	}

@@ -132,17 +132,6 @@ class Primitive {
 				// Get the current overlapping color
 				var d:Rgba = image.getPixel(x, y);
 				
-				//trace("premul color");
-				//trace(sr);
-				//trace(sg);
-				//trace(sb);
-				//trace(sa);
-				
-				//trace("color c " + c);
-				//trace("ma " + ma);
-				//trace("a " + a);
-				//trace("color d " + d);
-				
 				var dr:UInt = d.r;
 				var dg:UInt = d.g;
 				var db:UInt = d.b;
@@ -153,14 +142,6 @@ class Primitive {
 				var g:UInt = Std.int((dg * a + sg * ma) / m) >> 8;
 				var b:UInt = Std.int((db * a + sb * ma) / m) >> 8;
 				var a:UInt = Std.int((da * a + sa * ma) / m) >> 8;
-				
-				//trace("color final...");
-				//trace(r);
-				//trace(g);
-				//trace(b);
-				//trace(a);
-				
-				//trace("color final " + Rgba.create(r, g, b, a));
 				
 				image.setPixel(x, y, Rgba.create(r, g, b, a));
 			}
@@ -268,17 +249,18 @@ class Primitive {
 	 * @param	target	The target bitmap.
 	 * @param	current	The current bitmap.
 	 * @param	buffer	The buffer bitmap.
+	 * @param	lastScore	The last score recorded by the model.
 	 * @return	The best state acquired from hill climbing i.e. the one with the lowest energy.
 	 */
-	public static function bestHillClimbState(shapes:Array<ShapeType>, alpha:Int, n:Int, age:Int, m:Int, target:Bitmap, current:Bitmap, buffer:Bitmap):State {
+	public static function bestHillClimbState(shapes:Array<ShapeType>, alpha:Int, n:Int, age:Int, m:Int, target:Bitmap, current:Bitmap, buffer:Bitmap, lastScore:Float):State {
 		var bestEnergy:Float = 0;
 		var bestState:State = null;
 		
 		for (i in 0...m) {
-			var state:State = bestRandomState(shapes, alpha, n, target, current, buffer);
-			var before:Float = state.energy();
-			state = hillClimb(state, age);
-			var energy:Float = state.energy();
+			var state:State = bestRandomState(shapes, alpha, n, target, current, buffer, lastScore);
+			var before:Float = state.energy(lastScore);
+			state = hillClimb(state, age, lastScore);
+			var energy:Float = state.energy(lastScore);
 			if (i == 0 || energy < bestEnergy) {
 				bestEnergy = energy;
 				bestState = state;
@@ -295,15 +277,16 @@ class Primitive {
 	 * @param	target	The target bitmap.
 	 * @param	current	The current bitmap.
 	 * @param	buffer	The buffer bitmap.
+	 * @param	lastScore	The last score recorded by the model.
 	 * @return	The best random state i.e. the one with the lowest energy.
 	 */
-	public static function bestRandomState(shapes:Array<ShapeType>, alpha:Int, n:Int, target:Bitmap, current:Bitmap, buffer:Bitmap):State {
+	public static function bestRandomState(shapes:Array<ShapeType>, alpha:Int, n:Int, target:Bitmap, current:Bitmap, buffer:Bitmap, lastScore:Float):State {
 		var bestEnergy:Float = 0;
 		var bestState:State = null;
 		
 		for (i in 0...n) {
 			var state:State = new State(ShapeFactory.randomShapeOf(shapes, current.width, current.height), alpha, target, current, buffer);
-			var energy:Float = state.energy();
+			var energy:Float = state.energy(lastScore);
 			if (i == 0 || energy < bestEnergy) {
 				bestEnergy = energy;
 				bestState = state;
@@ -316,20 +299,21 @@ class Primitive {
 	 * Hill climbing optimization algorithm, attempts to minimize energy (the error/difference).
 	 * @param	state	The state to optimize.
 	 * @param	maxAge	The maximum age.
+	 * @param	lastScore	The last score recorded by the model.
 	 * @return	The best state found from hillclimbing.
 	 */
-	public static function hillClimb(state:State, maxAge:Int):State {
+	public static function hillClimb(state:State, maxAge:Int, lastScore:Float):State {
 		Sure.sure(state != null);
 		Sure.sure(maxAge >= 0);
 		
 		var state:State = state.clone();
 		var bestState:State = state.clone();
-		var bestEnergy:Float = state.energy();
+		var bestEnergy:Float = state.energy(lastScore);
 		
 		var age:Int = 0;
 		while (age < maxAge) {
 			var undo:State = state.mutate();
-			var energy:Float = state.energy();
+			var energy:Float = state.energy(lastScore);
 			if (energy >= bestEnergy) {
 				state = undo;
 			} else {
@@ -354,7 +338,6 @@ class Primitive {
 		var totalRed:Int = 0;
 		var totalGreen:Int = 0;
 		var totalBlue:Int = 0;
-		//var totalAlpha:Int = 0;
 		
 		for (x in 0...image.width) {
 			for (y in 0...image.height) {
@@ -362,7 +345,6 @@ class Primitive {
 				totalRed += pixel.r;
 				totalGreen += pixel.g;
 				totalBlue += pixel.b;
-				//totalAlpha += pixel.a;
 			}
 		}
 		
