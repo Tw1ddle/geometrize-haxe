@@ -64,11 +64,6 @@ class Model {
 	public var buffer(default, null):Bitmap;
 	
 	/**
-	 * The results data with info about the shapes added to the model.
-	 */
-	public var shapeResults(default, null):Array<ShapeResult>;
-	
-	/**
 	 * Score derived from calculating the difference between bitmaps.
 	 */
 	private var score(default, null):Float;
@@ -100,8 +95,6 @@ class Model {
 		this.current = Bitmap.create(target.width, target.height, backgroundColor);
 		this.buffer = Bitmap.create(target.width, target.height, backgroundColor);
 		
-		this.shapeResults = [];
-		
 		this.score = Primitive.differenceFull(target, current);
 	}
 	
@@ -109,17 +102,18 @@ class Model {
 	 * Steps the primitive optimization/fitting algorithm.
 	 * @param	shapeType	The shape types to use.
 	 * @param	alpha	The alpha of the shape.
-	 * @param	repeat	How many times to repeat the stepping process with reduced search (per step), possibly adding additional shapes
+	 * @param	repeats	How many times to repeat the stepping process with reduced search (per step), possibly adding additional shapes
+	 * @param	n The number of shapes to try.
+	 * @param	age The number of mutations to apply to each shape.
 	 * @return	An array containing data about the shapes added to the model in this step.
 	 */
-	public function step(shapeTypes:Array<ShapeType>, alpha:Int, repeat:Int):Array<ShapeResult> {
-		var state = Primitive.bestHillClimbState(shapeTypes, alpha, 200, 40, 2, target, current, buffer, score); // TODO pass more params
+	public function step(shapeTypes:Array<ShapeType>, alpha:Int, repeats:Int, n:Int, age:Int):Array<ShapeResult> {
+		var state = Primitive.bestHillClimbState(shapeTypes, alpha, n, age, repeats, target, current, buffer, score);
 		
 		var results:Array<ShapeResult> = [];
-		
 		results.push(addShape(state.shape, state.alpha));
 		
-		for (i in 0...repeat) {
+		for (i in 0...repeats) {
 			var before:Float = state.energy(score);
 			state = Primitive.hillClimb(state, 100, score);
 			var after:Float = state.energy(score);
@@ -151,7 +145,6 @@ class Model {
 		var result:ShapeResult = {
 			score: score, color: color, shape: shape
 		};
-		shapeResults.push(result);
 		return result;
 	}
 	

@@ -7,20 +7,40 @@ import primitive.bitmap.Rgba;
 import primitive.shape.ShapeType;
 
 /**
- * Encapsulates the parameters that may be passed to the runner.
+ * Encapsulates the parameters that may be passed to the image runner.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
-class RunParams {
+class ImageRunnerOptions {
 	public function new() {
 		shapeTypes = [
 			ShapeType.RECTANGLE
 		];
+		alpha = 128;
+		repeats = 1;
+		candidateShapesPerStep = 100;
+		shapeMutationsPerStep = 50;
 	}
 	
 	/**
-	 * The types of shapes to use when generating the image (required).
+	 * The types of shapes to use when generating the image.
 	 */
 	public var shapeTypes:Array<ShapeType>;
+	/**
+	 * The opacity of the shapes (0-255).
+	 */
+	public var alpha:Int;
+	/**
+	 * The number of candidate shapes to try per model step.
+	 */
+	public var candidateShapesPerStep:Int;
+	/**
+	 * The number of times to mutate each candidate shape.
+	 */
+	public var shapeMutationsPerStep:Int;
+	/**
+	 * The number of times to repeat the algorithm with reduced search.
+	 */
+	public var repeats:Int;
 }
 
 /**
@@ -28,10 +48,6 @@ class RunParams {
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 class ImageRunner {
-	/**
-	 * Runtime configuration parameters for the runner.
-	 */
-	public var options(default, null) = new RunParams();
 	/**
 	 * The model for the primitive optimization/fitting algorithm.
 	 */
@@ -53,8 +69,8 @@ class ImageRunner {
 	 * Updates the model once.
 	 * @return	An array containing data about the shapes just added to the model.
 	 */
-	public function step():Array<ShapeResult> {
-		return model.step(options.shapeTypes, 128, 0); // TODO alpha, repeat params from config etc
+	public function step(options:ImageRunnerOptions):Array<ShapeResult> {
+		return model.step(options.shapeTypes, options.alpha, options.repeats, options.candidateShapesPerStep, options.shapeMutationsPerStep);
 	}
 	
 	/**
@@ -64,15 +80,6 @@ class ImageRunner {
 	public function getImageData():Bitmap {
 		Sure.sure(model != null);
 		return model.current;
-	}
-	
-	/**
-	 * Gets data about the shapes added to the model so far.
-	 * @return	The shape results.
-	 */
-	public function getShapeResults():Array<ShapeResult> {
-		Sure.sure(model != null);
-		return model.shapeResults;
 	}
 	
 	private function get_backgroundColor():Rgba {
