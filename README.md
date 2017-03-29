@@ -1,8 +1,8 @@
-[![Project logo](https://github.com/Tw1ddle/primitive-haxe/blob/master/screenshots/logo.png?raw=true "Primitive Haxe recreating images as geometric primitives logo")](https://github.com/Tw1ddle/primitive-haxe/)
+[![Project logo](https://github.com/Tw1ddle/primitive-haxe/blob/master/screenshots/logo.png?raw=true "Primitive Haxe recreating images as geometric primitives logo")](http://tw1ddle.github.io/primitive-haxe-demo/)
 
-**Primitive Haxe** is a Haxe library for recreating images with geometric primitives. Try the online demo [here](http://tw1ddle.github.io/primitive-haxe-demo/).
+**Primitive Haxe** is a cross-platform Haxe library for recreating images with geometric primitives. Try the online demo [here](http://tw1ddle.github.io/primitive-haxe-demo/).
 
-Based on the [primitive](https://github.com/fogleman/primitive) Go library.
+Primitive Haxe is a partial port of the [primitive](https://github.com/fogleman/primitive) Go library.
 
 ## How It Works
 
@@ -11,6 +11,8 @@ The algorithm finds shapes that make a *current image* closely resemble a *targe
 ## Usage
 
 Try the live [demo](http://tw1ddle.github.io/primitive-haxe-demo/), check the [demo code](https://github.com/Tw1ddle/primitive-haxe-demo/), and read the library [documentation](http://tw1ddle.github.io/primitive-haxe/).
+
+This implementation is single-threaded and performance will vary by target platform, so small target images are recommended - you probably do not need the detail anyway.
 
 ## Install
 
