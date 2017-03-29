@@ -29,22 +29,6 @@ class Model {
 	 * Height of the target bitmap.
 	 */
 	public var height(default, null):Int;
-	/**
-	 * Aspect ratio of the target bitmap.
-	 */
-	public var aspect(get, never):Float;
-	/**
-	 * Scaled width of the output bitmap.
-	 */
-	public var scaledWidth(default, null):Int;
-	/**
-	 * Scaled height of the output bitmap.
-	 */
-	public var scaledHeight(default, null):Int;
-	/**
-	 * Scale factor for the output bitmap.
-	 */
-	public var scale(default, null):Float;
 	
 	/**
 	 * Starting background color of the input bitmap.
@@ -79,17 +63,6 @@ class Model {
 		
 		this.width = target.width;
 		this.height = target.height;
-		
-		if (aspect >= 1) {
-			this.scaledWidth = outputSize; // TODO is this used anywhere?
-			this.scaledHeight = Std.int(outputSize / aspect);
-			this.scale = outputSize / width;
-		} else {
-			this.scaledWidth = Std.int(outputSize * aspect);
-			this.scaledHeight = outputSize;
-			this.scale = outputSize / height;
-		}
-		
 		this.backgroundColor = backgroundColor;
 		this.target = target;
 		this.current = Bitmap.create(target.width, target.height, backgroundColor);
@@ -146,12 +119,5 @@ class Model {
 			score: score, color: color, shape: shape
 		};
 		return result;
-	}
-	
-	private function get_aspect():Float {
-		if (width == 0 || height == 0) {
-			return 0;
-		}
-		return width / height;
 	}
 }

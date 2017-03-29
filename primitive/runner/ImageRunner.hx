@@ -11,14 +11,15 @@ import primitive.shape.ShapeType;
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 class ImageRunnerOptions {
-	public function new() {
-		shapeTypes = [
-			ShapeType.RECTANGLE
-		];
-		alpha = 128;
-		repeats = 1;
-		candidateShapesPerStep = 100;
-		shapeMutationsPerStep = 50;
+	public function new(?shapeTypes:Array<ShapeType>, alpha:Int = 128, repeats:Int = 1, candidateShapesPerStep:Int = 100, shapeMutationsPerStep:Int = 50) {
+		if (shapeTypes == null) {
+			shapeTypes = [ ShapeType.RECTANGLE ];
+		}
+		this.shapeTypes = shapeTypes;
+		this.alpha = alpha;
+		this.repeats = repeats;
+		this.candidateShapesPerStep = candidateShapesPerStep;
+		this.shapeMutationsPerStep = shapeMutationsPerStep;
 	}
 	
 	/**
