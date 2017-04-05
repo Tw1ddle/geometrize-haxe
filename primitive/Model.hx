@@ -29,11 +29,6 @@ class Model {
 	 * Height of the target bitmap.
 	 */
 	public var height(default, null):Int;
-	
-	/**
-	 * Starting background color of the input bitmap.
-	 */
-	public var backgroundColor(default, null):Rgba;
 	/**
 	 * The target bitmap, the bitmap we aim to approximate.
 	 */
@@ -63,7 +58,6 @@ class Model {
 		
 		this.width = target.width;
 		this.height = target.height;
-		this.backgroundColor = backgroundColor;
 		this.target = target;
 		this.current = Bitmap.create(target.width, target.height, backgroundColor);
 		this.buffer = Bitmap.create(target.width, target.height, backgroundColor);

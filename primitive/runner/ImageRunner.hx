@@ -15,10 +15,6 @@ class ImageRunner {
 	 * The model for the primitive optimization/fitting algorithm.
 	 */
 	public var model(default, null):Model = null;
-	/**
-	 * The average background color of the input image.
-	 */
-	public var backgroundColor(get, never):Rgba;
 	
 	/**
 	 * Creates a new runner.
@@ -43,9 +39,5 @@ class ImageRunner {
 	public function getImageData():Bitmap {
 		Sure.sure(model != null);
 		return model.current;
-	}
-	
-	private function get_backgroundColor():Rgba {
-		return model.backgroundColor;
 	}
 }
