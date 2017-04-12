@@ -1,11 +1,12 @@
 ::use 'main.mtt'::
 
-<h1>Primitive Haxe API documentation <small ::cond api.isDefined("version")::>version ::api.getValue('version')::</small></h1>
-<p>Primitive Haxe is a flexible, cross-platform library for reproducing images as sets of geometric primitives..</p> 
-<h3>Getting Started With Primitive Haxe</h3>
+<h1>Geometrize Haxe API documentation <small ::cond api.isDefined("version")::>version ::api.getValue('version')::</small></h1>
+<p>Geometrize Haxe is a cross-platform library for recreating images as sets of geometric primitives.</p> 
+<h3>Getting Started With Geometrize Haxe</h3>
 <ul>
-	<li>Take a look at the readme in the <a href="https://github.com/Tw1ddle/PrimitiveHaxe">code repository</a></li>
-	<li>Try out the <a href="http://www.samcodes.co.uk/project/primitive-haxe/">online demo</a></li>
+	<li>Take a look at the readme in the <a href="https://github.com/Tw1ddle/geometrize-haxe">code repository</a></li>
+	<li>Pick images from the <a href="https://github.com/Tw1ddle/geometrize-resources">resources repository</a></li>
+	<li>Try out the <a href="http://www.samcodes.co.uk/project/geometrize-haxe-web/">online demo</a></li>
 	<li>Search for <a href="https://commons.wikimedia.org/wiki/Category:Paintings">inspiration</a></li>
 </ul>
 <hr/>

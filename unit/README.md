@@ -1,6 +1,6 @@
-# Primitive Haxe Unit Tests
+# Geometrize Haxe Unit Tests
 
-This is the unit test suite for Primitive Haxe. The intent is to achieve good test coverage of the codebase, and to add regression tests for fixed bugs.
+This is the unit test suite for Geometrize Haxe. The intent is to achieve good test coverage of the codebase, and to add regression tests for fixed bugs.
 
 ## Setup
 

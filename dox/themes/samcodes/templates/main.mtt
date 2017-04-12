@@ -36,8 +36,8 @@
 <body>
 <div class="navbar navbar-fixed-top ">
 	<div class="navbar-inner">
-		<a class="samcodes-logo" href="https://github.com/Tw1ddle/PrimitiveHaxe"><img alt="Primitive Haxe" height="42" src="::api.config.rootPath::logo.png" width="307" /></a>
-		<a class="api-link" href="/PrimitiveHaxe/primitive/index.html">API</a>
+		<a class="samcodes-logo" href="https://github.com/Tw1ddle/geometrize-haxe"><img alt="Geometrize Haxe" height="42" src="::api.config.rootPath::logo.png" width="307" /></a>
+		<a class="api-link" href="/geometrize-haxe/geometrize/index.html">API</a>
 	</div>
 </div>
 <div class="container main-content">
@@ -72,8 +72,8 @@
 		<div class="copyright">
 			<p ::cond api.isDefined("version")::>This documentation is generated for version ::api.getValue('version')::</p>
 			<p>
-			<a href="http://www.samcodes.co.uk/project/primitive-haxe/" title="Primitive Haxe Demo" class="hf-link">Primitive Haxe Website</a> |&nbsp;
-			<a href="https://github.com/Tw1ddle/PrimitiveHaxe" title="Primitive Haxe on Github">Contribute to Primitive Haxe</a> |&nbsp;
+			<a href="http://www.samcodes.co.uk/project/geometrize-haxe-web/" title="Geometrize Haxe Demo" class="hf-link">Geometrize Haxe Website</a> |&nbsp;
+			<a href="https://github.com/Tw1ddle/geometrize-haxe" title="Geometrize Haxe on Github">Contribute to Geometrize Haxe</a> |&nbsp;
 			<a href="https://twitter.com/Sam_Twidale" title="Contact Sam">Contact Sam</a>
 			</p>
 		</div>

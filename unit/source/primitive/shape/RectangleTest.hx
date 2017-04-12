@@ -1,7 +1,0 @@
-package primitive.shape;
-
-import massive.munit.Assert;
-import primitive.shape.Rectangle;
-
-class RectangleTest {
-}

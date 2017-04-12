@@ -1,26 +1,26 @@
 import massive.munit.TestSuite;
 
-import primitive.ArraySetTest;
-import primitive.bitmap.BitmapTest;
-import primitive.bitmap.RgbaTest;
-import primitive.CoreTest;
-import primitive.exporter.ShapeJsonExporterTest;
-import primitive.exporter.SvgExporterTest;
-import primitive.ModelTest;
-import primitive.rasterizer.RasterizerTest;
-import primitive.rasterizer.ScanlineTest;
-import primitive.runner.ImageRunnerOptionsTest;
-import primitive.runner.ImageRunnerTest;
-import primitive.shape.CircleTest;
-import primitive.shape.EllipseTest;
-import primitive.shape.LineTest;
-import primitive.shape.RectangleTest;
-import primitive.shape.RotatedEllipseTest;
-import primitive.shape.RotatedRectangleTest;
-import primitive.shape.ShapeFactoryTest;
-import primitive.shape.TriangleTest;
-import primitive.StateTest;
-import primitive.UtilTest;
+import geometrize.ArraySetTest;
+import geometrize.bitmap.BitmapTest;
+import geometrize.bitmap.RgbaTest;
+import geometrize.CoreTest;
+import geometrize.exporter.ShapeJsonExporterTest;
+import geometrize.exporter.SvgExporterTest;
+import geometrize.ModelTest;
+import geometrize.rasterizer.RasterizerTest;
+import geometrize.rasterizer.ScanlineTest;
+import geometrize.runner.ImageRunnerOptionsTest;
+import geometrize.runner.ImageRunnerTest;
+import geometrize.shape.CircleTest;
+import geometrize.shape.EllipseTest;
+import geometrize.shape.LineTest;
+import geometrize.shape.RectangleTest;
+import geometrize.shape.RotatedEllipseTest;
+import geometrize.shape.RotatedRectangleTest;
+import geometrize.shape.ShapeFactoryTest;
+import geometrize.shape.TriangleTest;
+import geometrize.StateTest;
+import geometrize.UtilTest;
 
 /**
  * Auto generated Test Suite for MassiveUnit.
@@ -34,26 +34,26 @@ class TestSuite extends massive.munit.TestSuite
 	{
 		super();
 
-		add(primitive.ArraySetTest);
-		add(primitive.bitmap.BitmapTest);
-		add(primitive.bitmap.RgbaTest);
-		add(primitive.CoreTest);
-		add(primitive.exporter.ShapeJsonExporterTest);
-		add(primitive.exporter.SvgExporterTest);
-		add(primitive.ModelTest);
-		add(primitive.rasterizer.RasterizerTest);
-		add(primitive.rasterizer.ScanlineTest);
-		add(primitive.runner.ImageRunnerOptionsTest);
-		add(primitive.runner.ImageRunnerTest);
-		add(primitive.shape.CircleTest);
-		add(primitive.shape.EllipseTest);
-		add(primitive.shape.LineTest);
-		add(primitive.shape.RectangleTest);
-		add(primitive.shape.RotatedEllipseTest);
-		add(primitive.shape.RotatedRectangleTest);
-		add(primitive.shape.ShapeFactoryTest);
-		add(primitive.shape.TriangleTest);
-		add(primitive.StateTest);
-		add(primitive.UtilTest);
+		add(geometrize.ArraySetTest);
+		add(geometrize.bitmap.BitmapTest);
+		add(geometrize.bitmap.RgbaTest);
+		add(geometrize.CoreTest);
+		add(geometrize.exporter.ShapeJsonExporterTest);
+		add(geometrize.exporter.SvgExporterTest);
+		add(geometrize.ModelTest);
+		add(geometrize.rasterizer.RasterizerTest);
+		add(geometrize.rasterizer.ScanlineTest);
+		add(geometrize.runner.ImageRunnerOptionsTest);
+		add(geometrize.runner.ImageRunnerTest);
+		add(geometrize.shape.CircleTest);
+		add(geometrize.shape.EllipseTest);
+		add(geometrize.shape.LineTest);
+		add(geometrize.shape.RectangleTest);
+		add(geometrize.shape.RotatedEllipseTest);
+		add(geometrize.shape.RotatedRectangleTest);
+		add(geometrize.shape.ShapeFactoryTest);
+		add(geometrize.shape.TriangleTest);
+		add(geometrize.StateTest);
+		add(geometrize.UtilTest);
 	}
 }

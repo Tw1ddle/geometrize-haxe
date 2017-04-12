@@ -39,7 +39,7 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>haxelib run checkstyle -s ../primitive -c ./checkstyle_config.json</preBuildCommand>
+  <preBuildCommand>haxelib run checkstyle -s ../geometrize -c ./checkstyle_config.json</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

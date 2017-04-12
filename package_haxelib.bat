@@ -1,1 +1,1 @@
-zip -0r primitive-haxe.zip primitive haxelib.json include.xml README.md LICENSE CHANGELOG.md package_haxelib.bat
+zip -0r geometrize-haxe.zip geometrize screenshots haxelib.json include.xml README.md LICENSE CHANGELOG.md package_haxelib.bat

@@ -1,10 +1,10 @@
-[![Project logo](https://github.com/Tw1ddle/primitive-haxe/blob/master/screenshots/logo.png?raw=true "Primitive Haxe recreating images as geometric primitives logo")](http://tw1ddle.github.io/primitive-haxe-demo/)
+[![Project logo](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/logo.png?raw=true "Geometrize Haxe recreating images as geometric shapes logo")](http://tw1ddle.github.io/geometrize-haxe-demo/)
 
-**Primitive Haxe** is a cross-platform Haxe library for recreating images with geometric primitives. Try the online demo [here](http://tw1ddle.github.io/primitive-haxe-demo/).
+**Geometrize Haxe** is a cross-platform Haxe library for recreating images with geometric primitives. Try the online demo [here](http://tw1ddle.github.io/geometrize-haxe-demo/).
 
-Primitive Haxe is a partial port of the [primitive](https://github.com/fogleman/primitive) Go library.
+Geometrize Haxe is a port of [primitive](https://github.com/fogleman/primitive).
 
-[![The Lady of Shalott](https://github.com/Tw1ddle/primitive-haxe/blob/master/screenshots/the_lady_of_shalott_waterhouse.jpg?raw=true "The Lady of Shalott as circles")](https://github.com/Tw1ddle/primitive-haxe-demo/)
+[![The Lady of Shalott](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/the_lady_of_shalott_waterhouse.jpg?raw=true "The Lady of Shalott as circles")](https://github.com/Tw1ddle/geometrize-haxe-demo/)
 
 ## How It Works
 
@@ -12,18 +12,18 @@ The algorithm finds shapes that make a *current image* closely resemble a *targe
 
 ## Usage
 
-Try the live [demo](http://tw1ddle.github.io/primitive-haxe-demo/), check the [demo code](https://github.com/Tw1ddle/primitive-haxe-demo/), and read the library [documentation](http://tw1ddle.github.io/primitive-haxe/).
+Try the live [demo](http://tw1ddle.github.io/geometrize-haxe-demo/), check the [demo code](https://github.com/Tw1ddle/geometrize-haxe-demo/), and read the library [documentation](http://tw1ddle.github.io/geometrize-haxe/).
 
 This implementation is single-threaded and performance will vary by target platform, so small target images are recommended - you probably do not need the detail anyway.
 
 ## Install
 
 ```
-haxelib install primitive-haxe
+haxelib install geometrize-haxe
 ```
 
 ## Notes
 * Got an idea or suggestion? Open an issue on GitHub, or send Sam a message on [Twitter](https://twitter.com/Sam_Twidale).
-* Primitive Haxe is based on [primitive](https://github.com/fogleman/primitive), a Go library created by [Michael Fogleman](https://github.com/fogleman).
-* Primitive Haxe is available as a [haxelib](https://lib.haxe.org/p/primitive-haxe).
+* Geometrize Haxe is based on [primitive](https://github.com/fogleman/primitive), a Go library created by [Michael Fogleman](https://github.com/fogleman).
+* Geometrize Haxe is available as a [haxelib](https://lib.haxe.org/p/geometrize-haxe).
 * All Haxe targets are supported.

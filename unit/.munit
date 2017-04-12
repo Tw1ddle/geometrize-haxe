@@ -4,4 +4,4 @@ src=source
 report=report
 hxml=test.hxml
 classPaths=../
-coveragePackages=primitive
+coveragePackages=geometrize

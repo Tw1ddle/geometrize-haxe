@@ -1,28 +1,28 @@
-// This is solely for generating documentation for Primitive Haxe using dox
+// This is solely for generating documentation for Geometrize Haxe using dox
 
-import primitive.bitmap.Bitmap;
-import primitive.bitmap.Rgba;
-import primitive.exporter.ShapeJsonExporter;
-import primitive.exporter.SvgExporter;
-import primitive.rasterizer.Rasterizer;
-import primitive.rasterizer.Scanline;
-import primitive.runner.ImageRunner;
-import primitive.runner.ImageRunnerOptions;
-import primitive.shape.Circle;
-import primitive.shape.Ellipse;
-import primitive.shape.Line;
-import primitive.shape.Rectangle;
-import primitive.shape.RotatedEllipse;
-import primitive.shape.RotatedRectangle;
-import primitive.shape.Shape;
-import primitive.shape.ShapeFactory;
-import primitive.shape.ShapeType;
-import primitive.shape.Triangle;
-import primitive.ArraySet;
-import primitive.Core;
-import primitive.Model;
-import primitive.Model.ShapeResult;
-import primitive.State;
-import primitive.Util;
+import geometrize.bitmap.Bitmap;
+import geometrize.bitmap.Rgba;
+import geometrize.exporter.ShapeJsonExporter;
+import geometrize.exporter.SvgExporter;
+import geometrize.rasterizer.Rasterizer;
+import geometrize.rasterizer.Scanline;
+import geometrize.runner.ImageRunner;
+import geometrize.runner.ImageRunnerOptions;
+import geometrize.shape.Circle;
+import geometrize.shape.Ellipse;
+import geometrize.shape.Line;
+import geometrize.shape.Rectangle;
+import geometrize.shape.RotatedEllipse;
+import geometrize.shape.RotatedRectangle;
+import geometrize.shape.Shape;
+import geometrize.shape.ShapeFactory;
+import geometrize.shape.ShapeType;
+import geometrize.shape.Triangle;
+import geometrize.ArraySet;
+import geometrize.Core;
+import geometrize.Model;
+import geometrize.Model.ShapeResult;
+import geometrize.State;
+import geometrize.Util;
 
 class Main {}

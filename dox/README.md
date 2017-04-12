@@ -1,8 +1,8 @@
-# Primitive Haxe Dox
+# Geometrize Haxe Dox
 
-Documentation generation for Primitive Haxe.
+Documentation generation for Geometrize Haxe.
 
-This project generates the Primitive Haxe documentation using [dox](https://github.com/HaxeFoundation/dox), the Haxe documentation generator.
+This project generates the Geometrize Haxe documentation using [dox](https://github.com/HaxeFoundation/dox), the Haxe documentation generator.
 
 ## Usage
 
