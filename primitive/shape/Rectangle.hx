@@ -42,8 +42,8 @@ class Rectangle implements Shape {
 	public function new(xBound:Int, yBound:Int) {
 		x1 = Std.random(xBound);
 		y1 = Std.random(yBound);
-		x2 = Util.clamp(x1 + Std.random(32) + 1, 0, xBound);
-		y2 = Util.clamp(y1 + Std.random(32) + 1, 0, yBound);
+		x2 = Util.clamp(x1 + Std.random(32) + 1, 0, xBound - 1);
+		y2 = Util.clamp(y1 + Std.random(32) + 1, 0, yBound - 1);
 		
 		this.xBound = xBound;
 		this.yBound = yBound;
