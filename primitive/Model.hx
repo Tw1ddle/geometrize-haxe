@@ -3,8 +3,10 @@ package primitive;
 import primitive.Model.ShapeResult;
 import primitive.bitmap.Bitmap;
 import primitive.bitmap.Rgba;
+import primitive.rasterizer.Scanline;
 import primitive.shape.Shape;
 import primitive.shape.ShapeType;
+import primitive.rasterizer.Rasterizer;
 
 /**
  * Container for info about a shape added to the model.
@@ -51,9 +53,8 @@ class Model {
 	 * Creates a new model.
 	 * @param	target	The target bitmap.
 	 * @param	backgroundColor	The starting background color.
-	 * @param	outputSize	The desired size of the output bitmap.
 	 */
-	public function new(target:Bitmap, backgroundColor:Rgba, outputSize:Int) {
+	public function new(target:Bitmap, backgroundColor:Rgba) {
 		Sure.sure(target != null);
 		
 		this.width = target.width;
@@ -62,34 +63,20 @@ class Model {
 		this.current = Bitmap.create(target.width, target.height, backgroundColor);
 		this.buffer = Bitmap.create(target.width, target.height, backgroundColor);
 		
-		this.score = Primitive.differenceFull(target, current);
+		this.score = Core.differenceFull(target, current);
 	}
 	
 	/**
 	 * Steps the primitive optimization/fitting algorithm.
 	 * @param	shapeType	The shape types to use.
 	 * @param	alpha	The alpha of the shape.
-	 * @param	repeats	How many times to repeat the stepping process with reduced search (per step), possibly adding additional shapes
 	 * @param	n The number of shapes to try.
 	 * @param	age The number of mutations to apply to each shape.
 	 * @return	An array containing data about the shapes added to the model in this step.
 	 */
-	public function step(shapeTypes:Array<ShapeType>, alpha:Int, repeats:Int, n:Int, age:Int):Array<ShapeResult> {
-		var state = Primitive.bestHillClimbState(shapeTypes, alpha, n, age, repeats, target, current, buffer, score);
-		
-		var results:Array<ShapeResult> = [];
-		results.push(addShape(state.shape, state.alpha));
-		
-		for (i in 0...repeats) {
-			var before:Float = state.energy(score);
-			state = Primitive.hillClimb(state, 100, score);
-			var after:Float = state.energy(score);
-			if (before == after) {
-				break;
-			}
-			results.push(addShape(state.shape, state.alpha));
-		}
-		
+	public function step(shapeTypes:Array<ShapeType>, alpha:Int, n:Int, age:Int):Array<ShapeResult> {
+		var state = Core.bestHillClimbState(shapeTypes, alpha, n, age, target, current, buffer, score);
+		var results:Array<ShapeResult> = [ addShape(state.shape, state.alpha) ];
 		return results;
 	}
 	
@@ -104,10 +91,10 @@ class Model {
 		
 		var before:Bitmap = current.clone();
 		var lines:Array<Scanline> = shape.rasterize();
-		var color:Rgba = Primitive.computeColor(target, current, lines, alpha);
-		Primitive.drawLines(current, color, lines);
+		var color:Rgba = Core.computeColor(target, current, lines, alpha);
+		Rasterizer.drawLines(current, color, lines);
 		
-		score = Primitive.differencePartial(target, before, current, score, lines);
+		score = Core.differencePartial(target, before, current, score, lines);
 		
 		var result:ShapeResult = {
 			score: score, color: color, shape: shape

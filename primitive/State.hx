@@ -53,7 +53,7 @@ class State {
 	 */
 	public function energy(lastScore:Float):Float {
 		if (score < 0) {
-			score = Primitive.energy(shape, alpha, target, current, buffer, lastScore);
+			score = Core.energy(shape, alpha, target, current, buffer, lastScore);
 		}
 		return score;
 	}

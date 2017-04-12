@@ -1,4 +1,4 @@
-package primitive;
+package primitive.rasterizer;
 
 /**
  * Represents a scanline, a row of pixels running across a bitmap.
@@ -17,24 +17,18 @@ class Scanline {
 	 * The rightmost x-coordinate of the scanline.
 	 */
 	public var x2(default, null):Int;
-	/**
-	 * The alpha/opacity of the scanline.
-	 */
-	public var alpha(default, null):Int;
-	
+
 	/**
 	 * Creates a new scanline.
 	 * @param	y	The y-coordinate.
 	 * @param	x1	The leftmost x-coordinate.
 	 * @param	x2	The rightmost x-coordinate.
-	 * @param	alpha	The alpha transparency of the scanline.
 	 */
-	public inline function new(y:Int, x1:Int, x2:Int, alpha:Int) {
+	public inline function new(y:Int, x1:Int, x2:Int) {
 		//Sure.sure(x1 <= x2); // NOTE hot allocations, too expensive to check
 		this.y = y;
 		this.x1 = x1;
 		this.x2 = x2;
-		this.alpha = alpha;
 	}
 	
 	/**
@@ -51,7 +45,7 @@ class Scanline {
 	}
 	
 	private static inline function trimHelper(line:Scanline, w:Int, h:Int):Bool {
-		if (line.y < 0 || line.y >= h || line.x1 > w || line.x2 < 0) {
+		if (line.y < 0 || line.y >= h || line.x1 >= w || line.x2 < 0) {
 			return false;
 		}
 		line.x1 = Util.clamp(line.x1, 0, w - 1);

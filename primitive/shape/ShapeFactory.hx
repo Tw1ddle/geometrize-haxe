@@ -26,6 +26,8 @@ class ShapeFactory {
 				return new RotatedEllipse(xBound, yBound);
 			case CIRCLE:
 				return new Circle(xBound, yBound);
+			case LINE:
+				return new Line(xBound, yBound);
 		}
 	}
 	

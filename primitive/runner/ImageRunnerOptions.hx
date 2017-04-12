@@ -8,13 +8,19 @@ import primitive.shape.ShapeType;
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 class ImageRunnerOptions {
-	public function new(?shapeTypes:Array<ShapeType>, alpha:Int = 128, repeats:Int = 1, candidateShapesPerStep:Int = 100, shapeMutationsPerStep:Int = 50) {
+	/**
+	 * Creates a new set of image runner options.
+	 * @param	shapeTypes	The types of shapes to use when generating the image.
+	 * @param	alpha	The opacity of the shapes (0-255).
+	 * @param	candidateShapesPerStep	The number of candidate shapes to try per model step.
+	 * @param	shapeMutationsPerStep	The number of times to mutate each candidate shape.
+	 */
+	public function new(?shapeTypes:Array<ShapeType>, alpha:Int = 128, candidateShapesPerStep:Int = 100, shapeMutationsPerStep:Int = 50) {
 		if (shapeTypes == null) {
 			shapeTypes = [ ShapeType.RECTANGLE ];
 		}
 		this.shapeTypes = shapeTypes;
 		this.alpha = alpha;
-		this.repeats = repeats;
 		this.candidateShapesPerStep = candidateShapesPerStep;
 		this.shapeMutationsPerStep = shapeMutationsPerStep;
 	}
@@ -35,8 +41,4 @@ class ImageRunnerOptions {
 	 * The number of times to mutate each candidate shape.
 	 */
 	public var shapeMutationsPerStep:Int;
-	/**
-	 * The number of times to repeat the algorithm with reduced search.
-	 */
-	public var repeats:Int;
 }

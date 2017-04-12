@@ -6,19 +6,19 @@ package primitive.bitmap;
  */
 abstract Rgba(#if flash Int #else UInt #end) from Int to Int from UInt to UInt {
 	/**
-	 * Red component.
+	 * Red color component.
 	 */
 	public var r(get, never):Int;
 	/**
-	 * Green component.
+	 * Green color component.
 	 */
 	public var g(get, never):Int;
 	/**
-	 * Blue component.
+	 * Blue color component.
 	 */
 	public var b(get, never):Int;
 	/**
-	 * Alpha component.
+	 * Alpha color component.
 	 */
 	public var a(get, never):Int;
 	
@@ -54,14 +54,6 @@ abstract Rgba(#if flash Int #else UInt #end) from Int to Int from UInt to UInt {
 	
 	@:from public static inline function fromInt(rgba:Int):Rgba {
 		return rgba;
-	}
-	
-	/**
-	 * Converts the color to a string.
-	 * @return	The stringized color.
-	 */
-	public function toString():String {
-		return "rgba(" + r + "," + g + "," + b + "," + a + ")";
 	}
 	
 	private inline function get_r():Int {

@@ -11,4 +11,5 @@ enum ShapeType {
 	ELLIPSE;
 	ROTATED_ELLIPSE;
 	CIRCLE;
+	LINE;
 }

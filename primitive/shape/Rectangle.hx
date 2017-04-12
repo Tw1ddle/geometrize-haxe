@@ -1,5 +1,8 @@
 package primitive.shape;
 
+import primitive.rasterizer.Scanline;
+import primitive.exporter.SvgExporter;
+
 /**
  * A rectangle.
  * @author Sam Twidale (http://samcodes.co.uk/)
@@ -8,19 +11,19 @@ class Rectangle implements Shape {
 	/**
 	 * Left coordinate.
 	 */
-	public var x1(default, null):Int;
+	public var x1:Int;
 	/**
 	 * Top coordinate.
 	 */
-	public var y1(default, null):Int;
+	public var y1:Int;
 	/**
 	 * Right coordinate.
 	 */
-	public var x2(default, null):Int;
+	public var x2:Int;
 	/**
 	 * Bottom coordinate.
 	 */
-	public var y2(default, null):Int;
+	public var y2:Int;
 	
 	/**
 	 * The x-bound of the whole canvas.
@@ -50,7 +53,7 @@ class Rectangle implements Shape {
 		var lines:Array<Scanline> = [];
 		for (y in y1...y2) {
 			if (x1 != x2) {
-				lines.push(new Scanline(y, Util.min(x1, x2), Util.max(x1, x2), 0xFFFF));
+				lines.push(new Scanline(y, Util.min(x1, x2), Util.max(x1, x2)));
 			}
 		}
 		return lines;
@@ -75,5 +78,17 @@ class Rectangle implements Shape {
 		rectangle.x2 = x2;
 		rectangle.y2 = y2;
 		return rectangle;
+	}
+	
+	public function getType():ShapeType {
+		return ShapeType.RECTANGLE;
+	}
+	
+	public function getRawShapeData():Array<Int> {
+		return [ Util.min(x1, x2), Util.min(y1, y2), Util.max(x1, x2), Util.max(y1, y2) ];
+	}
+	
+	public function getSvgShapeData():String {
+		return "<rect x=\"" + Util.min(x1, x2) + "\" y=\"" + Util.min(y1, y2) + "\" width=\"" + (Util.max(x1, x2) - Util.min(x1, x2)) + "\" height=\"" + (Util.max(y1, y2) - Util.min(y1, y2)) + "\" " + SvgExporter.SVG_STYLE_HOOK + " />";
 	}
 }

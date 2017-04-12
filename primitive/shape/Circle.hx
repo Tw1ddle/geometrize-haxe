@@ -1,5 +1,7 @@
 package primitive.shape;
 
+import primitive.exporter.SvgExporter;
+
 /**
  * A circle.
  * @author Sam Twidale (http://samcodes.co.uk/)
@@ -33,5 +35,17 @@ class Circle extends Ellipse {
 		circle.rx = rx;
 		circle.ry = ry;
 		return circle;
+	}
+	
+	override public function getType():ShapeType {
+		return ShapeType.CIRCLE;
+	}
+	
+	override public function getRawShapeData():Array<Int> {
+		return [ x, y, rx ];
+	}
+	
+	override public function getSvgShapeData():String {
+		return "<circle cx=\"" + x + "\" cy=\"" + y + "\" r=\"" + rx + "\" " + SvgExporter.SVG_STYLE_HOOK + " />";
 	}
 }

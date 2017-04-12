@@ -1,10 +1,38 @@
 package primitive;
 
+import primitive.bitmap.Bitmap;
+import primitive.bitmap.Rgba;
+
 /**
  * Utility functions.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 class Util {
+	/**
+	 * Computes the average RGB color of the pixels in the image.
+	 * @param	image	The image whose average color will be calculated.
+	 * @return	The average RGB color of the image, RGBA8888 format. Alpha is set to opaque (255).
+	 */
+	public static function getAverageImageColor(image:Bitmap):Rgba {
+		Sure.sure(image != null);
+		
+		var totalRed:Int = 0;
+		var totalGreen:Int = 0;
+		var totalBlue:Int = 0;
+		
+		for (x in 0...image.width) {
+			for (y in 0...image.height) {
+				var pixel = image.getPixel(x, y);
+				totalRed += pixel.r;
+				totalGreen += pixel.g;
+				totalBlue += pixel.b;
+			}
+		}
+		
+		var size:Int = image.width * image.height;
+		return Rgba.create(Std.int(totalRed / size), Std.int(totalGreen / size), Std.int(totalBlue / size), 255);
+	}
+	
 	/**
 	 * Clamps a value within a range.
 	 * @param	value	The value to clamp.
@@ -74,5 +102,42 @@ class Util {
 	public static inline function randomArrayItem<T>(a:Array<T>):T {
 		Sure.sure(a != null && a.length > 0);
 		return a[random(0, a.length - 1)];
+	}
+	
+	/**
+	 * Returns the smallest and largest items from an array of ints.
+	 * @param	a	The array of ints.
+	 * @return	The smallest and largest items from the array.
+	 */
+	public static inline function minMaxElements(a:Array<Int>):{ min:Int, max:Int } {
+		if (a == null || a.length == 0) {
+			return { min : 0, max : 0 };
+		}
+		
+		var min:Int = a[0];
+		var max:Int = a[0];
+		
+		for (value in a) {
+			if (min > value) {
+				min = value;
+			}
+			if (max < value) {
+				max = value;
+			}
+		}
+		
+		return { min: min, max: max };
+	}
+	
+	/**
+	 * Returns the absolute value of the given value.
+	 * @param	value The value to abs.
+	 * @return	The absolute value of the given value.
+	 */
+	public static inline function abs(value:Int):Int {
+		if (value < 0) {
+			return -value;
+		}
+		return value;
 	}
 }

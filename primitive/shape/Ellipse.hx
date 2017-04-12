@@ -1,14 +1,17 @@
 package primitive.shape;
 
+import primitive.exporter.SvgExporter;
+import primitive.rasterizer.Scanline;
+
 /**
  * An ellipse.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 class Ellipse implements Shape {
-	public var x(default, null):Int;
-	public var y(default, null):Int;
-	public var rx(default, null):Int;
-	public var ry(default, null):Int;
+	public var x:Int;
+	public var y:Int;
+	public var rx:Int;
+	public var ry:Int;
 	
 	public var xBound(default, null):Int;
 	public var yBound(default, null):Int;
@@ -46,10 +49,10 @@ class Ellipse implements Shape {
 				x2 = w - 1;
 			}
 			if (y1 >= 0 && y1 < h) {
-				lines.push(new Scanline(y1, x1, x2, 0xFFFF));
+				lines.push(new Scanline(y1, x1, x2));
 			}
 			if (y2 >= 0 && y2 < h && dy > 0) {
-				lines.push(new Scanline(y2, x1, x2, 0xFFFF));
+				lines.push(new Scanline(y2, x1, x2));
 			}
 		}
 		
@@ -76,5 +79,17 @@ class Ellipse implements Shape {
 		ellipse.rx = rx;
 		ellipse.ry = ry;
 		return ellipse;
+	}
+	
+	public function getType():ShapeType {
+		return ShapeType.ELLIPSE;
+	}
+	
+	public function getRawShapeData():Array<Int> {
+		return [ x, y, rx, ry ];
+	}
+	
+	public function getSvgShapeData():String {
+		return "<ellipse cx=\"" + x + "\" cy=\"" + y + "\" rx=\"" + rx + "\" ry=\"" + ry + "\" " + SvgExporter.SVG_STYLE_HOOK + " />";
 	}
 }

@@ -10,5 +10,4 @@
     <!-- <haxelib name="primitive-haxe" /> -->
 
     <haxelib name="munit" />
-    <haxelib name="lime" />
 </project>

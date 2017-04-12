@@ -1,7 +1,7 @@
 package primitive.shape;
 
 import massive.munit.Assert;
-import primitive.shape.Circle;
+import primitive.shape.Line;
 
-class CircleTest {
+class LineTest {
 }

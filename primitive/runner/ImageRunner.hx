@@ -4,7 +4,6 @@ import primitive.Model;
 import primitive.Model.ShapeResult;
 import primitive.bitmap.Bitmap;
 import primitive.bitmap.Rgba;
-import primitive.shape.ShapeType;
 
 /**
  * Helper class for creating a set of primitives from a single source image.
@@ -20,8 +19,8 @@ class ImageRunner {
 	 * Creates a new runner.
 	 * @param	inputImage	The input image, the image that the primitive algorithm will optimize for.
 	 */
-	public function new(inputImage:Bitmap) {
-		model = new Model(inputImage, Primitive.getAverageImageColor(inputImage), inputImage.width); // TODO is outputsize used?
+	public function new(inputImage:Bitmap, backgroundColor:Rgba) {
+		model = new Model(inputImage, backgroundColor);
 	}
 	
 	/**
@@ -29,7 +28,7 @@ class ImageRunner {
 	 * @return	An array containing data about the shapes just added to the model.
 	 */
 	public function step(options:ImageRunnerOptions):Array<ShapeResult> {
-		return model.step(options.shapeTypes, options.alpha, options.repeats, options.candidateShapesPerStep, options.shapeMutationsPerStep);
+		return model.step(options.shapeTypes, options.alpha, options.candidateShapesPerStep, options.shapeMutationsPerStep);
 	}
 	
 	/**

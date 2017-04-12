@@ -1,6 +1,8 @@
 package primitive;
 
 import massive.munit.Assert;
+import primitive.bitmap.Bitmap;
+import primitive.bitmap.Rgba;
 import primitive.Util;
 
 class UtilTest {
@@ -16,6 +18,18 @@ class UtilTest {
 		
 		Assert.areEqual(Util.clamp(-10, 0, 5), 0);
 		Assert.areEqual(Util.clamp(-10, -5, 5), -5);
+	}
+	
+	@Test
+	function testGetAverageImageColor() {
+		var color:Rgba = Rgba.create(10, 50, 90, 255);
+		var image:Bitmap = Bitmap.create(50, 50, color);
+		Assert.areEqual(color, Util.getAverageImageColor(image));
+		
+		var color2:Rgba = Rgba.create(20, 30, 40, 255);
+		var image2:Bitmap = Bitmap.create(2, 1, color2);
+		image2.setPixel(0, 0, Rgba.create(40, 100, 120, 255));
+		Assert.areEqual(Rgba.create(30, 65, 80, 255), Util.getAverageImageColor(image2));
 	}
 	
 	@Test

@@ -61,10 +61,4 @@ class RgbaTest {
 		Assert.areEqual(-1, Rgba.fromInt(-1));
 		Assert.areNotEqual(10, Rgba.fromInt(20));
 	}
-	
-	@Test
-	function testToString() {
-		Assert.areNotEqual(Rgba.create(128, 128, 128, 128).toString(), null);
-		Assert.areNotEqual(Rgba.create(128, 128, 128, 128).toString(), "");
-	}
 }

@@ -1,25 +1,21 @@
 package primitive.shape;
 
-import primitive.Scanline;
+import primitive.exporter.SvgExporter;
+import primitive.rasterizer.Rasterizer;
+import primitive.rasterizer.Scanline;
 
 /**
  * A rotated ellipse.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 class RotatedEllipse implements Shape {
-	public var x(default, null):Float;
-	public var y(default, null):Float;
-	public var rx(default, null):Float;
-	public var ry(default, null):Float;
-	public var angle(default, null):Float;
+	public var x:Int;
+	public var y:Int;
+	public var rx:Int;
+	public var ry:Int;
+	public var angle:Int;
 	
-	/**
-	 * The x-bound of the whole canvas.
-	 */
 	public var xBound(default, null):Int;
-	/**
-	 * The y-bound of the whole canvas.
-	 */
 	public var yBound(default, null):Int;
 	
 	public function new(xBound:Int, yBound:Int) {
@@ -27,58 +23,71 @@ class RotatedEllipse implements Shape {
 		y = Std.random(yBound);
 		rx = Std.random(32) + 1;
 		ry = Std.random(32) + 1;
-		angle = Std.random(361);
+		angle = Std.random(360);
 		
 		this.xBound = xBound;
 		this.yBound = yBound;
 	}
 	
 	public function rasterize():Array<Scanline> {
-		var lines:Array<Scanline> = [];
+		var pointCount:Int = 20;
+		var points:Array<{x : Int, y: Int}> = [];
 		
-		var n:Int = 16;
-		for (i in 0...n) {
-			var p1:Float = i / n;
-			var p2:Float = (i + 1) / n;
-			var a1 = p1 * 2 * Math.PI;
-			var a2 = p2 * 2 * Math.PI;
-			var x0 = rx * Math.cos(a1);
-			var y0 = ry * Math.sin(a1);
-			var x1 = rx * Math.cos(a1 + (a2 - a1) / 2);
-			var y1 = ry * Math.sin(a1 + (a2 - a1) / 2);
-			var x2 = rx * Math.cos(a2);
-			var y2 = ry * Math.sin(a2);
-			var cx = 2 * x1 - x0 / 2 - x2 / 2;
-			var cy = 2 * y1 - y0 / 2 - y2 / 2;
+		var rads:Float = angle * (Math.PI / 180.0);
+		var c:Float = Math.cos(rads);
+		var s:Float = Math.sin(rads);
+		
+		for (i in 0...pointCount) {
+			var rot:Float = ((360.0 / pointCount) * i) * (Math.PI / 180.0);
+			var crx:Float = rx * Math.cos(rot);
+			var cry:Float = ry * Math.sin(rot);
 			
-			// TODO
+			var tx:Int = Std.int(crx * c - cry * s + x);
+			var ty:Int = Std.int(crx * s + cry * c + y);
+			
+			points.push({ x: tx, y: ty });
 		}
 		
-		return lines;
+		return Scanline.trim(Rasterizer.scanlinesForPolygon(points), xBound, yBound);
 	}
 	
 	public function mutate():Void {
-		// TODO
-		/*
-		var r = Std.random(3);
+		var r = Std.random(4);
 		switch(r) {
 			case 0:
 				x = Util.clamp(x + Util.random(-16, 16), 0, xBound - 1);
 				y = Util.clamp(y + Util.random(-16, 16), 0, yBound - 1);
 			case 1:
 				rx = Util.clamp(rx + Util.random(-16, 16), 1, xBound - 1);
-				ry = Util.clamp(ry + Util.random(-16, 16), 1, xBound - 1);
 			case 2:
-				angle += Util.random(-16, 16);
+				ry = Util.clamp(ry + Util.random(-16, 16), 1, xBound - 1);
+			case 3:
+				angle = Util.clamp(angle + Util.random(-4, 4), 0, 360);
 		}
-		*/
 	}
 	
 	public function clone():Shape {
 		var ellipse = new RotatedEllipse(xBound, yBound);
-		
-		// TODO
-		
+		ellipse.x = x;
+		ellipse.y = y;
+		ellipse.rx = rx;
+		ellipse.ry = ry;
+		ellipse.angle = angle;
 		return ellipse;
+	}
+	
+	public function getType():ShapeType {
+		return ShapeType.ROTATED_ELLIPSE;
+	}
+	
+	public function getRawShapeData():Array<Int> {
+		return [ x, y, rx, ry, angle ];
+	}
+	
+	public function getSvgShapeData():String {
+		var s:String = "<g transform=\"translate(" + x + " " + y + ") rotate(" + angle + ") scale(" + rx + " " + ry +")\">";
+		s += "<ellipse cx=\"" + 0 + "\" cy=\"" + 0 + "\" rx=\"" + 1 + "\" ry=\"" + 1 + "\" " + SvgExporter.SVG_STYLE_HOOK + " />";
+		s += "</g>";
+		return s;
 	}
 }

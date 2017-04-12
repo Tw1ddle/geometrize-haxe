@@ -2,6 +2,8 @@ package primitive;
 
 import primitive.bitmap.Bitmap;
 import primitive.bitmap.Rgba;
+import primitive.rasterizer.Rasterizer;
+import primitive.rasterizer.Scanline;
 import primitive.shape.Shape;
 import primitive.shape.ShapeFactory;
 import primitive.shape.ShapeType;
@@ -10,7 +12,7 @@ import primitive.shape.ShapeType;
  * The core functions in Primitive Haxe.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
-class Primitive {
+class Core {
 	/**
 	 * Calculates a measure of the improvement adding the shape provides - lower energy is better.
 	 * @param	shape	The shape to check.
@@ -34,10 +36,10 @@ class Primitive {
 		var color:Rgba = computeColor(target, current, lines, alpha);
 		
 		// Copies the area covered by the scanlines to the buffer bitmap
-		copyLines(buffer, current, lines);
+		Rasterizer.copyLines(buffer, current, lines);
 		
 		// Blends the scanlines into the buffer bitmap using the best color calculated earlier
-		drawLines(buffer, color, lines);
+		Rasterizer.drawLines(buffer, color, lines);
 		
 		// Gets the root-mean-square error between the parts of the current and the modified buffer texture covered by the scanlines
 		return differencePartial(target, current, buffer, score, lines);
@@ -68,7 +70,7 @@ class Primitive {
 		// For each scanline
 		for (line in lines) {
 			var y:Int = line.y;
-			for (x in line.x1...line.x2) {
+			for (x in line.x1...line.x2 + 1) {
 				// Get the overlapping target and current colors
 				var t:Rgba = target.getPixel(x, y);
 				var c:Rgba = current.getPixel(x, y);
@@ -95,79 +97,6 @@ class Primitive {
 	}
 	
 	/**
-	 * Draws scanlines onto an image.
-	 * @param	image	The image to be drawn to.
-	 * @param	color	The color of the scanlines.
-	 * @param	lines	The scanlines to draw.
-	 */
-	public static function drawLines(image:Bitmap, c:Rgba, lines:Array<Scanline>):Void {
-		Sure.sure(image != null);
-		Sure.sure(lines != null);
-		
-		// Convert the non-premultiplied color to alpha-premultiplied 16-bits per channel RGBA
-		// In other words, scale the rgb color components by the alpha component
-		var sr:Int = c.r;
-		sr |= sr << 8;
-		sr *= c.a;
-		sr = Std.int(sr / 0xFF);
-		var sg:Int = c.g;
-		sg |= sg << 8;
-		sg *= c.a;
-		sg = Std.int(sg / 0xFF);
-		var sb:Int = c.b;
-		sb |= sb << 8;
-		sb *= c.a;
-		sb = Std.int(sb / 0xFF);
-		var sa:Int = c.a;
-		sa |= sa << 8;
-		
-		// For each scanline
-		for (line in lines) {
-			var y:Int = line.y;
-			var ma:Int = line.alpha;
-			var m:Int = 65535;
-			var as:Float = (m - (sa * (ma / m))) * 257;
-			var a:Int = Std.int(as);
-			for (x in line.x1...line.x2) {
-				// Get the current overlapping color
-				var d:Rgba = image.getPixel(x, y);
-				
-				var dr:UInt = d.r;
-				var dg:UInt = d.g;
-				var db:UInt = d.b;
-				var da:UInt = d.a;
-				
-				// Blend the color components
-				var r:UInt = Std.int((dr * a + sr * ma) / m) >> 8;
-				var g:UInt = Std.int((dg * a + sg * ma) / m) >> 8;
-				var b:UInt = Std.int((db * a + sb * ma) / m) >> 8;
-				var a:UInt = Std.int((da * a + sa * ma) / m) >> 8;
-				
-				image.setPixel(x, y, Rgba.create(r, g, b, a));
-			}
-		}
-	}
-	
-	/**
-	 * Copies source pixels to a destination defined by a set of scanlines.
-	 * @param	destination	The destination bitmap to copy the lines to.
-	 * @param	source	The source bitmap to copy the lines from.
-	 * @param	lines	The scanlines that comprise the source to destination copying mask.
-	 */
-	public static function copyLines(destination:Bitmap, source:Bitmap, lines:Array<Scanline>):Void {
-		Sure.sure(destination != null);
-		Sure.sure(source != null);
-		Sure.sure(lines != null);
-		
-		for (line in lines) {
-			var y = line.y;
-			for (x in line.x1...line.x2) {
-				destination.setPixel(x, y, source.getPixel(x, y));
-			}
-		}
-	}
-	
-	/**
 	 * Calculates the root-mean-square error between two bitmaps.
 	 * @param	first	The first bitmap.
 	 * @param	second	The second bitmap.
@@ -190,11 +119,12 @@ class Primitive {
 				var dr:Int = f.r - s.r;
 				var dg:Int = f.g - s.g;
 				var db:Int = f.b - s.b;
+				var da:Int = f.a - s.a;
 				
-				total += (dr * dr + dg * dg + db * db);
+				total += (dr * dr + dg * dg + db * db + da * da);
 			}
 		}
-		return Math.sqrt(total / (width * height * 3.0)) / 255;
+		return Math.sqrt(total / (width * height * 4.0)) / 255;
 	}
 	
 	/**
@@ -215,11 +145,11 @@ class Primitive {
 		
 		var width:Int = target.width;
 		var height:Int = target.height;
-		var rgbCount:Int = width * height * 3;
-		var total:UInt = Std.int(Math.pow(score * 255, 2) * rgbCount);
+		var rgbaCount:Int = width * height * 4;
+		var total:UInt = Std.int(Math.pow(score * 255, 2) * rgbaCount);
 		for (line in lines) {
 			var y = line.y;
-			for (x in line.x1...line.x2) {
+			for (x in line.x1...line.x2 + 1) {
 				var t:Rgba = target.getPixel(x, y);
 				var b:Rgba = before.getPixel(x, y);
 				var a:Rgba = after.getPixel(x, y);
@@ -227,46 +157,18 @@ class Primitive {
 				var dtbr:Int = t.r - b.r;
 				var dtbg:Int = t.g - b.g;
 				var dtbb:Int = t.b - b.b;
+				var dtba:Int = t.a - b.a;
 				
 				var dtar:Int = t.r - a.r;
 				var dtag:Int = t.g - a.g;
 				var dtab:Int = t.b - a.b;
+				var dtaa:Int = t.a - a.a;
 				
-				total -= (dtbr * dtbr + dtbg * dtbg + dtbb * dtbb);
-				total += (dtar * dtar + dtag * dtag + dtab * dtab);
+				total -= (dtbr * dtbr + dtbg * dtbg + dtbb * dtbb + dtba * dtba);
+				total += (dtar * dtar + dtag * dtag + dtab * dtab + dtaa * dtaa);
 			}
 		}
-		return Math.sqrt(total / rgbCount) / 255;
-	}
-	
-	/**
-	 * Gets the best state using a hill climbing algorithm.
-	 * @param	shapes	The types of shape to use.
-	 * @param	alpha	The opacity of the shape.
-	 * @param	n	The number of random states to generate.
-	 * @param	age	The number of hillclimbing steps.
-	 * @param	m	The number of iterations for the overall algorithm.
-	 * @param	target	The target bitmap.
-	 * @param	current	The current bitmap.
-	 * @param	buffer	The buffer bitmap.
-	 * @param	lastScore	The last score recorded by the model.
-	 * @return	The best state acquired from hill climbing i.e. the one with the lowest energy.
-	 */
-	public static function bestHillClimbState(shapes:Array<ShapeType>, alpha:Int, n:Int, age:Int, m:Int, target:Bitmap, current:Bitmap, buffer:Bitmap, lastScore:Float):State {
-		var bestEnergy:Float = 0;
-		var bestState:State = null;
-		
-		for (i in 0...m) {
-			var state:State = bestRandomState(shapes, alpha, n, target, current, buffer, lastScore);
-			var before:Float = state.energy(lastScore);
-			state = hillClimb(state, age, lastScore);
-			var energy:Float = state.energy(lastScore);
-			if (i == 0 || energy < bestEnergy) {
-				bestEnergy = energy;
-				bestState = state;
-			}
-		}
-		return bestState;
+		return Math.sqrt(total / rgbaCount) / 255;
 	}
 	
 	/**
@@ -293,6 +195,23 @@ class Primitive {
 			}
 		}
 		return bestState;
+	}
+	
+	/**
+	 * Gets the best state using a hill climbing algorithm.
+	 * @param	shapes	The types of shape to use.
+	 * @param	alpha	The opacity of the shape.
+	 * @param	n	The number of random states to generate.
+	 * @param	age	The number of hillclimbing steps.
+	 * @param	target	The target bitmap.
+	 * @param	current	The current bitmap.
+	 * @param	buffer	The buffer bitmap.
+	 * @param	lastScore	The last score recorded by the model.
+	 * @return	The best state acquired from hill climbing i.e. the one with the lowest energy.
+	 */
+	public static function bestHillClimbState(shapes:Array<ShapeType>, alpha:Int, n:Int, age:Int, target:Bitmap, current:Bitmap, buffer:Bitmap, lastScore:Float):State {
+		var state:State = bestRandomState(shapes, alpha, n, target, current, buffer, lastScore);
+		return state = hillClimb(state, age, lastScore);
 	}
 	
 	/**
@@ -325,30 +244,5 @@ class Primitive {
 		}
 		
 		return bestState;
-	}
-	
-	/**
-	 * Computes the average RGB color of the pixels in the image.
-	 * @param	image	The image whose average color will be calculated.
-	 * @return	The average RGB color of the image, RGBA8888 format. Alpha is set to opaque (255).
-	 */
-	public static function getAverageImageColor(image:Bitmap):Rgba {
-		Sure.sure(image != null);
-		
-		var totalRed:Int = 0;
-		var totalGreen:Int = 0;
-		var totalBlue:Int = 0;
-		
-		for (x in 0...image.width) {
-			for (y in 0...image.height) {
-				var pixel = image.getPixel(x, y);
-				totalRed += pixel.r;
-				totalGreen += pixel.g;
-				totalBlue += pixel.b;
-			}
-		}
-		
-		var size:Int = image.width * image.height;
-		return Rgba.create(Std.int(totalRed / size), Std.int(totalGreen / size), Std.int(totalBlue / size), 255);
 	}
 }
