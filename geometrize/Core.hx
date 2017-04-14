@@ -76,7 +76,7 @@ class Core {
 		Sure.sure(first.width == second.width);
 		Sure.sure(first.height == second.height);
 		
-		var total:UInt = 0;
+		var total:Float = 0;
 		var width:Int = first.width;
 		var height:Int = first.height;
 		for (y in 0...height) {
@@ -114,7 +114,7 @@ class Core {
 		var width:Int = target.width;
 		var height:Int = target.height;
 		var rgbaCount:Int = width * height * 4;
-		var total:UInt = Std.int(Math.pow(score * 255, 2) * rgbaCount);
+		var total:Float = Math.pow(score * 255, 2) * rgbaCount;
 		for (line in lines) {
 			var y = line.y;
 			for (x in line.x1...line.x2 + 1) {
