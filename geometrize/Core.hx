@@ -14,38 +14,6 @@ import geometrize.shape.ShapeType;
  */
 class Core {
 	/**
-	 * Calculates a measure of the improvement adding the shape provides - lower energy is better.
-	 * @param	shape	The shape to check.
-	 * @param	alpha	The alpha of the shape.
-	 * @param	target	The target bitmap.
-	 * @param	current	The current bitmap.
-	 * @param	buffer	The buffer bitmap.
-	 * @param	score	The score.
-	 * @return	The energy measure.
-	 */
-	public static function energy(shape:Shape, alpha:Int, target:Bitmap, current:Bitmap, buffer:Bitmap, score:Float):Float {
-		Sure.sure(shape != null);
-		Sure.sure(target != null);
-		Sure.sure(current != null);
-		Sure.sure(buffer != null);
-		
-		// Gets the set of scanlines that describe the pixels covered by the shape
-		var lines:Array<Scanline> = shape.rasterize();
-		
-		// Calculates the best color for the area covered by the scanlines
-		var color:Rgba = computeColor(target, current, lines, alpha);
-		
-		// Copies the area covered by the scanlines to the buffer bitmap
-		Rasterizer.copyLines(buffer, current, lines);
-		
-		// Blends the scanlines into the buffer bitmap using the best color calculated earlier
-		Rasterizer.drawLines(buffer, color, lines);
-		
-		// Gets the root-mean-square error between the parts of the current and the modified buffer texture covered by the scanlines
-		return differencePartial(target, current, buffer, score, lines);
-	}
-	
-	/**
 	 * Calculates the color of the scanlines.
 	 * @param	target	The target image.
 	 * @param	current	The current image.
@@ -245,5 +213,28 @@ class Core {
 		}
 		
 		return bestState;
+	}
+	
+	/**
+	 * Calculates a measure of the improvement adding the shape provides - lower energy is better.
+	 * @param	shape	The shape to check.
+	 * @param	alpha	The alpha of the shape.
+	 * @param	target	The target bitmap.
+	 * @param	current	The current bitmap.
+	 * @param	buffer	The buffer bitmap.
+	 * @param	score	The score.
+	 * @return	The energy measure.
+	 */
+	public static function energy(shape:Shape, alpha:Int, target:Bitmap, current:Bitmap, buffer:Bitmap, score:Float):Float {
+		Sure.sure(shape != null);
+		Sure.sure(target != null);
+		Sure.sure(current != null);
+		Sure.sure(buffer != null);
+		
+		var lines:Array<Scanline> = shape.rasterize(); // Gets the set of scanlines that describe the pixels covered by the shape
+		var color:Rgba = computeColor(target, current, lines, alpha); // Calculate best color for areas covered by the scanlines
+		Rasterizer.copyLines(buffer, current, lines); // Copy area covered by scanlines to buffer bitmap
+		Rasterizer.drawLines(buffer, color, lines); // Blend scanlines into the buffer using the color calculated earlier
+		return differencePartial(target, current, buffer, score, lines); // Get error measure between areas of current and modified buffers covered by scanlines
 	}
 }
