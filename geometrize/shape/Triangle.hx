@@ -65,7 +65,7 @@ class Triangle implements Shape {
 		return ShapeType.TRIANGLE;
 	}
 	
-	public function getRawShapeData():Array<Int> {
+	public function getRawShapeData():Array<Float> {
 		return [ x1, y1, x2, y2, x3, y3 ];
 	}
 	

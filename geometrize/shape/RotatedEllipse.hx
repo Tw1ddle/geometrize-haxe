@@ -80,7 +80,7 @@ class RotatedEllipse implements Shape {
 		return ShapeType.ROTATED_ELLIPSE;
 	}
 	
-	public function getRawShapeData():Array<Int> {
+	public function getRawShapeData():Array<Float> {
 		return [ x, y, rx, ry, angle ];
 	}
 	

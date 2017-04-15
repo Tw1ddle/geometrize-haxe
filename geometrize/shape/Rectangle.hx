@@ -84,7 +84,7 @@ class Rectangle implements Shape {
 		return ShapeType.RECTANGLE;
 	}
 	
-	public function getRawShapeData():Array<Int> {
+	public function getRawShapeData():Array<Float> {
 		return [ Util.min(x1, x2), Util.min(y1, y2), Util.max(x1, x2), Util.max(y1, y2) ];
 	}
 	

@@ -41,7 +41,7 @@ class Circle extends Ellipse {
 		return ShapeType.CIRCLE;
 	}
 	
-	override public function getRawShapeData():Array<Int> {
+	override public function getRawShapeData():Array<Float> {
 		return [ x, y, rx ];
 	}
 	

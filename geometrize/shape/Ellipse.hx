@@ -85,7 +85,7 @@ class Ellipse implements Shape {
 		return ShapeType.ELLIPSE;
 	}
 	
-	public function getRawShapeData():Array<Int> {
+	public function getRawShapeData():Array<Float> {
 		return [ x, y, rx, ry ];
 	}
 	

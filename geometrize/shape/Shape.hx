@@ -33,7 +33,7 @@ interface Shape {
 	 * Gets a vector of data that represents the shape geometry, the format varies depending on the ShapeType.
 	 * @return The shape data.
 	 */
-	public function getRawShapeData():Array<Int>;
+	public function getRawShapeData():Array<Float>;
 	
 	/**
 	 * Gets a string that represents a SVG element that describes the shape geometry.
