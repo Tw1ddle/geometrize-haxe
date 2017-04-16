@@ -27,7 +27,7 @@ Or add it to your ```Project.xml```:
 
 ## Usage
 
-Refer to the Geometrize Haxe [web demo](http://www.samcodes.co.uk/project/geometrize-haxe-web/) and [code](https://github.com/Tw1ddle/geometrize-haxe-web/), and this HaxeFlixel [example](http://tw1ddle.github.io/geometrize-haxe-demo/) and [code](https://github.com/Tw1ddle/geometrize-haxe-demo/). Also read the library [documentation](http://tw1ddle.github.io/geometrize-haxe/).
+Refer to the Geometrize Haxe [web demo](http://www.samcodes.co.uk/project/geometrize-haxe-web/) and [code](https://github.com/Tw1ddle/geometrize-haxe-web/), and this HaxeFlixel [example](http://samcodes.co.uk/project/geometrize-haxe-flixel/) and [code](https://github.com/Tw1ddle/geometrize-haxe-demo/). Also read the library [documentation](http://tw1ddle.github.io/geometrize-haxe/).
 
 Basic usage: instantiate an ```ImageRunner```, pass it a ```Bitmap``` and starting background ```Rgba``` color. Add shapes by repeatedly calling ```runner.step(options)```, passing your ```ImageRunnerOptions```. Export the results using the ```export``` methods of ```SvgExporter``` and ```ShapeJsonExporter```.
 
@@ -42,7 +42,7 @@ A detailed explanation of how the algorithm works is given in the primitive [rea
 * See the Geometrize [resources](https://github.com/Tw1ddle/geometrize-resources) and [template](https://github.com/Tw1ddle/geometrize-templates) repositories.
 * See the Geometrize [haxelib code](https://github.com/Tw1ddle/geometrize-haxe) and library [documentation](http://tw1ddle.github.io/geometrize-haxe/).
 * See the Geometrize [web demo](http://www.samcodes.co.uk/project/geometrize-haxe-web/) and web [demo code](https://github.com/Tw1ddle/geometrize-haxe-web/).
-* See the HaxeFlixel Geometrize [demo](http://tw1ddle.github.io/geometrize-haxe-demo/) and the [demo code](https://github.com/Tw1ddle/geometrize-haxe-demo/).
+* See the HaxeFlixel Geometrize [demo](http://samcodes.co.uk/project/geometrize-haxe-flixel/) and the [demo code](https://github.com/Tw1ddle/geometrize-haxe-demo/).
 * See the Primitive Go [repository](https://github.com/fogleman/primitive).
 
 ## Examples And Screenshots
