@@ -27,7 +27,7 @@ Or add it to your ```Project.xml```:
 
 ## Usage
 
-See the Geometrize Haxe [web demo](http://www.samcodes.co.uk/project/geometrize-haxe-web/) and [code](http://www.samcodes.co.uk/project/geometrize-haxe-web/), and this HaxeFlixel [example](http://tw1ddle.github.io/geometrize-haxe-demo/) and [code](https://github.com/Tw1ddle/geometrize-haxe-demo/). Also read the library [documentation](http://tw1ddle.github.io/geometrize-haxe/).
+Refer to the Geometrize Haxe [web demo](http://www.samcodes.co.uk/project/geometrize-haxe-web/) and [code](https://github.com/Tw1ddle/geometrize-haxe-web/), and this HaxeFlixel [example](http://tw1ddle.github.io/geometrize-haxe-demo/) and [code](https://github.com/Tw1ddle/geometrize-haxe-demo/). Also read the library [documentation](http://tw1ddle.github.io/geometrize-haxe/).
 
 Basic usage: instantiate an ```ImageRunner```, pass it a ```Bitmap``` and starting background ```Rgba``` color. Add shapes by repeatedly calling ```runner.step(options)```, passing your ```ImageRunnerOptions```. Export the results using the ```export``` methods of ```SvgExporter``` and ```ShapeJsonExporter```.
 
