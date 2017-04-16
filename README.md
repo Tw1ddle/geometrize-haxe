@@ -2,12 +2,12 @@
 
 **Geometrize Haxe** is a Haxe library for recreating images with geometric primitives. Run the web demo [in your browser](http://www.samcodes.co.uk/project/geometrize-haxe-web/).
 
-The Geometrize [haxelib](https://lib.haxe.org/p/geometrize-haxe) is based on the [primitive](https://github.com/fogleman/primitive) Go library.
+The Geometrize Haxe [haxelib](https://lib.haxe.org/p/geometrize-haxe) is based on the [primitive](https://github.com/fogleman/primitive) Go library.
 
-[![Geometrized Peacock](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/peacock.jpg?raw=true "Peacock")](http://www.samcodes.co.uk/project/geometrize-haxe-web/)
+[![Geometrized Cat](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/cat.jpg?raw=true "Geometrized Cat - ~200 Triangles")](http://www.samcodes.co.uk/project/geometrize-haxe-web/)
 
 ## Features
-* Recreate images as shapes - any combination of rectangles, rotated rectangles, triangles, circles, ellipses, rotated ellipses and lines are supported.
+* Recreate images as shapes - combinations of rectangles, rotated rectangles, triangles, circles, ellipses, rotated ellipses and lines are supported.
 * Easily export geometrized images to SVG, or generated shape data to JSON.
 * All Haxe targets are supported.
 
@@ -33,7 +33,9 @@ Basic usage: instantiate an ```ImageRunner```, pass it a ```Bitmap``` and starti
 
 ## How It Works
 
-A user provides a *target image*, and the algorithm finds good shapes to approximate that image. To find a shape to add, the algorithm generates a large number of random candidate shapes, repeatedly improving the fit of each using a hillclimbing optimization approach, eventually choosing the best fitting shape. Shapes are added one by one. A detailed explanation of how the algorithm works is given by primitive's readme [here](https://github.com/fogleman/primitive/blob/master/README.md#how-it-works-part-ii).
+A user provides a target image, and the algorithm finds good shapes to approximate that image. To find a good shape, the algorithm generates a large number of random candidate shapes, repeatedly improving the fit of each using a hillclimbing optimization approach, eventually choosing the best fitting shape. Shapes are added one by one.
+
+A detailed explanation of how the algorithm works is given in the primitive [readme](https://github.com/fogleman/primitive/blob/master/README.md#how-it-works-part-ii).
 
 ## Resources
 
@@ -50,7 +52,7 @@ There is no jagginess when saving images as vector-based SVG e.g. [pyramid](http
 Examples from geometrizing public domain [artwork](https://commons.wikimedia.org/wiki/Category:Paintings_by_painter) and [photos](https://www.pexels.com/public-domain-images/):
 
 [![Geometrized Swan](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/swan.jpg?raw=true "Swan")](http://www.samcodes.co.uk/project/geometrize-haxe-web/)
-[![Geometrized Cat](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/cat.jpg?raw=true "Cat")](http://www.samcodes.co.uk/project/geometrize-haxe-web/)
+[![Geometrized Peacock](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/peacock.jpg?raw=true "Peacock")](http://www.samcodes.co.uk/project/geometrize-haxe-web/)
 [![Geometrized Leafy Railroad](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/leafy_railroad.jpg?raw=true "Leafy Railroad")](http://www.samcodes.co.uk/project/geometrize-haxe-web/)
 [![Geometrized Road](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/road.jpg?raw=true "Road")](http://www.samcodes.co.uk/project/geometrize-haxe-web/)
 [![Geometrized Sunflower](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/sunflower.jpg?raw=true "Sunflower")](http://www.samcodes.co.uk/project/geometrize-haxe-web/)
