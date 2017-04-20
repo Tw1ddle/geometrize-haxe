@@ -60,7 +60,7 @@ class RotatedEllipse implements Shape {
 			case 1:
 				rx = Util.clamp(rx + Util.random(-16, 16), 1, xBound - 1);
 			case 2:
-				ry = Util.clamp(ry + Util.random(-16, 16), 1, xBound - 1);
+				ry = Util.clamp(ry + Util.random(-16, 16), 1, yBound - 1);
 			case 3:
 				angle = Util.clamp(angle + Util.random(-4, 4), 0, 360);
 		}

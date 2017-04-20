@@ -30,6 +30,10 @@ class RotatedRectangle implements Shape {
 	}
 	
 	public function rasterize():Array<Scanline> {
+		return Scanline.trim(Rasterizer.scanlinesForPolygon(getCornerPoints()), xBound, yBound);
+	}
+	
+	private function getCornerPoints():Array<{ x:Int, y:Int }> {
 		var xm1:Int = Util.min(x1, x2);
 		var xm2:Int = Util.max(x1, x2);
 		var ym1:Int = Util.min(y1, y2);
@@ -56,7 +60,7 @@ class RotatedRectangle implements Shape {
 		var brx:Int = Std.int(ox2 * c - oy2 * s + cx);
 		var bry:Int = Std.int(ox2 * s + oy2 * c + cy);
 		
-		return Scanline.trim(Rasterizer.scanlinesForPolygon([ { x : ulx, y : uly }, { x : urx, y : ury }, { x : brx, y : bry }, { x : blx, y : bly } ]), xBound, yBound);
+		return [ { x : ulx, y : uly }, { x : urx, y : ury }, { x : brx, y : bry }, { x : blx, y : bly } ];
 	}
 	
 	public function mutate():Void {
@@ -95,9 +99,15 @@ class RotatedRectangle implements Shape {
 		var width:Int = Util.max(x1, x2) - Util.min(x1, x2);
 		var height:Int = Util.max(y1, y2) - Util.min(y1, y2);
 		
-		var s:String = "<g transform=\"translate(" + (x1 + width / 2) + " " + (y1 + height / 2) + ") rotate(" + angle + ") scale(" + width + " " + height + ")\">";
-		s += "<rect x=\"" + -0.5 + "\" y=\"" + -0.5 + "\" width=\"" + 1 + "\" height=\"" + 1 + "\" " + SvgExporter.SVG_STYLE_HOOK + " />";
-		s += "</g>";
+		var points:Array<{ x:Int, y:Int }> = getCornerPoints();
+		var s:String = "<polygon points=\"";
+		for (i in 0...points.length) {
+			s += points[i].x + " " + points[i].y;
+			if (i != points.length - 1) {
+				s += " ";
+			}
+		}
+		s += "\" " + SvgExporter.SVG_STYLE_HOOK + "/>";
 		return s;
 	}
 }
