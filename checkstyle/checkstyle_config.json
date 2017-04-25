@@ -246,7 +246,7 @@
             "props":
             {
                 "ignoreNumbers": [-1, 0, 1],
-                "severity": "ERROR"
+                "severity": "INFO"
             }
         },
         {
