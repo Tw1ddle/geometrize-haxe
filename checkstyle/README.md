@@ -13,7 +13,7 @@ haxelib install checkstyle
 Open and build the FlashDevelop projects in this directory to get an interactive error report with highlighting. Alternatively, run Checkstyle in console:
 
 ```
-haxelib run checkstyle -s ../geometrize -c ./checkstyle_config.json
+haxelib run checkstyle -s ../geometrize -c ../checkstyle_config.json
 ```
 
 ## Tips
