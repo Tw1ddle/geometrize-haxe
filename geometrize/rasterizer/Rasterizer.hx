@@ -165,7 +165,7 @@ class Rasterizer {
 		
 		for (key in yToXs.keys()) {
 			var minMaxElements = Util.minMaxElements(yToXs.get(key));
-			lines.push(new Scanline(key, minMaxElements.min, minMaxElements.max));
+			lines.push(new Scanline(key, minMaxElements.x, minMaxElements.y));
 		}
 		
 		return lines;

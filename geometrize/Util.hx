@@ -120,7 +120,7 @@ class Util {
 	 */
 	public static inline function minMaxElements(a:Array<Int>):Point {
 		if (a == null || a.length == 0) {
-			return { min : 0, max : 0 };
+			return { x : 0, y : 0 };
 		}
 		
 		var min:Int = a[0];
@@ -135,7 +135,7 @@ class Util {
 			}
 		}
 		
-		return { min: min, max: max };
+		return { x: min, y: max };
 	}
 	
 	/**
