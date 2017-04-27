@@ -55,7 +55,7 @@ class SvgExporter {
 		return StringTools.replace(shape.shape.getSvgShapeData(), SVG_STYLE_HOOK, stylesForShape(shape));
 	}
 	
-	private static function stylesForShape(shape:ShapeResult):String {
+	static function stylesForShape(shape:ShapeResult):String {
 		return switch (shape.shape.getType()) {
 			case ShapeType.LINE:
 				strokeForColor(shape.color) + " stroke-width=\"1\" fill=\"none\" " + strokeOpacityForAlpha(shape.color.a);

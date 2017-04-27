@@ -4,6 +4,15 @@ import geometrize.bitmap.Bitmap;
 import geometrize.bitmap.Rgba;
 
 /**
+ * Represents a point in 2D space.
+ * @author Sam Twidale (http://samcodes.co.uk/)
+ */
+typedef Point = {
+	var x:Int;
+	var y:Int;
+}
+
+/**
  * Utility functions.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */

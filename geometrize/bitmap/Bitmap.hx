@@ -19,7 +19,7 @@ class Bitmap {
 	/**
 	 * The bitmap data.
 	 */
-	private var data:Vector<Rgba>;
+	var data:Vector<Rgba>;
 	
 	/**
 	 * Creates a new bitmap, filled with the given color.
@@ -136,7 +136,7 @@ class Bitmap {
 	/**
 	 * Private constructor.
 	 */
-	private function new() {
+	function new() {
 		// No implementation
 	}
 }
