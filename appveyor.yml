@@ -35,5 +35,5 @@ build: off
 
 test_script:
   - pushd unit
-  - haxe test_html5.hxml
+  - haxe test_js.hxml
   - popd

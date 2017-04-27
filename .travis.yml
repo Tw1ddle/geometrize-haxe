@@ -20,5 +20,5 @@ install:
 
 script:
   - pushd unit > /dev/null
-  - haxe test_html5.hxml
+  - haxe test_js.hxml
   - popd > /dev/null
