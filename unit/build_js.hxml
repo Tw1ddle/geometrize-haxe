@@ -1,0 +1,10 @@
+-main TestMain
+
+-lib munit
+-lib sure
+
+-cp ../
+-cp source
+
+-js bin/testjs.js
+--no-output

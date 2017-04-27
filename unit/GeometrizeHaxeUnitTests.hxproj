@@ -39,7 +39,7 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>$(CompilerPath)\haxe.exe test_html5.hxml</preBuildCommand>
+  <preBuildCommand>$(CompilerPath)\haxe.exe test_js.hxml</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

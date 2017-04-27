@@ -2,6 +2,6 @@ version=2.1.2
 bin=bin
 src=source
 report=report
-hxml=test.hxml
+hxml=build_js.hxml
 classPaths=../
 coveragePackages=geometrize

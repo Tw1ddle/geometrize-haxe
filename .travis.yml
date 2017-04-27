@@ -19,6 +19,6 @@ install:
   - haxelib list
 
 script:
-  - pushd unit
+  - pushd unit > /dev/null
   - haxe test_html5.hxml
-  - popd
+  - popd > /dev/null
