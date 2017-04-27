@@ -1,3 +1,6 @@
+sudo: required
+dist: trusty
+
 language: haxe
 
 os:
@@ -9,26 +12,22 @@ haxe:
   - "3.4.2"
   - development
 
-env:
-
 install:
   - haxelib install travix
   - haxelib run travix install
 
 script:
-  - pushd unit > /dev/null
   - haxelib run travix interp
-  - haxelib run travix neko
-  - haxelib run travix python
-  - haxelib run travix node
   - haxelib run travix js
   - haxelib run travix flash
-  - haxelib run travix java
-  - haxelib run travix cpp
-  - haxelib run travix cs
   - haxelib run travix php
+  - haxelib run travix node
+  - haxelib run travix neko
+  - haxelib run travix python
   - haxelib run travix lua
-  - popd > /dev/null
+  - haxelib run travix java
+  - haxelib run travix cs
+  - haxelib run travix cpp -lib hxcpp
 
 after_success:
   - haxelib run travix release
