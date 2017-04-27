@@ -1,7 +1,8 @@
 package geometrize.runner;
 
-import massive.munit.Assert;
 import geometrize.runner.ImageRunner;
+import utest.Assert;
 
 class ImageRunnerTest {
+	public function new() {}
 }

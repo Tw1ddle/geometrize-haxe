@@ -2,7 +2,7 @@
 
 This is the unit test suite for Geometrize Haxe. The intent is to achieve good test coverage of the codebase, and to add regression tests for fixed bugs.
 
-The tests are run on [Travis](https://travis-ci.org/Tw1ddle/geometrize-haxe) and [AppVeyor](https://ci.appveyor.com/project/Tw1ddle/geometrize-haxe) CI.
+The tests are run through CI on [Travis](https://travis-ci.org/Tw1ddle/geometrize-haxe) and [AppVeyor](https://ci.appveyor.com/project/Tw1ddle/geometrize-haxe).
 
 ## Setup
 

@@ -2,6 +2,7 @@ language: haxe
 
 os:
   - linux
+  - osx
 
 # see haxe versions: http://haxe.org/website-content/downloads/versions.json
 haxe:
@@ -11,14 +12,23 @@ haxe:
 env:
 
 install:
-  - haxelib install Sure > /dev/null
-  - haxelib install hxcpp > /dev/null
-  - haxelib install hxcs > /dev/null
-  - haxelib install hxjava > /dev/null
-  - haxelib install munit > /dev/null
-  - haxelib list
+  - haxelib install travix
+  - haxelib run travix install
 
 script:
   - pushd unit > /dev/null
-  - haxe test_js.hxml
+  - haxelib run travix interp
+  - haxelib run travix neko
+  - haxelib run travix python
+  - haxelib run travix node
+  - haxelib run travix js
+  - haxelib run travix flash
+  - haxelib run travix java
+  - haxelib run travix cpp
+  - haxelib run travix cs
+  - haxelib run travix php
+  - haxelib run travix lua
   - popd > /dev/null
+
+after_success:
+  - haxelib run travix release

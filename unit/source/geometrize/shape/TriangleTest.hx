@@ -1,7 +1,8 @@
 package geometrize.shape;
 
-import massive.munit.Assert;
 import geometrize.shape.Triangle;
+import utest.Assert;
 
 class TriangleTest {
+	public function new() {}
 }

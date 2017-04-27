@@ -1,7 +1,8 @@
 package geometrize.rasterizer;
 
-import massive.munit.Assert;
 import geometrize.rasterizer.Rasterizer;
+import utest.Assert;
 
 class RasterizerTest {
+	public function new() {}
 }

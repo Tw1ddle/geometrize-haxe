@@ -1,7 +1,8 @@
 package geometrize;
 
-import massive.munit.Assert;
 import geometrize.ArraySet;
+import utest.Assert;
 
 class ArraySetTest {
+	public function new() {}
 }

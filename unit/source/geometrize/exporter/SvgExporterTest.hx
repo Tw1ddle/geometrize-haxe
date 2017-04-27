@@ -1,10 +1,12 @@
 package geometrize.exporter;
 
-import massive.munit.Assert;
 import geometrize.exporter.SvgExporter;
+import utest.Assert;
 
 class SvgExporterTest {
-	@Test
-	function testExportSvg() {
+	public function new() {}
+	
+	public function testExportSvg() {
+		Assert.equals("TODO", "TODO");
 	}
 }

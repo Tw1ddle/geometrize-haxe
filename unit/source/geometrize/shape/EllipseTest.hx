@@ -1,7 +1,8 @@
 package geometrize.shape;
 
-import massive.munit.Assert;
 import geometrize.shape.Ellipse;
+import utest.Assert;
 
 class EllipseTest {
+	public function new() {}
 }

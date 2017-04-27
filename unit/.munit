@@ -1,7 +1,0 @@
-version=2.1.2
-bin=bin
-src=source
-report=report
-hxml=build_js.hxml
-classPaths=../
-coveragePackages=geometrize

@@ -1,24 +1,23 @@
 package geometrize;
 
-import massive.munit.Assert;
 import geometrize.State;
 import geometrize.bitmap.Bitmap;
 import geometrize.bitmap.Rgba;
 import geometrize.shape.Rectangle;
+import utest.Assert;
 
 class ModelTest {
-	@Test
-	function testCreateModel() {
-		
+	public function new() {}
+	
+	public function testCreateModel() {
+		Assert.equals("TODO", "TODO");
 	}
 	
-	@Test
-	function testStep() {
-		
+	public function testStep() {
+		Assert.equals("TODO", "TODO");
 	}
 	
-	@Test
-	function testAddShape() {
-		
+	public function testAddShape() {
+		Assert.equals("TODO", "TODO");
 	}
 }

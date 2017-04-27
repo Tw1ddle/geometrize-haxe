@@ -1,7 +1,8 @@
 package geometrize.shape;
 
-import massive.munit.Assert;
 import geometrize.shape.RotatedRectangle;
+import utest.Assert;
 
 class RotatedRectangleTest {
+	public function new() {}
 }

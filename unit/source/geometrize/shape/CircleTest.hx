@@ -1,7 +1,8 @@
 package geometrize.shape;
 
-import massive.munit.Assert;
 import geometrize.shape.Circle;
+import utest.Assert;
 
 class CircleTest {
+	public function new() {}
 }

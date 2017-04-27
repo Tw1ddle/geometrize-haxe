@@ -1,12 +1,14 @@
 package geometrize;
 
-import massive.munit.Assert;
 import geometrize.bitmap.Bitmap;
 import geometrize.bitmap.Rgba;
 import geometrize.rasterizer.Rasterizer;
 import geometrize.rasterizer.Scanline;
+import utest.Assert;
 
 class CoreTest {
+	public function new() {}
+	
 	private function computeScanlinesColor(targetColor:Rgba, currentColor:Rgba, alpha:Int):Rgba {
 		var target = Bitmap.create(10, 10, targetColor);
 		var current = Bitmap.create(10, 10, currentColor);
@@ -18,14 +20,12 @@ class CoreTest {
 		return Core.computeColor(target, current, lines, alpha);
 	}
 	
-	@Test
-	function testComputeScanlinesColorWholeImage() {
-		Assert.areEqual(Rgba.create(23, 0, 0, 128),
+	public function testComputeScanlinesColorWholeImage() {
+		Assert.equals(Rgba.create(23, 0, 0, 128),
 		computeScanlinesColor(Rgba.create(12, 12, 12, 0), Rgba.create(0, 212, 62, 0), 128));
 	}
 	
-	@Test
-	function testDrawLines() {
+	public function testDrawLines() {
 		var image = Bitmap.create(50, 50, Rgba.create(10, 20, 30, 128));
 		var lines:Array<Scanline> = [ for (y in 10...50) new Scanline(y, 0, 50) ];
 		
@@ -34,8 +34,7 @@ class CoreTest {
 		// TODO check drawn lines
 	}
 	
-	@Test
-	function testCopyLines() {
+	public function testCopyLines() {
 		var color:Rgba = Rgba.create(128, 64, 32, 200);
 		
 		var width:Int = 10;
@@ -51,33 +50,28 @@ class CoreTest {
 		for (line in lines) {
 			var y:Int = line.y;
 			for (x in line.x1...line.x2) {
-				Assert.areEqual(destination.getPixel(x, y), color);
+				Assert.equals(destination.getPixel(x, y), color);
 			}
 		}
 	}
 	
-	@Test
-	function testDifferencePartial() {
-		
+	public function testDifferencePartial() {
+		Assert.equals("TODO", "TODO");
 	}
 	
-	@Test
-	function testEnergy() {
-		
+	public function testEnergy() {
+		Assert.equals("TODO", "TODO");
 	}
 	
-	@Test
-	function testBestHillClimbState() {
-		
+	public function testBestHillClimbState() {
+		Assert.equals("TODO", "TODO");
 	}
 	
-	@Test
-	function testBestRandomState() {
-		
+	public function testBestRandomState() {
+		Assert.equals("TODO", "TODO");
 	}
 	
-	@Test
-	function testHillClimb() {
-		
+	public function testHillClimb() {
+		Assert.equals("TODO", "TODO");
 	}
 }
