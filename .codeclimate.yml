@@ -1,9 +1,3 @@
 engines:
- haxe-checkstyle:
-    enabled: true
-    checks:
-      MagicNumber:
-        enabled: false
-ratings:
   paths:
     - "geometrize"
