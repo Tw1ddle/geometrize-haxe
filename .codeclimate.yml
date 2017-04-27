@@ -1,5 +1,5 @@
 engines:
- haxe-checkstyle:
+  haxe-checkstyle:
     enabled: true
   paths:
     - "geometrize"
