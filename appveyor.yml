@@ -33,4 +33,4 @@ install:
 build: off
 
 test_script:
-  - haxe unit/test-html5.hxml
+  - haxe unit\test-html5.hxml

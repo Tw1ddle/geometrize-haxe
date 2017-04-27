@@ -18,4 +18,4 @@ install:
   - haxelib list
 
 script:
-  - haxe unit/test-html5.hxml
+  - haxe unit\test-html5.hxml
