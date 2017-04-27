@@ -50,9 +50,6 @@ class Scanline {
 		}
 		line.x1 = Util.clamp(line.x1, 0, w - 1);
 		line.x2 = Util.clamp(line.x2, 0, w - 1);
-		if (line.x1 > line.x2) {
-			return false;
-		}
-		return true;
+		return (line.x1 <= line.x2);
 	}
 }

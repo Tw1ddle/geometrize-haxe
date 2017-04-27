@@ -8,37 +8,14 @@ import geometrize.exporter.SvgExporter;
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 class Rectangle implements Shape {
-	/**
-	 * Left coordinate.
-	 */
 	public var x1:Int;
-	/**
-	 * Top coordinate.
-	 */
 	public var y1:Int;
-	/**
-	 * Right coordinate.
-	 */
 	public var x2:Int;
-	/**
-	 * Bottom coordinate.
-	 */
 	public var y2:Int;
 	
-	/**
-	 * The x-bound of the whole canvas.
-	 */
 	public var xBound(default, null):Int;
-	/**
-	 * The y-bound of the whole canvas.
-	 */
 	public var yBound(default, null):Int;
 	
-	/**
-	 * Creates a new rectangle.
-	 * @param	xBound	The x-bound of the whole canvas.
-	 * @param	yBound	The y-bound of the whole canvas.
-	 */
 	public function new(xBound:Int, yBound:Int) {
 		x1 = Std.random(xBound);
 		y1 = Std.random(yBound);
