@@ -2,5 +2,5 @@ engines:
   haxe-checkstyle:
     enabled: true
 ratings:
-paths:
-  - "geometrize"
+  paths:
+    - "geometrize"

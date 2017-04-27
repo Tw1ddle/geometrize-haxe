@@ -1,3 +1,5 @@
+package;
+
 // This is solely for generating documentation for Geometrize Haxe using dox
 
 import geometrize.bitmap.Bitmap;
