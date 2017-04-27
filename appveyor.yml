@@ -24,6 +24,7 @@ install:
   - haxelib install hxcpp  > log.txt || type log.txt && cmd /C exit 1
   - haxelib install hxjava > log.txt || type log.txt && cmd /C exit 1
   - haxelib install hxcs   > log.txt || type log.txt && cmd /C exit 1
+  - haxelib install munit  > log.txt || type log.txt && cmd /C exit 1
   - haxelib list
 
 # We don't use the build section, but do both build and 
@@ -33,4 +34,6 @@ install:
 build: off
 
 test_script:
-  - haxe unit\\test-html5.hxml
+  - pushd unit
+  - haxe test-html5.hxml
+  - popd

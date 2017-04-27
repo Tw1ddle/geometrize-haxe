@@ -11,11 +11,14 @@ haxe:
 env:
 
 install:
-  - haxelib install Sure
-  - haxelib install hxcpp
-  - haxelib install hxcs
-  - haxelib install hxjava
+  - haxelib install Sure > /dev/null
+  - haxelib install hxcpp > /dev/null
+  - haxelib install hxcs > /dev/null
+  - haxelib install hxjava > /dev/null
+  - haxelib install munit > /dev/null
   - haxelib list
 
 script:
-  - haxe unit\\test-html5.hxml
+  - pushd unit
+  - haxe test-html5.hxml
+  - popd
