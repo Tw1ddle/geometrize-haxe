@@ -1,8 +1,7 @@
 [![Project logo](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/logo.png?raw=true "Geometrize Haxe - recreating images as geometric shapes logo")](http://www.samcodes.co.uk/project/geometrize-haxe-web/)
 
 [![Haxelib Version](https://img.shields.io/github/tag/Tw1ddle/geometrize-haxe.svg?style=flat-square&label=haxelib)](http://lib.haxe.org/p/geometrize-haxe)
-[![Travis Build Status](https://img.shields.io/travis/Tw1ddle/geometrize-haxe.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/geometrize-haxe)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/Tw1ddle/geometrize-haxe?branch=master&svg=true)](https://ci.appveyor.com/project/Tw1ddle/geometrize-haxe)
+[![Travis Unit Test Build Status](https://img.shields.io/travis/Tw1ddle/geometrize-haxe-unit-tests.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/geometrize-haxe-unit-tests)
 [![Code Climate](https://img.shields.io/codeclimate/issues/github/Tw1ddle/geometrize-haxe.svg?style=flat-square)](https://codeclimate.com/github/Tw1ddle/geometrize-haxe/issues)
 
 **Geometrize Haxe** is a Haxe library for recreating images with geometric primitives. Run the web demo [in your browser](http://www.samcodes.co.uk/project/geometrize-haxe-web/).
