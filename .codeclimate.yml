@@ -6,5 +6,4 @@ engines:
         enabled: false
 ratings:
   paths:
-    - "**.hx"
-
+    - "geometrize"
