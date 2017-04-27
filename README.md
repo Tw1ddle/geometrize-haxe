@@ -75,4 +75,5 @@ Examples from geometrizing public domain [artwork](https://commons.wikimedia.org
 * Got an idea or suggestion? Open an issue on GitHub, or send Sam a message on [Twitter](https://twitter.com/Sam_Twidale).
 * Geometrize Haxe is based on [primitive](https://github.com/fogleman/primitive), a Go library created by [Michael Fogleman](https://github.com/fogleman).
 * Geometrize Haxe is available as a [haxelib](https://lib.haxe.org/p/geometrize-haxe).
+* Geometrize Haxe has [unit tests](https://github.com/Tw1ddle/geometrize-haxe-unit-tests).
 * All Haxe targets are supported.
