@@ -51,7 +51,7 @@ class RotatedEllipse implements Shape {
 		return Scanline.trim(Rasterizer.scanlinesForPolygon(points), xBound, yBound);
 	}
 	
-	public function mutate():Void {
+	public function mutate() {
 		var r = Std.random(4);
 		switch(r) {
 			case 0:

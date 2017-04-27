@@ -26,7 +26,7 @@ abstract Rgba(#if flash Int #else UInt #end) from Int to Int from UInt to UInt {
 	 * Creates a new color.
 	 * @param	rgba	The color value. It will be interpreted in RGBA8888 format.
 	 */
-	public inline function new(rgba:Int):Void {
+	public inline function new(rgba:Int) {
 		this = rgba;
 	}
 	

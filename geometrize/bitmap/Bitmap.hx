@@ -81,7 +81,7 @@ class Bitmap {
 	 * @param	y	The y-coordinate.
 	 * @param	color	The color value to set at the given coordinate.
 	 */
-	public inline function setPixel(x:Int, y:Int, color:Rgba):Void {
+	public inline function setPixel(x:Int, y:Int, color:Rgba) {
 		data.set((width * y + x), color);
 	}
 	
@@ -104,7 +104,7 @@ class Bitmap {
 	 * Fills the bitmap with the given color.
 	 * @param	color The color to fill the bitmap with.
 	 */
-	public inline function fill(color:Rgba):Void {
+	public inline function fill(color:Rgba) {
 		var idx:Int = 0;
 		while (idx < data.length) {
 			data.set(idx, color.r);

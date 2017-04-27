@@ -38,7 +38,7 @@ class Line implements Shape {
 		return Scanline.trim(lines, xBound, yBound);
 	}
 	
-	public function mutate():Void {
+	public function mutate() {
 		var r = Std.random(4);
 		switch(r) {
 			case 0:

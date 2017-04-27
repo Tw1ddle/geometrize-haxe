@@ -63,7 +63,7 @@ class RotatedRectangle implements Shape {
 		return [ { x : ulx, y : uly }, { x : urx, y : ury }, { x : brx, y : bry }, { x : blx, y : bly } ];
 	}
 	
-	public function mutate():Void {
+	public function mutate() {
 		var r = Std.random(3);
 		switch(r) {
 			case 0:

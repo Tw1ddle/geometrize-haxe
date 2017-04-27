@@ -16,7 +16,7 @@ class Rasterizer {
 	 * @param	color	The color of the scanlines.
 	 * @param	lines	The scanlines to draw.
 	 */
-	public static function drawLines(image:Bitmap, c:Rgba, lines:Array<Scanline>):Void {
+	public static function drawLines(image:Bitmap, c:Rgba, lines:Array<Scanline>) {
 		Sure.sure(image != null);
 		Sure.sure(lines != null);
 		
@@ -70,7 +70,7 @@ class Rasterizer {
 	 * @param	source	The source bitmap to copy the lines from.
 	 * @param	lines	The scanlines that comprise the source to destination copying mask.
 	 */
-	public static function copyLines(destination:Bitmap, source:Bitmap, lines:Array<Scanline>):Void {
+	public static function copyLines(destination:Bitmap, source:Bitmap, lines:Array<Scanline>) {
 		Sure.sure(destination != null);
 		Sure.sure(source != null);
 		Sure.sure(lines != null);

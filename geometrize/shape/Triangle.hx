@@ -35,7 +35,7 @@ class Triangle implements Shape {
 		return Scanline.trim(Rasterizer.scanlinesForPolygon([ { x: x1, y: y1 }, { x: x2, y: y2 }, { x: x3, y: y3 } ]), xBound, yBound);
 	}
 	
-	public function mutate():Void {
+	public function mutate() {
 		var r = Std.random(3);
 		switch(r) {
 			case 0:
