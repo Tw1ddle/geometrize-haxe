@@ -1,5 +1,6 @@
 engines:
   haxe-checkstyle:
     enabled: true
-  paths:
-    - "geometrize"
+ratings:
+paths:
+  - "geometrize"
