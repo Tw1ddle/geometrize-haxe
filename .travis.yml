@@ -1,0 +1,21 @@
+language: haxe
+
+os:
+  - linux
+
+# see haxe versions: http://haxe.org/website-content/downloads/versions.json
+haxe:
+  - "3.4.2"
+  - development
+
+env:
+
+install:
+  - haxelib install Sure
+  - haxelib install hxcpp
+  - haxelib install hxcs
+  - haxelib install hxjava
+  - haxelib list
+
+script:
+  - haxe unit/test-html5.hxml
