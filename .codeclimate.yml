@@ -1,6 +1,10 @@
 engines:
   haxe-checkstyle:
     enabled: true
+
+exclude_paths:
+  - dox/**/*
+
 ratings:
   paths:
     - "geometrize"
