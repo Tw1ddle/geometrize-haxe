@@ -13,7 +13,7 @@ class ShapeFactory {
 	 * @return	The new shape.
 	 */
 	public static function create(type:ShapeType, xBound:Int, yBound:Int):Shape {
-		return switch(type) {
+		return switch (type) {
 			case RECTANGLE:
 				return new Rectangle(xBound, yBound);
 			case ROTATED_RECTANGLE:

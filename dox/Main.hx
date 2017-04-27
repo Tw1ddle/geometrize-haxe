@@ -24,5 +24,6 @@ import geometrize.Model;
 import geometrize.Model.ShapeResult;
 import geometrize.State;
 import geometrize.Util;
+import geometrize.Util.Point;
 
 class Main {}
