@@ -40,7 +40,7 @@ class Line implements Shape {
 	
 	public function mutate() {
 		var r = Std.random(4);
-		switch(r) {
+		switch (r) {
 			case 0:
 				x1 = Util.clamp(x1 + Util.random(-16, 16), 0, xBound - 1);
 				y1 = Util.clamp(y1 + Util.random(-16, 16), 0, yBound - 1);

@@ -61,7 +61,7 @@ class Ellipse implements Shape {
 	
 	public function mutate() {
 		var r = Std.random(3);
-		switch(r) {
+		switch (r) {
 			case 0:
 				x = Util.clamp(x + Util.random(-16, 16), 0, xBound - 1);
 				y = Util.clamp(y + Util.random(-16, 16), 0, yBound - 1);

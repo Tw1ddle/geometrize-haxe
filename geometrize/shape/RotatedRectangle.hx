@@ -65,7 +65,7 @@ class RotatedRectangle implements Shape {
 	
 	public function mutate() {
 		var r = Std.random(3);
-		switch(r) {
+		switch (r) {
 			case 0:
 				x1 = Util.clamp(x1 + Util.random(-16, 16), 0, xBound - 1);
 				y1 = Util.clamp(y1 + Util.random(-16, 16), 0, yBound - 1);
@@ -96,9 +96,6 @@ class RotatedRectangle implements Shape {
 	}
 	
 	public function getSvgShapeData():String {
-		var width:Int = Util.max(x1, x2) - Util.min(x1, x2);
-		var height:Int = Util.max(y1, y2) - Util.min(y1, y2);
-		
 		var points:Array<{ x:Int, y:Int }> = getCornerPoints();
 		var s:String = "<polygon points=\"";
 		for (i in 0...points.length) {

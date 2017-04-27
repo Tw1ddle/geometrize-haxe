@@ -20,9 +20,9 @@ class State {
 	 */
 	public var score:Float;
 	
-	private var target:Bitmap;
-	private var current:Bitmap;
-	private var buffer:Bitmap;
+	var target:Bitmap;
+	var current:Bitmap;
+	var buffer:Bitmap;
 	
 	/**
 	 * Create a new state.
