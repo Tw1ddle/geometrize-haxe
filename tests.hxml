@@ -1,7 +1,0 @@
--lib utest
--lib sure
-
--cp ../
--cp source
-
--main TestMain
