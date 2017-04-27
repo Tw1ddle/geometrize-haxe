@@ -5,7 +5,6 @@ package geometrize;
  * Elements are compared using the standard equality operator.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
-
 @:forward(indexOf, iterator, lastIndexOf, length, map, pop, remove, reverse, shift, sort)
 abstract ArraySet<T>(Array<T>) {
 	/**
@@ -152,7 +151,7 @@ abstract ArraySet<T>(Array<T>) {
 	 * Private constructor, used internally in places where elements are known to be unique to a set.
 	 * @param   An array of unique elements.
 	 */
-	inline function new(array:Array<T>) {
+	private inline function new(array:Array<T>) {
 		this = array;
 	}
 }

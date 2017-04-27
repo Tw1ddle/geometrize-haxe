@@ -36,7 +36,7 @@ class Rectangle implements Shape {
 		return lines;
 	}
 	
-	public function mutate() {
+	public function mutate():Void {
 		var r = Std.random(2);
 		switch (r) {
 			case 0:

@@ -47,7 +47,7 @@ class Model {
 	/**
 	 * Score derived from calculating the difference between bitmaps.
 	 */
-	var score(default, null):Float;
+	private var score(default, null):Float;
 	
 	/**
 	 * Creates a new model.

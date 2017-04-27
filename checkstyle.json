@@ -503,7 +503,6 @@
                     "ABSTRACT_DEF",
                     "TYPEDEF_DEF",
                     "INTERFACE_DEF",
-                    "OBJECT_DECL",
                     "FUNCTION",
                     "FOR",
                     "IF",

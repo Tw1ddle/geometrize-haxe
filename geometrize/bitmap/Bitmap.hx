@@ -19,7 +19,7 @@ class Bitmap {
 	/**
 	 * The bitmap data.
 	 */
-	var data:Vector<Rgba>;
+	private var data:Vector<Rgba>;
 	
 	/**
 	 * Creates a new bitmap, filled with the given color.
@@ -81,7 +81,7 @@ class Bitmap {
 	 * @param	y	The y-coordinate.
 	 * @param	color	The color value to set at the given coordinate.
 	 */
-	public inline function setPixel(x:Int, y:Int, color:Rgba) {
+	public inline function setPixel(x:Int, y:Int, color:Rgba):Void {
 		data.set((width * y + x), color);
 	}
 	
@@ -104,7 +104,7 @@ class Bitmap {
 	 * Fills the bitmap with the given color.
 	 * @param	color The color to fill the bitmap with.
 	 */
-	public inline function fill(color:Rgba) {
+	public inline function fill(color:Rgba):Void {
 		var idx:Int = 0;
 		while (idx < data.length) {
 			data.set(idx, color.r);
@@ -136,7 +136,7 @@ class Bitmap {
 	/**
 	 * Private constructor.
 	 */
-	function new() {
+	private function new():Void {
 		// No implementation
 	}
 }

@@ -11,33 +11,33 @@ interface Shape {
 	 * Creates a raster scanline representation of the shape.
 	 * @return	Array of raster scanlines representing the shape.
 	 */
-	function rasterize():Array<Scanline>;
+	public function rasterize():Array<Scanline>;
 	/**
 	 * Modifies the shape a little, typically with a random component.
 	 * For improving the shape's fit to a bitmap (trial-and-error style).
 	 */
-	function mutate():Void;
+	public function mutate():Void;
 	/**
 	 * Creates a deep copy of the shape.
 	 * @return	A deep copy of the shape object.
 	 */
-	function clone():Shape;
+	public function clone():Shape;
 	
 	/**
 	 * Gets the ShapeType of the shape.
 	 * @return The ShapeType of the shape.
 	 */
-	function getType():ShapeType;
+	public function getType():ShapeType;
 	
 	/**
 	 * Gets a vector of data that represents the shape geometry, the format varies depending on the ShapeType.
 	 * @return The shape data.
 	 */
-	function getRawShapeData():Array<Float>;
+	public function getRawShapeData():Array<Float>;
 	
 	/**
 	 * Gets a string that represents a SVG element that describes the shape geometry.
 	 * @return The SVG shape data that represents this shape.
 	 */
-	function getSvgShapeData():String;
+	public function getSvgShapeData():String;
 }

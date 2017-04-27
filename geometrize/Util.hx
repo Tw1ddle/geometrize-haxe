@@ -118,7 +118,7 @@ class Util {
 	 * @param	a	The array of ints.
 	 * @return	The smallest and largest items from the array.
 	 */
-	public static inline function minMaxElements(a:Array<Int>):{ min:Int, max:Int } {
+	public static inline function minMaxElements(a:Array<Int>):Point {
 		if (a == null || a.length == 0) {
 			return { min : 0, max : 0 };
 		}

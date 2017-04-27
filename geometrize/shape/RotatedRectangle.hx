@@ -34,7 +34,7 @@ class RotatedRectangle implements Shape {
 		return Scanline.trim(Rasterizer.scanlinesForPolygon(getCornerPoints()), xBound, yBound);
 	}
 	
-	public function mutate() {
+	public function mutate():Void {
 		var r = Std.random(3);
 		switch (r) {
 			case 0:
@@ -79,7 +79,7 @@ class RotatedRectangle implements Shape {
 		return s;
 	}
 	
-	inline function getCornerPoints():Array<Util.Point> {
+	private inline function getCornerPoints():Array<Util.Point> {
 		var xm1:Int = Util.min(x1, x2);
 		var xm2:Int = Util.max(x1, x2);
 		var ym1:Int = Util.min(y1, y2);

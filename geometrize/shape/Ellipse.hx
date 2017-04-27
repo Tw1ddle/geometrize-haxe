@@ -59,7 +59,7 @@ class Ellipse implements Shape {
 		return lines;
 	}
 	
-	public function mutate() {
+	public function mutate():Void {
 		var r = Std.random(3);
 		switch (r) {
 			case 0:

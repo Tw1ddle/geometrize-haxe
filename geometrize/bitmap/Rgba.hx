@@ -56,16 +56,16 @@ abstract Rgba(#if flash Int #else UInt #end) from Int to Int from UInt to UInt {
 		return rgba;
 	}
 	
-	inline function get_r():Int {
+	private inline function get_r():Int {
 		return (this >> 24) & 0xFF;
 	}
-	inline function get_g():Int {
+	private inline function get_g():Int {
 		return (this >> 16) & 0xFF;
 	}
-	inline function get_b():Int {
+	private inline function get_b():Int {
 		return (this >> 8) & 0xFF;
 	}
-	inline function get_a():Int {
+	private inline function get_a():Int {
 		return this & 0xFF;
 	}
 }

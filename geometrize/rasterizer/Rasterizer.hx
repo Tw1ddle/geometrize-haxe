@@ -4,6 +4,7 @@ import haxe.ds.IntMap;
 import geometrize.ArraySet;
 import geometrize.bitmap.Bitmap;
 import geometrize.bitmap.Rgba;
+import geometrize.Util;
 
 /**
  * Rasterization helper functions.
@@ -16,7 +17,7 @@ class Rasterizer {
 	 * @param	color	The color of the scanlines.
 	 * @param	lines	The scanlines to draw.
 	 */
-	public static function drawLines(image:Bitmap, c:Rgba, lines:Array<Scanline>) {
+	public static function drawLines(image:Bitmap, c:Rgba, lines:Array<Scanline>):Void {
 		Sure.sure(image != null);
 		Sure.sure(lines != null);
 		
@@ -70,7 +71,7 @@ class Rasterizer {
 	 * @param	source	The source bitmap to copy the lines from.
 	 * @param	lines	The scanlines that comprise the source to destination copying mask.
 	 */
-	public static function copyLines(destination:Bitmap, source:Bitmap, lines:Array<Scanline>) {
+	public static function copyLines(destination:Bitmap, source:Bitmap, lines:Array<Scanline>):Void {
 		Sure.sure(destination != null);
 		Sure.sure(source != null);
 		Sure.sure(lines != null);
@@ -91,7 +92,7 @@ class Rasterizer {
 	 * @param	y2	y-coordinate of the second point.
 	 * @return	The points on the line x1,y1 to x2,y2
 	 */
-	public static function bresenham(x1:Int, y1:Int, x2:Int, y2:Int):Array<{x:Int, y:Int}> {
+	public static function bresenham(x1:Int, y1:Int, x2:Int, y2:Int):Array<Point> {
 		var points = [];
 		
 		var dx:Int = x2 - x1;
@@ -139,10 +140,10 @@ class Rasterizer {
 	 * @param	points	The vertices of the polygon.
 	 * @return	Scanlines for the polygon.
 	 */
-	public static function scanlinesForPolygon(points:Array<{x:Int, y:Int}>):Array<Scanline> {
+	public static function scanlinesForPolygon(points:Array<Point>):Array<Scanline> {
 		var lines:Array<Scanline> = [];
 		
-		var edges:Array<{x:Int, y:Int}> = [];
+		var edges:Array<Point> = [];
 		for (i in 0...points.length) {
 			var p1 = points[i];
 			var p2 = (i == (points.length - 1)) ? points[0] : points[i + 1];

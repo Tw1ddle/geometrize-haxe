@@ -55,7 +55,7 @@ class SvgExporter {
 		return StringTools.replace(shape.shape.getSvgShapeData(), SVG_STYLE_HOOK, stylesForShape(shape));
 	}
 	
-	static function stylesForShape(shape:ShapeResult):String {
+	private static function stylesForShape(shape:ShapeResult):String {
 		return switch (shape.shape.getType()) {
 			case ShapeType.LINE:
 				strokeForColor(shape.color) + " stroke-width=\"1\" fill=\"none\" " + strokeOpacityForAlpha(shape.color.a);
@@ -64,35 +64,35 @@ class SvgExporter {
 		}
 	}
 	
-	static function rgbForColor(color:Rgba):String {
+	private static function rgbForColor(color:Rgba):String {
 		return "rgb(" + color.r + "," + color.g + "," + color.b + ")";
 	}
 	
-	static function strokeForColor(color:Rgba):String {
+	private static function strokeForColor(color:Rgba):String {
 		return "stroke=\"" + rgbForColor(color) + "\"";
 	}
 	
-	static function fillForColor(color:Rgba):String {
+	private static function fillForColor(color:Rgba):String {
 		return "fill=\"" + rgbForColor(color) + "\"";
 	}
 	
-	static function fillOpacityForAlpha(alpha:Float):String {
+	private static function fillOpacityForAlpha(alpha:Float):String {
 		return "fill-opacity=\"" + alpha / 255.0 + "\"";
 	}
 	
-	static function strokeOpacityForAlpha(alpha:Float):String {
+	private static function strokeOpacityForAlpha(alpha:Float):String {
 		return "stroke-opacity=\"" + alpha / 255.0 + "\"";
 	}
 	
-	static function getPrelude():String {
+	private static function getPrelude():String {
 		return "<?xml version=\"1.0\" standalone=\"no\"?>\n";
 	}
 	
-	static function getSvgNodeOpen(width:Int, height:Int):String {
+	private static function getSvgNodeOpen(width:Int, height:Int):String {
 		return "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.2\" baseProfile=\"tiny\" width=\"" + width + "\" height=\"" + height + "\">\n";
 	}
 	
-	static function getSvgNodeClose():String {
+	private static function getSvgNodeClose():String {
 		return "</svg>";
 	}
 }

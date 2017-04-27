@@ -44,7 +44,7 @@ class Scanline {
 		return scanlines.filter(trimHelper.bind(_, w, h));
 	}
 	
-	static inline function trimHelper(line:Scanline, w:Int, h:Int):Bool {
+	private static inline function trimHelper(line:Scanline, w:Int, h:Int):Bool {
 		if (line.y < 0 || line.y >= h || line.x1 >= w || line.x2 < 0) {
 			return false;
 		}
