@@ -4,7 +4,7 @@ package geometrize.bitmap;
  * Represents a color in RGBA8888 format with underlying type Int.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
-abstract Rgba(#if flash Int #else UInt #end) from Int to Int from UInt to UInt {
+abstract Rgba(Int) from Int to Int {
 	/**
 	 * Red color component.
 	 */
