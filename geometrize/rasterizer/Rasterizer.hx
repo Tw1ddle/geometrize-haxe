@@ -49,16 +49,16 @@ class Rasterizer {
 				// Get the current overlapping color
 				var d:Rgba = image.getPixel(x, y);
 				
-				var dr:Int = d.r;
-				var dg:Int = d.g;
-				var db:Int = d.b;
-				var da:Int = d.a;
+				var dr:UInt = d.r;
+				var dg:UInt = d.g;
+				var db:UInt = d.b;
+				var da:UInt = d.a;
 				
 				// Blend the color components
-				var r:Int = Std.int((dr * a + sr * ma) / m) >> 8;
-				var g:Int = Std.int((dg * a + sg * ma) / m) >> 8;
-				var b:Int = Std.int((db * a + sb * ma) / m) >> 8;
-				var a:Int = Std.int((da * a + sa * ma) / m) >> 8;
+				var r:UInt = Std.int((dr * a + sr * ma) / m) >> 8;
+				var g:UInt = Std.int((dg * a + sg * ma) / m) >> 8;
+				var b:UInt = Std.int((db * a + sb * ma) / m) >> 8;
+				var a:UInt = Std.int((da * a + sa * ma) / m) >> 8;
 				
 				image.setPixel(x, y, Rgba.create(r, g, b, a));
 			}
