@@ -42,16 +42,11 @@ abstract Rgba(Int) from Int to Int {
 		return (Util.clamp(red, 0, 255) << 24) + (Util.clamp(green, 0, 255) << 16) + (Util.clamp(blue, 0, 255) << 8) + (Util.clamp(alpha, 0, 255));
 	}
 	
-	@:op(A + B)
-	public static inline function add(lhs:Rgba, rhs:Rgba):Rgba {
-		return Rgba.create(lhs.r + rhs.r, lhs.g + rhs.g, lhs.b + rhs.b, lhs.a + rhs.a);
-	}
-	
-	@:op(A - B)
-	public static inline function subtract(lhs:Rgba, rhs:Rgba):Rgba {
-		return Rgba.create(lhs.r - rhs.r, lhs.g - rhs.g, lhs.b - rhs.b, lhs.a - rhs.a);
-	}
-	
+	/**
+	 * Converts an integer to a RGBA8888 color.
+	 * @param	rgba The integer to convert to the color.
+	 * @return	The RGBA color.
+	 */
 	@:from public static inline function fromInt(rgba:Int):Rgba {
 		return rgba;
 	}
