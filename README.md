@@ -3,6 +3,7 @@
 [![Haxelib Version](https://img.shields.io/github/tag/Tw1ddle/geometrize-haxe.svg?style=flat-square&label=haxelib)](http://lib.haxe.org/p/geometrize-haxe)
 [![Travis Unit Test Build Status](https://img.shields.io/travis/Tw1ddle/geometrize-haxe-unit-tests.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/geometrize-haxe-unit-tests)
 [![Code Climate](https://img.shields.io/codeclimate/issues/github/Tw1ddle/geometrize-haxe.svg?style=flat-square)](https://codeclimate.com/github/Tw1ddle/geometrize-haxe/issues)
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/geometrize-haxe/blob/master/LICENSE)
 
 **Geometrize Haxe** is a Haxe library for recreating images with geometric primitives. Run the web demo [in your browser](http://www.samcodes.co.uk/project/geometrize-haxe-web/).
 
