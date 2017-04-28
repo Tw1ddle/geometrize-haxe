@@ -32,9 +32,7 @@ class Core {
 		var totalBlue:Int = 0;
 		var count:Int = 0;
 		
-		var f:Float = 257 * 255 / alpha;
-		var a:Int = Std.int(f);
-		
+		var a:Int = Std.int(255 * 255 / alpha);
 		// For each scanline
 		for (line in lines) {
 			var y:Int = line.y;
@@ -44,9 +42,9 @@ class Core {
 				var c:Rgba = current.getPixel(x, y);
 				
 				// Mix the red, green and blue components, blending by the given alpha value
-				totalRed += (t.r - c.r) * a + c.r * 257;
-				totalGreen += (t.g - c.g) * a + c.g * 257;
-				totalBlue += (t.b - c.b) * a + c.b * 257;
+				totalRed += (t.r - c.r) * a + c.r * 255;
+				totalGreen += (t.g - c.g) * a + c.g * 255;
+				totalBlue += (t.b - c.b) * a + c.b * 255;
 				
 				count++;
 			}
