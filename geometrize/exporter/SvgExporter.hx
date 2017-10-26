@@ -23,7 +23,7 @@ class SvgExporter {
 	 * @return	A string representing the SVG image.
 	 */
 	public static function export(shapes:Array<ShapeResult>, width:Int, height:Int):String {
-		var results:String = getPrelude();
+		var results:String = getSvgPrelude();
 		results += getSvgNodeOpen(width, height);
 		results += exportShapes(shapes);
 		results += getSvgNodeClose();
@@ -55,6 +55,18 @@ class SvgExporter {
 		return StringTools.replace(shape.shape.getSvgShapeData(), SVG_STYLE_HOOK, stylesForShape(shape));
 	}
 	
+	public static function getSvgPrelude():String {
+		return "<?xml version=\"1.0\" standalone=\"no\"?>\n";
+	}
+	
+	public static function getSvgNodeOpen(width:Int, height:Int):String {
+		return "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.2\" baseProfile=\"tiny\" width=\"" + width + "\" height=\"" + height + "\">\n";
+	}
+	
+	public static function getSvgNodeClose():String {
+		return "</svg>";
+	}
+	
 	private static function stylesForShape(shape:ShapeResult):String {
 		return switch (shape.shape.getType()) {
 			case ShapeType.LINE:
@@ -82,17 +94,5 @@ class SvgExporter {
 	
 	private static function strokeOpacityForAlpha(alpha:Float):String {
 		return "stroke-opacity=\"" + alpha / 255.0 + "\"";
-	}
-	
-	private static function getPrelude():String {
-		return "<?xml version=\"1.0\" standalone=\"no\"?>\n";
-	}
-	
-	private static function getSvgNodeOpen(width:Int, height:Int):String {
-		return "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.2\" baseProfile=\"tiny\" width=\"" + width + "\" height=\"" + height + "\">\n";
-	}
-	
-	private static function getSvgNodeClose():String {
-		return "</svg>";
 	}
 }

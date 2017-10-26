@@ -38,7 +38,7 @@ class ShapeFactory {
 	 * @return	The new shape.
 	 */
 	public static function randomShape(xBound:Int, yBound:Int):Shape {
-		return create(Util.randomArrayItem(Type.allEnums(ShapeType)), xBound, yBound);
+		return create(Util.randomArrayItem(AbstractEnumTools.getValues(ShapeType)), xBound, yBound);
 	}
 	
 	/**
