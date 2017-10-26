@@ -5,11 +5,11 @@ package geometrize.shape;
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 @:enum abstract ShapeType(Int) {
-	var RECTANGLE = 0;
-	var ROTATED_RECTANGLE = 1;
-	var TRIANGLE = 2;
-	var ELLIPSE = 3;
-	var ROTATED_ELLIPSE = 4;
-	var CIRCLE = 5;
-	var LINE = 6;
+	public var RECTANGLE = 0;
+	public var ROTATED_RECTANGLE = 1;
+	public var TRIANGLE = 2;
+	public var ELLIPSE = 3;
+	public var ROTATED_ELLIPSE = 4;
+	public var CIRCLE = 5;
+	public var LINE = 6;
 }
