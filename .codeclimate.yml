@@ -7,9 +7,8 @@ engines:
 
 exclude_paths:
   - dox/**/*
+  - docs/**/*
 
 ratings:
   paths:
     - "geometrize"
-  exclude_paths:
-    - "docs/**"
