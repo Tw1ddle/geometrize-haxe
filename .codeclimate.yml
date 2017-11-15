@@ -12,4 +12,4 @@ ratings:
   paths:
     - "geometrize"
   exclude_paths:
-    - "docs/geometrize"
+    - "docs/**"
