@@ -42,15 +42,15 @@ Refer to the library [documentation](http://tw1ddle.github.io/geometrize-haxe/).
 
 Geometrized public domain [artwork](https://commons.wikimedia.org/wiki/Category:Paintings_by_painter) and [photos](https://www.pexels.com/public-domain-images/):
 
-[![Geometrized Leafy Railroad - 800 Rotated Rectangles](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/leafy_railroad.png?raw=true "Leafy Railroad - 800 Rotated Rectangles")](http://www.geometrize.co.uk/)
-[![Geometrized Flower - 330 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/flower.png?raw=true "Flower - 330 Rotated Ellipses")](http://www.geometrize.co.uk/)
-[![Geometrized Woodland Cemetery - 600 Rotated Rectangles](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/woodland_cemetery.png?raw=true "Woodland Cemetery - 600 Rotated Rectangles")](http://www.geometrize.co.uk/)
-[![Geometrized Pomegranate - 300 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/pomegranate.png?raw=true "Pomegranate - 300 Rotated Ellipses")](http://www.geometrize.co.uk/)
-[![Geometrized Monarch Butterfly - 800 Various Shapes](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/monarch_butterfly.png?raw=true "Monarch Butterfly - 800 Various Shapes")](http://www.geometrize.co.uk/)
-[![Geometrized Fairies - 500 Triangles](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/fairies.png?raw=true "Fairies - 500 Triangles")](http://www.geometrize.co.uk/)
-[![Geometrized Pyramid - 150 Triangles](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/pyramid.png?raw=true "Pyramid - 150 Triangles")](http://www.geometrize.co.uk/)
-[![Geometrized Chomsky - 300 Triangles](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/chomsky.png?raw=true "Noam Chomsky - 300 Triangles")](http://www.geometrize.co.uk/)
-[![Geometrized Mixed Peppers - 300 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/mixed_peppers.png?raw=true "Mixed Peppers - 300 Rotated Ellipses")](http://www.geometrize.co.uk/)
+[![Geometrized Leafy Railroad 800 Rotated Rectangles](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/leafy_railroad.png?raw=true "Leafy Railroad - 800 Rotated Rectangles")](http://www.geometrize.co.uk/)
+[![Geometrized Flower 330 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/flower.png?raw=true "Flower - 330 Rotated Ellipses")](http://www.geometrize.co.uk/)
+[![Geometrized Woodland Cemetery 600 Rotated Rectangles](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/woodland_cemetery.png?raw=true "Woodland Cemetery - 600 Rotated Rectangles")](http://www.geometrize.co.uk/)
+[![Geometrized Pomegranate 300 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/pomegranate.png?raw=true "Pomegranate - 300 Rotated Ellipses")](http://www.geometrize.co.uk/)
+[![Geometrized Monarch Butterfly 800 Various Shapes](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/monarch_butterfly.png?raw=true "Monarch Butterfly - 800 Various Shapes")](http://www.geometrize.co.uk/)
+[![Geometrized Fairies 500 Triangles](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/fairies.png?raw=true "Fairies - 500 Triangles")](http://www.geometrize.co.uk/)
+[![Geometrized Pyramid 150 Triangles](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/pyramid.png?raw=true "Pyramid - 150 Triangles")](http://www.geometrize.co.uk/)
+[![Geometrized Chomsky 300 Triangles](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/chomsky.png?raw=true "Noam Chomsky - 300 Triangles")](http://www.geometrize.co.uk/)
+[![Geometrized Mixed Peppers 300 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe-web/blob/master/screenshots/mixed_peppers.png?raw=true "Mixed Peppers - 300 Rotated Ellipses")](http://www.geometrize.co.uk/)
 
 For more examples, see the Geometrize [gallery](http://gallery.geometrize.co.uk/).
 
