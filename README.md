@@ -7,7 +7,7 @@
 
 Geometrize Haxe is a Haxe library for recreating images with geometric primitives. Run the demo [in your browser](http://www.samcodes.co.uk/project/geometrize-haxe-web/).
 
-Geometrize Haxe is part of [Geometrize](http://www.geometrize.co.uk/), an [open source toolset](https://github.com/topics/geometrize) for recreating images with geometric primitives, and is based on the [primitive](https://github.com/fogleman/primitive) Go library.
+Geometrize Haxe is part of [Geometrize](http://www.geometrize.co.uk/), and is based on the [primitive](https://github.com/fogleman/primitive) Go library.
 
 [![Geometrized Cat 400 Various Shapes](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/cat.png?raw=true "Geometrized Cat - 400 Geometric Primitives")](http://www.geometrize.co.uk/)
 
@@ -15,6 +15,18 @@ Geometrize Haxe is part of [Geometrize](http://www.geometrize.co.uk/), an [open 
 * Recreate images as geometric primitives - rectangles, rotated rectangles, triangles, circles, ellipses, rotated ellipses and lines are supported.
 * Export geometrized images to SVG, or generated shape data to JSON.
 * All Haxe targets are supported.
+
+## Shape Comparison
+
+The matrix shows typical results for circles, triangles, rotated rectangles, rotated ellipses and all supported shapes at 50, 200 and 500 total shapes:
+
+| -                  | 50 Shapes     | 200 Shapes    | 500 Shapes   |
+| ------------------ | ------------- | ------------- | ------------ |
+| Circles            | [![50 Circles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_50_circles.png?raw=true)](http://www.geometrize.co.uk/) | [![200 Circles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_200_circles.png?raw=true)](http://www.geometrize.co.uk/) | [![500 Circles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_500_circles.png?raw=true)](http://www.geometrize.co.uk/) |
+| Triangles          | [![50 Triangles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_50_triangles.png?raw=true)](http://www.geometrize.co.uk/) | [![200 Triangles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_200_triangles.png?raw=true)](http://www.geometrize.co.uk/) | [![500 Triangles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_500_triangles.png?raw=true)](http://www.geometrize.co.uk/) |
+| Rotated Rectangles | [![50 Rotated Rectangles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_50_rotated_rectangles.png?raw=true)](http://www.geometrize.co.uk/) | [![200 Rotated Rectangles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_200_rotated_rectangles.png?raw=true)](http://www.geometrize.co.uk/) | [![500 Rotated Rectangles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_500_rotated_rectangles.png?raw=true)](http://www.geometrize.co.uk/) |
+| Rotated Ellipses   | [![50 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_50_rotated_ellipses.png?raw=true)](http://www.geometrize.co.uk/) | [![200 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_200_rotated_ellipses.png?raw=true)](http://www.geometrize.co.uk/) | [![500 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_500_rotated_ellipses.png?raw=true)](http://www.geometrize.co.uk/) |
+| All Shapes         | [![50 All Shapes](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_50_all_shapes.png?raw=true)](http://www.geometrize.co.uk/) | [![200 All Shapes](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_200_all_shapes.png?raw=true)](http://www.geometrize.co.uk/) | [![500 All Shapes](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/seagull_500_all_shapes.png?raw=true)](http://www.geometrize.co.uk/) |
 
 ## How It Works
 
