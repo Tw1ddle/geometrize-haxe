@@ -5,18 +5,20 @@
 [![Code Climate](https://img.shields.io/codeclimate/issues/github/Tw1ddle/geometrize-haxe.svg?style=flat-square)](https://codeclimate.com/github/Tw1ddle/geometrize-haxe/issues)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/geometrize-haxe/blob/master/LICENSE)
 
-Geometrize Haxe is part of [Geometrize](http://www.geometrize.co.uk/), an app and [toolset](https://github.com/topics/geometrize) for recreating images with geometric primitives. Run the demo [in your browser](http://www.samcodes.co.uk/project/geometrize-haxe-web/).
+Geometrize Haxe is a Haxe library for recreating images with geometric primitives. Run the demo [in your browser](http://www.samcodes.co.uk/project/geometrize-haxe-web/).
 
-Geometrize Haxe is based on the [primitive](https://github.com/fogleman/primitive) Go library.
+Geometrize Haxe is part of [Geometrize](http://www.geometrize.co.uk/), an [open source toolset](https://github.com/topics/geometrize) for recreating images with geometric primitives, and is based on the [primitive](https://github.com/fogleman/primitive) Go library.
+
+[![Geometrized Cat 400 Various Shapes](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/cat.png?raw=true "Geometrized Cat - 400 Geometric Primitives")](http://www.geometrize.co.uk/)
 
 ## Features
-* Recreate images as geometric primitives - rectangles, triangles, circles, ellipses and lines are supported.
-* Easily export geometrized images to SVG, and generated shape data to JSON.
+* Recreate images as geometric primitives - rectangles, rotated rectangles, triangles, circles, ellipses, rotated ellipses and lines are supported.
+* Export geometrized images to SVG, or generated shape data to JSON.
 * All Haxe targets are supported.
 
 ## How It Works
 
-A user provides a target image, and the algorithm finds good shapes to approximate that image. To find a good shape, the algorithm generates a large number of random candidate shapes, repeatedly improving the fit of each using a hillclimbing optimization approach, eventually choosing the best fitting shape. Shapes are added one by one.
+A user provides a target image, and the algorithm finds shapes to approximate that image. To identify a good shape, the algorithm generates a large number of random candidate shapes, repeatedly improving the fit of each using a hillclimbing optimization approach, eventually choosing the best-fitting shape. The shapes are added one by one.
 
 ## Install
 
@@ -40,7 +42,6 @@ Geometrized public domain [artwork](https://commons.wikimedia.org/wiki/Category:
 
 [![Geometrized Flower 330 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/flower.png?raw=true "Flower - 330 Rotated Ellipses")](http://www.geometrize.co.uk/)
 [![Geometrized Train 230 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/train.png?raw=true "Train - 230 Rotated Ellipses")](http://www.geometrize.co.uk/)
-[![Geometrized Cat 400 Various Shapes](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/cat.png?raw=true "Geometrized Cat - 400 Geometric Primitives")](http://www.geometrize.co.uk/)
 [![Geometrized Woodland Cemetery 600 Rotated Rectangles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/woodland_cemetery.png?raw=true "Woodland Cemetery - 600 Rotated Rectangles")](http://www.geometrize.co.uk/)
 [![Geometrized Pomegranate 300 Rotated Ellipses](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/pomegranate.png?raw=true "Pomegranate - 300 Rotated Ellipses")](http://www.geometrize.co.uk/)
 [![Geometrized Monarch Butterfly 800 Various Shapes](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/monarch_butterfly.png?raw=true "Monarch Butterfly - 800 Various Shapes")](http://www.geometrize.co.uk/)
