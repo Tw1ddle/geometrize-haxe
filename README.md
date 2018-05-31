@@ -9,7 +9,7 @@ Geometrize Haxe is a Haxe library for recreating images with geometric primitive
 
 Geometrize Haxe is part of [Geometrize](https://www.geometrize.co.uk/), and is based on the [primitive](https://github.com/fogleman/primitive) Go library.
 
-[![Geometrized Cat 400 Various Shapes](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/cat.png?raw=true "Geometrized Cat - 400 Geometric Primitives")](https://www.geometrize.co.uk/)
+[![Geometrized Cat 500 Triangles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/cat.gif?raw=true "Geometrized Cat - 500 Geometric Primitives")](https://www.geometrize.co.uk/)
 
 ## Features
 * Recreate images as geometric primitives - rectangles, rotated rectangles, triangles, circles, ellipses, rotated ellipses and lines are supported.
