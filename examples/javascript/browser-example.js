@@ -10,8 +10,7 @@ function loadPng(url) {
       reader.parse(function (err, png) {
         if (err) reject(err)
         document.getElementById('inputSize').innerHTML = (png.pixels.length / 1000) + 'KB'
-        const bitmap = geometrize.bitmap.Bitmap.createFromRawBytes(png.width, png.height, png.pixels)
-        resolve(bitmap)
+        resolve(geometrize.bitmap.Bitmap.createFromRawBytes(png.width, png.height, png.pixels))
       })
     })
   })
@@ -31,14 +30,14 @@ function wait(ms) {
   })
 }
 
-async function run({ imgUrl, iterations, interval }) {
+async function run({ imgUrl, iterations, interval, candidateShapesPerStep, shapeMutationsPerStep, alpha }) {
   const bitmap = await loadPng(imgUrl)
   const runner = new geometrize.runner.ImageRunner(bitmap)
   const options = {
     shapeTypes: [0, 1, 2, 3, 4, 5, 6], // TODO: from enum
-    candidateShapesPerStep: 50,
-    shapeMutationsPerStep: 100,
-    alpha: 128
+    candidateShapesPerStep,
+    shapeMutationsPerStep,
+    alpha
   }
   const svgData = []
   for (let i = 0; i < iterations; i++) {
@@ -54,12 +53,16 @@ async function run({ imgUrl, iterations, interval }) {
 async function test() {
   document.getElementById('main').innerHTML = html
   document.getElementById('run').addEventListener('click', async e => {
-    const imgUrl = document.getElementById('imgUrl').value || 'logo.png'
-    const iterations = parseInt(document.getElementById('iterations').value || '100')
-    const interval = parseInt(document.getElementById('interval').value || '0')
     document.getElementById('status').innerHTML = 'Working'
     const t0 = Date.now()
-    await run({ imgUrl, iterations, interval })
+    await run({
+      imgUrl: document.getElementById('imgUrl').value || 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Fiji_banded_iguana_in_Vienna_Zoo_on_2013-05-12.png/640px-Fiji_banded_iguana_in_Vienna_Zoo_on_2013-05-12.png',
+      iterations: parseInt(document.getElementById('iterations').value || '100'),
+      interval: parseInt(document.getElementById('interval').value || '0'),
+      alpha: parseInt(document.getElementById('alpha').value || '0'),
+      candidateShapesPerStep: parseInt(document.getElementById('candidateShapesPerStep').value || '0'),
+      shapeMutationsPerStep: parseInt(document.getElementById('shapeMutationsPerStep').value || '0'),
+    })
     document.getElementById('elapsedTime').innerHTML = ((Date.now() - t0) / 1000) + 'seconds'
     document.getElementById('status').innerHTML = 'Stand by'
   })
@@ -69,11 +72,15 @@ async function test() {
 }
 
 const html = `
-<img id="img" src="logo.png"/><br/>
+<img id="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Fiji_banded_iguana_in_Vienna_Zoo_on_2013-05-12.png/640px-Fiji_banded_iguana_in_Vienna_Zoo_on_2013-05-12.png"/><br/>
 <div>Input size: <span id="inputSize"></span></div>
-<label>Image URL: <input type="url" value="logo.png" id="imgUrl"/></label><br/>
+<label>Image URL: <input type="url" value="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Fiji_banded_iguana_in_Vienna_Zoo_on_2013-05-12.png/640px-Fiji_banded_iguana_in_Vienna_Zoo_on_2013-05-12.png" id="imgUrl"/></label><br/>
 <label>Iterations: <input id="iterations" type="number" min="1" value="100"/></label><br/>
-<label>Interval: <input id="interval" type="number" min="0" value="0"/></label><br/>
+<label>Alpha: <input id="alpha" type="number" min="1" value="128"/></label><br/>
+<label>Candidate shapes per step: <input id="candidateShapesPerStep" type="number" min="1" value="50"/></label><br/>
+<label>Shape mutation per step: <input id="shapeMutationsPerStep" type="number" min="1" value="100"/></label><br/>
+
+<label>Step interval (0 to prevent render in steps): <input id="interval" type="number" min="0" value="0"/></label><br/>
 <button id="run">run</button><br/>
 <div>Status: <span id="status">Stand by</span></div>
 <div>Output size: <span id="outputSize"></span></div>
