@@ -9,6 +9,7 @@ import geometrize.bitmap.Rgba;
  * Helper class for creating a set of shapes that approximate a source image.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
+@:expose
 class ImageRunner {
 	/**
 	 * The model for the optimization/fitting algorithm.

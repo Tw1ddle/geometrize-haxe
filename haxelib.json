@@ -4,8 +4,8 @@
 	"license": "MIT",
 	"tags": ["cross","haxe","utility","tool"],
 	"description": "A tool for recreating images with geometric primitives",
-	"version": "1.0.2",
-	"releasenote": "Minor tweaks to JSON export functions",
+	"version": "1.0.3",
+	"releasenote": "Expose the API to apps written in Javascript",
 	"contributors": ["samcodes"],
 	"dependencies": { "sure": "" }
 }

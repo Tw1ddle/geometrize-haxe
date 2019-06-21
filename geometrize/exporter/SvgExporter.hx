@@ -8,6 +8,7 @@ import geometrize.shape.ShapeType;
  * Exports the shape data as SVG.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
+@:expose
 class SvgExporter {
 	/**
 	* A hook that an SVG exporter should use to augment shape styling produced by the getSvgShapeData method.

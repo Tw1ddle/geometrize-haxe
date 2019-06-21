@@ -7,6 +7,7 @@ import haxe.io.Bytes;
  * Helper class for working with bitmap data.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
+@:expose
 class Bitmap {
 	/**
 	 * The width of the bitmap.

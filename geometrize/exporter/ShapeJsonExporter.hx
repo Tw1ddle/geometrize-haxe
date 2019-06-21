@@ -8,6 +8,7 @@ import geometrize.shape.ShapeType;
  * Exports the shape data as JSON.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
+@:expose
 class ShapeJsonExporter {
 	/**
 	 * Exports an array of shapes to JSON.

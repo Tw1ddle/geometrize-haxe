@@ -7,3 +7,6 @@
 
 ## 1.0.2
 * Minor tweaks to JSON export functions so individual shapes can be more easily exported to JSON.
+
+## 1.0.3
+* Expose bits of the API so other applications written in Javascript can use it.

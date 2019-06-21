@@ -13,3 +13,17 @@ package geometrize.shape;
 	public var CIRCLE = 5;
 	public var LINE = 6;
 }
+
+/**
+ * Collection of shape type constants to expose to JavaScript code.
+ */
+@:expose
+class ShapeTypes {
+	public static inline var RECTANGLE = ShapeType.RECTANGLE;
+	public static inline var ROTATED_RECTANGLE = ShapeType.ROTATED_RECTANGLE;
+	public static inline var TRIANGLE = ShapeType.TRIANGLE;
+	public static inline var ELLIPSE = ShapeType.ELLIPSE;
+	public static inline var ROTATED_ELLIPSE = ShapeType.ROTATED_ELLIPSE;
+	public static inline var CIRCLE = ShapeType.CIRCLE;
+	public static inline var LINE = ShapeType.LINE;
+}
