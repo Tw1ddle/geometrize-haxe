@@ -19,11 +19,11 @@ package geometrize.shape;
  */
 @:expose
 class ShapeTypes {
-	public static inline var RECTANGLE = ShapeType.RECTANGLE;
-	public static inline var ROTATED_RECTANGLE = ShapeType.ROTATED_RECTANGLE;
-	public static inline var TRIANGLE = ShapeType.TRIANGLE;
-	public static inline var ELLIPSE = ShapeType.ELLIPSE;
-	public static inline var ROTATED_ELLIPSE = ShapeType.ROTATED_ELLIPSE;
-	public static inline var CIRCLE = ShapeType.CIRCLE;
-	public static inline var LINE = ShapeType.LINE;
+	public static inline var RECTANGLE:Int = ShapeType.RECTANGLE;
+	public static inline var ROTATED_RECTANGLE:Int = ShapeType.ROTATED_RECTANGLE;
+	public static inline var TRIANGLE:Int = ShapeType.TRIANGLE;
+	public static inline var ELLIPSE:Int = ShapeType.ELLIPSE;
+	public static inline var ROTATED_ELLIPSE:Int = ShapeType.ROTATED_ELLIPSE;
+	public static inline var CIRCLE:Int = ShapeType.CIRCLE;
+	public static inline var LINE:Int = ShapeType.LINE;
 }

@@ -53,7 +53,7 @@ class ShapeJsonExporter {
 		for (item in 0...data.length) {
 			result += data[item];
 			if (item <= data.length - 2) {
-				 result += ",";
+				result += ",";
 			}
 		}
 		result += "],\n";
