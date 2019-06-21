@@ -4,7 +4,7 @@ package geometrize.shape;
  * Enumeration specifying the types of shapes that can be used. These can be combined to produce images composed of multiple shape types.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
-@:enum abstract ShapeType(Int) {
+@:enum abstract ShapeType(Int) from Int to Int {
 	public var RECTANGLE = 0;
 	public var ROTATED_RECTANGLE = 1;
 	public var TRIANGLE = 2;
