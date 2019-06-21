@@ -1,0 +1,36 @@
+-cp . 
+
+-lib Sure 
+
+geometrize.bitmap.Bitmap
+geometrize.bitmap.Rgba
+
+geometrize.rasterizer.Rasterizer
+geometrize.rasterizer.Scanline
+
+geometrize.exporter.ShapeJsonExporter
+geometrize.exporter.SvgExporter
+
+geometrize.runner.ImageRunner
+geometrize.runner.ImageRunnerOptions
+
+geometrize.shape.ShapeType
+geometrize.shape.Circle
+geometrize.shape.Ellipse
+geometrize.shape.Line
+geometrize.shape.Rectangle
+geometrize.shape.RotatedEllipse
+geometrize.shape.RotatedRectangle
+geometrize.shape.Shape
+geometrize.shape.ShapeFactory
+geometrize.shape.ShapeType
+geometrize.shape.Triangle
+
+geometrize.AbstractEnumTools
+geometrize.Core
+geometrize.State
+geometrize.ArraySet
+geometrize.Model
+geometrize.Util
+
+-js build/lib.js    

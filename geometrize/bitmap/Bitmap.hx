@@ -7,7 +7,7 @@ import haxe.io.Bytes;
  * Helper class for working with bitmap data.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
-class Bitmap {
+@:expose class Bitmap {
 	/**
 	 * The width of the bitmap.
 	 */
@@ -65,6 +65,25 @@ class Bitmap {
 		return bitmap;
 	}
 	
+  /**
+	 * Creates a new bitmap from the supplied native raw byte array. Useful for target language consumers
+   * that don't have access to Bytes haxe standar library class. 
+	 * @param	w		The width of the bitmap.
+	 * @param	h		The height of the bitmap.
+	 * @param	bytes	The byte data to fill the bitmap with, must be width * height * depth long.
+	 * @return	The new bitmap.
+	 */
+  public static inline function createFromRawBytes(w:Int, h:Int, bytes:Array<Int>):Bitmap {
+    var data:Bytes = Bytes.alloc(bytes.length);
+  	var i:Int = 0;
+		while (i < bytes.length) {
+      data.set(i, bytes[i]);
+			i ++;
+		}
+    var bitmap:Bitmap = Bitmap.createFromBytes(w, h, data);
+    return bitmap;
+  }
+
 	/**
 	 * Gets a pixel at the given coordinate.
 	 * @param	x	The x-coordinate.

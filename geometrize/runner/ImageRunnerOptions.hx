@@ -6,7 +6,7 @@ import geometrize.shape.ShapeType;
  * Encapsulates the parameters that may be passed to an image runner.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
-typedef ImageRunnerOptions = {
+@:expose typedef ImageRunnerOptions = {
 	/**
 	 * The types of shapes to use when generating the image.
 	 */
