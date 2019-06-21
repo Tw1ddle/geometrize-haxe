@@ -33,4 +33,4 @@ geometrize.ArraySet
 geometrize.Model
 geometrize.Util
 
--js build/lib.js    
+-js build/geometrize.js    
