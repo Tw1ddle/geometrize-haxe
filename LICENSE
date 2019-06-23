@@ -1,7 +1,17 @@
-The MIT License (MIT)
+Geometrize Haxe is copyright (c) 2017 Sam Twidale (https://samcodes.co.uk/) and contributors.
 
-Geometrize Haxe is copyright (c) 2017 Sam Twidale (http://samcodes.co.uk/)
+Each contributor maintains copyright over their contributions to Geometrize Haxe.
+If individual contributors want to maintain a record of what they have specific copyright on,
+they should indicate their copyright in the code or commit message of the change.
+
+Geometrize Haxe contributors include:
+
+ * Sam Twidale
+ * Sebastián Gurin
+
 Based on the Primitive library, copyright (c) 2016 Michael Fogleman (https://github.com/fogleman/primitive)
+
+The MIT License (MIT)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
