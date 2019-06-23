@@ -32,11 +32,15 @@ The matrix shows typical results for circles, triangles, rotated rectangles, rot
 
 A user provides a target image, and the algorithm finds shapes to approximate that image. To identify a good shape, the algorithm generates a large number of random candidate shapes, repeatedly improving the fit of each using a hillclimbing optimization approach, eventually choosing the best-fitting shape. The shapes are added one by one.
 
-## Install
+## JavaScript Usage
+
+* If you are working in JavaScript, check out the [geometrize-js](https://github.com/cancerberoSgx/geometrizejs) API and [npm](https://www.npmjs.com/package/geometrizejs) package.
+
+## Haxe Install
 
 Get the [Haxe](https://haxe.org/) library from [GitHub](https://github.com/Tw1ddle/geometrize-haxe) or through [haxelib](https://lib.haxe.org/p/geometrize-haxe/).
 
-## Usage
+## Haxe Usage
 
 * Instantiate an ```ImageRunner```, passing it a ```Bitmap``` target image and a starting background ```Rgba``` color.
 * Generate shapes by repeatedly calling ```runner.step(options)```, passing in your ```ImageRunnerOptions```.
