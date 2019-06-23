@@ -34,11 +34,15 @@ A user provides a target image, and the algorithm finds shapes to approximate th
 
 ## JavaScript Usage
 
-* If you are working in JavaScript, check out the [geometrize-js](https://github.com/cancerberoSgx/geometrizejs) API and [npm](https://www.npmjs.com/package/geometrizejs) package.
+If you are working in JavaScript, check out the [geometrize-js](https://github.com/cancerberoSgx/geometrizejs) API and [npm](https://www.npmjs.com/package/geometrizejs) package.
 
 ## Haxe Install
 
-Get the [Haxe](https://haxe.org/) library from [GitHub](https://github.com/Tw1ddle/geometrize-haxe) or through [haxelib](https://lib.haxe.org/p/geometrize-haxe/).
+Get the [Haxe](https://haxe.org/) library from [GitHub](https://github.com/Tw1ddle/geometrize-haxe) or through [haxelib](https://lib.haxe.org/p/geometrize-haxe/):
+
+```bash
+haxelib install geometrize-haxe
+```
 
 ## Haxe Usage
 
