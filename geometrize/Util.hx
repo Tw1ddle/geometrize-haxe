@@ -20,9 +20,10 @@ class Util {
 	/**
 	 * Computes the average RGB color of the pixels in the image.
 	 * @param	image	The image whose average color will be calculated.
-	 * @return	The average RGB color of the image, RGBA8888 format. Alpha is set to opaque (255).
+	 * @param	alpha	The opacity of the image (0-255), defaults to opaque (255).
+	 * @return	The average RGB color of the image, RGBA8888 format. Alpha defaults to opaque (255).
 	 */
-	public static function getAverageImageColor(image:Bitmap):Rgba {
+	public static function getAverageImageColor(image:Bitmap, alpha:Int = 255):Rgba {
 		Sure.sure(image != null);
 		
 		var totalRed:Int = 0;
@@ -39,7 +40,7 @@ class Util {
 		}
 		
 		var size:Int = image.width * image.height;
-		return Rgba.create(Std.int(totalRed / size), Std.int(totalGreen / size), Std.int(totalBlue / size), 255);
+		return Rgba.create(Std.int(totalRed / size), Std.int(totalGreen / size), Std.int(totalBlue / size), alpha);
 	}
 	
 	/**
