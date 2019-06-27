@@ -12,6 +12,7 @@ package geometrize.shape;
 	public var ROTATED_ELLIPSE = 4;
 	public var CIRCLE = 5;
 	public var LINE = 6;
+	public var QUADRATIC_BEZIER = 7;
 }
 
 /**
@@ -26,4 +27,5 @@ class ShapeTypes {
 	public static inline var ROTATED_ELLIPSE:Int = ShapeType.ROTATED_ELLIPSE;
 	public static inline var CIRCLE:Int = ShapeType.CIRCLE;
 	public static inline var LINE:Int = ShapeType.LINE;
+	public static inline var QUADRATIC_BEZIER:Int = ShapeType.QUADRATIC_BEZIER;
 }

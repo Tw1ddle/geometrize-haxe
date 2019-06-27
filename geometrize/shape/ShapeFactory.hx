@@ -28,6 +28,8 @@ class ShapeFactory {
 				return new Circle(xBound, yBound);
 			case LINE:
 				return new Line(xBound, yBound);
+			case QUADRATIC_BEZIER:
+				return new QuadraticBezier(xBound, yBound);
 		}
 	}
 	

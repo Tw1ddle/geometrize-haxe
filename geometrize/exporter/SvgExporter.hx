@@ -70,7 +70,7 @@ class SvgExporter {
 	
 	private static function stylesForShape(shape:ShapeResult):String {
 		return switch (shape.shape.getType()) {
-			case ShapeType.LINE:
+			case ShapeType.LINE, ShapeType.QUADRATIC_BEZIER:
 				strokeForColor(shape.color) + " stroke-width=\"1\" fill=\"none\" " + strokeOpacityForAlpha(shape.color.a);
 			default:
 				fillForColor(shape.color) + " " + fillOpacityForAlpha(shape.color.a);
