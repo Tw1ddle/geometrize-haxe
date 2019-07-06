@@ -96,7 +96,9 @@ class Core {
 				total += (dr * dr + dg * dg + db * db + da * da);
 			}
 		}
-		return Math.sqrt(total / (width * height * 4.0)) / 255;
+		var result:Float = Math.sqrt(total / (width * height * 4.0)) / 255;
+		Sure.sure(Math.isFinite(result));
+		return result;
 	}
 	
 	/**
@@ -141,7 +143,9 @@ class Core {
 				total += (dtar * dtar + dtag * dtag + dtab * dtab + dtaa * dtaa);
 			}
 		}
-		return Math.sqrt(total / rgbaCount) / 255;
+		var result:Float = Math.sqrt(total / rgbaCount) / 255;
+		Sure.sure(Math.isFinite(result));
+		return result;
 	}
 	
 	/**
@@ -237,6 +241,9 @@ class Core {
 		Sure.sure(buffer != null);
 		
 		var lines:Array<Scanline> = shape.rasterize(); // Gets the set of scanlines that describe the pixels covered by the shape
+		Sure.sure(lines != null);
+		Sure.sure(lines.length != 0);
+		
 		var color:Rgba = computeColor(target, current, lines, alpha); // Calculate best color for areas covered by the scanlines
 		Rasterizer.copyLines(buffer, current, lines); // Copy area covered by scanlines to buffer bitmap
 		Rasterizer.drawLines(buffer, color, lines); // Blend scanlines into the buffer using the color calculated earlier
