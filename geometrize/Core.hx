@@ -73,6 +73,10 @@ class Core {
 	public static function differenceFull(first:Bitmap, second:Bitmap):Float {
 		Sure.sure(first != null);
 		Sure.sure(second != null);
+		Sure.sure(first.width != 0);
+		Sure.sure(first.height != 0);
+		Sure.sure(second.width != 0);
+		Sure.sure(second.height != 0);
 		Sure.sure(first.width == second.width);
 		Sure.sure(first.height == second.height);
 		
@@ -110,6 +114,7 @@ class Core {
 		Sure.sure(before != null);
 		Sure.sure(after != null);
 		Sure.sure(lines != null);
+		Sure.sure(lines.length != 0);
 		
 		var width:Int = target.width;
 		var height:Int = target.height;
