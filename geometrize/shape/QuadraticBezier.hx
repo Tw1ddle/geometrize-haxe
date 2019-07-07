@@ -51,6 +51,13 @@ class QuadraticBezier implements Shape {
 			
 			var pts:Array<Point> = Rasterizer.bresenham(p0.x, p0.y, p1.x, p1.y);
 			for (point in pts) {
+				// Hack that should avoid overlapping pixels, don't add the next point if it's the same as the most-recently added one
+				if (lines.length > 0) {
+					var lastLine:Scanline = lines[lines.length - 1];
+					if (lastLine.y == point.y && lastLine.x1 == point.x && lastLine.x2 == point.x) {
+						continue;
+					}
+				}
 				lines.push(new Scanline(point.y, point.x, point.x));
 			}
 		}
