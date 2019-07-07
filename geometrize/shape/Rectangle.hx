@@ -28,8 +28,12 @@ class Rectangle implements Shape {
 	
 	public function rasterize():Array<Scanline> {
 		var lines:Array<Scanline> = [];
-		for (y in y1...y2) {
-			if (x1 != x2) {
+		var yMin:Int = Util.min(y1, y2);
+		var yMax:Int = Util.max(y1, y2);
+		if (yMin == yMax) {
+			lines.push(new Scanline(yMin, Util.min(x1, x2), Util.max(x1, x2)));
+		} else {
+			for (y in yMin...yMax) {
 				lines.push(new Scanline(y, Util.min(x1, x2), Util.max(x1, x2)));
 			}
 		}
