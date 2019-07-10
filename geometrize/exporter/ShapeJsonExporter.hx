@@ -29,7 +29,7 @@ class ShapeJsonExporter {
 		for (i in 0...shapes.length) {
 			results += exportShape(shapes[i]);
 			if (i != shapes.length - 1) {
-				results += "\n";
+				results += ",\n";
 			}
 		}
 		return results;
