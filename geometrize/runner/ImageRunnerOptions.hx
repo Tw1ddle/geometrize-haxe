@@ -30,7 +30,7 @@ typedef ImageRunnerOptions = {
 }
 
 class Default {
-	public static var options = {
+	public static var options:ImageRunnerOptions = {
 		shapeTypes: [ShapeType.TRIANGLE],
 		candidateShapesPerStep: 50,
 		shapeMutationsPerStep: 100,

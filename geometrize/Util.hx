@@ -150,5 +150,4 @@ class Util {
 		}
 		return value;
 	}
-
 }
