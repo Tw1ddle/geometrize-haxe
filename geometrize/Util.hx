@@ -151,13 +151,4 @@ class Util {
 		return value;
 	}
 
-	public static function objectAssign<T>(o1:Dynamic, o2:Dynamic, o3:Dynamic):T {
-		var fields = Reflect.fields(o1).concat(Reflect.fields(o2)).concat(Reflect.fields(o3)); // TODO: dedup
-		for (f in fields) {
-			var v = Reflect.field(o3, f) || Reflect.field(o2, f) || Reflect.field(o1, f);
-			Reflect.setField(o1, f, v);
-		}
-		return o1;
-	}
-
 }

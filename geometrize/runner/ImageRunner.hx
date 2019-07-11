@@ -23,7 +23,7 @@ class ImageRunner {
 	 * @param	inputImage	The input image, the image that the algorithm will optimize for.
 	 */
 	public function new(inputImage:Bitmap, backgroundColor:Rgba) {
-		model = new Model(inputImage, backgroundColor);
+    model = new Model(inputImage, backgroundColor);
 	}
 
 	/**
@@ -31,7 +31,12 @@ class ImageRunner {
 	 * @return	An array containing data about the shapes just added to the model.
 	 */
 	public function step(options:ImageRunnerOptions):Array<ShapeResult> {
-		var finalOptions:ImageRunnerOptions = Util.objectAssign({}, Default.options, options);
+		var finalOptions:ImageRunnerOptions = {
+      shapeTypes: options.shapeTypes && options.shapeTypes.length ? options.shapeTypes : Default.options.shapeTypes,
+      alpha: options.alpha || Default.options.alpha,
+      candidateShapesPerStep: options.candidateShapesPerStep || Default.options.candidateShapesPerStep,
+      shapeMutationsPerStep: options.shapeMutationsPerStep || Default.options.shapeMutationsPerStep
+    };
 		return model.step(finalOptions.shapeTypes, finalOptions.alpha, finalOptions.candidateShapesPerStep, finalOptions.shapeMutationsPerStep);
 	}
 
