@@ -10,18 +10,58 @@ import haxe.io.Bytes;
 @:expose
 class Bitmap {
 	/**
-	 * The width of the bitmap.
+	 * The width of the bitmap considering its offset, if any.
 	 */
 	public var width:Int;
+
 	/**
-	 * The height of the bitmap.
+	 * The height of the bitmap considering its offset, if any.
 	 */
 	public var height:Int;
+
+	private var originalWidth:Int;
+	private var originalHeight:Int;
+  private var offsetX:Int;
+  private var offsetY:Int;
+	// private offset:Rect | null 
+  /**
+	    * Sets the bitmap offset, this is, a region inside relative to which pixel read and write operations are made.
+	 * If null the whole bitmap will be read/write, this is, the region will be the entire bitmap (0x0,widthxheight)
+	**/
+
+	public setOffset(offset:Rect | null):Void {
+		if (offset == null) {
+			width = originalWidth;
+			height = originalHeight;
+			offsetX = 0;
+      offsetY=0;
+		} else {
+			width = offset.width;
+			height = offset.height;
+      offsetX = offset.x;
+      offsetY=offset.y;
+		}
+	}
+
+	/**
+	 * Internal method used to create a bitmap instance of given amount of pixels.
+	 * @param length mount of pixels in the new bitmap (width * height).
+	**/
+	private static createBitmapOfLength(w:Int, h:Int, length:Int) {
+		var bitmap = new Bitmap();
+		bitmap.width = w;
+		bitmap.height = h;
+		butmap.originalWidth = w;
+		butmap.originalHeight = h;
+		bitmap.data = new Vector(lenght));
+		return bitmap;
+	}
+
 	/**
 	 * The bitmap data.
 	 */
 	private var data:Vector<Rgba>;
-	
+
 	/**
 	 * Creates a new bitmap, filled with the given color.
 	 * @param	w		The width of the bitmap.
@@ -30,10 +70,7 @@ class Bitmap {
 	 * @return	The new bitmap.
 	 */
 	public static inline function create(w:Int, h:Int, color:Rgba):Bitmap {
-		var bitmap = new Bitmap();
-		bitmap.width = w;
-		bitmap.height = h;
-		bitmap.data = new Vector<Rgba>(w * h);
+		var bitmap = createBitmapOfLength(w, h, w * h);
 		var i:Int = 0;
 		while (i < bitmap.data.length) {
 			bitmap.data.set(i, color);
@@ -41,7 +78,7 @@ class Bitmap {
 		}
 		return bitmap;
 	}
-	
+
 	/**
 	 * Creates a new bitmap from the supplied byte data.
 	 * @param	w		The width of the bitmap.
@@ -50,22 +87,15 @@ class Bitmap {
 	 * @return	The new bitmap.
 	 */
 	public static inline function createFromBytes(w:Int, h:Int, bytes:Bytes):Bitmap {
-		var bitmap = new Bitmap();
 		Sure.sure(bytes != null);
 		Sure.sure(bytes.length == w * h * 4); // Assume 4-byte RGBA8888 pixel format
-		bitmap.width = w;
-		bitmap.height = h;
-		bitmap.data = new Vector(Std.int(bytes.length / 4));
-		var i:Int = 0;
-		var x:Int = 0;
-		while (i < bytes.length) {
+		var bitmap = createBitmapOfLength(w, h, Std.int(bytes.length / 4) var i:Int = 0; var x:Int = 0; while (i < bytes.length) {
 			bitmap.data.set(x, Rgba.create(bytes.get(i), bytes.get(i + 1), bytes.get(i + 2), bytes.get(i + 3)));
 			i += 4;
 			x++;
-		}
-		return bitmap;
+		} return bitmap;
 	}
-	
+
 	/**
 	 * Creates a new bitmap from the supplied array of bytes. Useful for target language consumers
 	 * that don't have direct access to the Bytes Haxe standard library class.
@@ -83,44 +113,48 @@ class Bitmap {
 		}
 		return Bitmap.createFromBytes(w, h, data);
 	}
-	
+
 	/**
-	 * Gets a pixel at the given coordinate.
+	 * Gets a pixel at the given coordinate considering its offset, if any.
 	 * @param	x	The x-coordinate.
 	 * @param	y	The y-coordinate.
 	 * @return	The pixel color value.
 	 */
 	public inline function getPixel(x:Int, y:Int):Rgba {
-		return data.get(width * y + x);
+		// if (offs)
+			return data.get(width * y + x);
 	}
-	
+
 	/**
-	 * Sets a pixel at the given coordinate.
+	 * Sets a pixel at the given coordinate considering its offset, if any.
 	 * @param	x	The x-coordinate.
 	 * @param	y	The y-coordinate.
 	 * @param	color	The color value to set at the given coordinate.
 	 */
 	public inline function setPixel(x:Int, y:Int, color:Rgba):Void {
-		data.set((width * y + x), color);
+		// if (offset != null) {
+		// 	var absoluteStart = offset.y * originalWidth + x;
+		// 	var absoluteXDiff = (originalWidth - width) * y;
+		// 	data.set(absoluteStart + width * y + x - absoluteXDiff, color);
+		// } else {
+			data.set((width * y + x), color);
+		// }
 	}
-	
+
 	/**
-	 * Makes a deep copy of the bitmap data.
+	 * Makes a deep copy of the bitmap whole data (without considering its offset).
 	 * @return	The deep copy of the bitmap data.
 	 */
 	public inline function clone():Bitmap {
-		var bitmap = new Bitmap();
-		bitmap.width = width;
-		bitmap.height = height;
-		bitmap.data = new Vector(data.length);
+		var bitmap = createBitmapOfLength(originalWidth, originalHeight, data.length);
 		for (i in 0...data.length) {
 			bitmap.data.set(i, data.get(i));
 		}
 		return bitmap;
 	}
-	
+
 	/**
-	 * Fills the bitmap with the given color.
+	 * Fills the whole bitmap with the given color without consider its offset.
 	 * @param	color The color to fill the bitmap with.
 	 */
 	public inline function fill(color:Rgba):Void {
@@ -133,9 +167,9 @@ class Bitmap {
 			idx += 4;
 		}
 	}
-	
+
 	/**
-	 * Gets the raw bitmap data bytes.
+	 * Gets the raw bitmap data bytes of the whole bitmap without considering its offset.
 	 * @return	The bitmap data.
 	 */
 	public inline function getBytes():Bytes {
@@ -151,7 +185,7 @@ class Bitmap {
 		}
 		return bytes;
 	}
-	
+
 	/**
 	 * Private constructor.
 	 */
