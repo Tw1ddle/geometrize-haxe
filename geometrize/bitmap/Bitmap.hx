@@ -2,6 +2,7 @@ package geometrize.bitmap;
 
 import haxe.ds.Vector;
 import haxe.io.Bytes;
+import geometrize.Util.Rect;
 
 /**
  * Helper class for working with bitmap data.
@@ -21,25 +22,24 @@ class Bitmap {
 
 	private var originalWidth:Int;
 	private var originalHeight:Int;
-  private var offsetX:Int;
-  private var offsetY:Int;
-	// private offset:Rect | null 
-  /**
-	    * Sets the bitmap offset, this is, a region inside relative to which pixel read and write operations are made.
-	 * If null the whole bitmap will be read/write, this is, the region will be the entire bitmap (0x0,widthxheight)
-	**/
+	private var offsetX:Int;
+	private var offsetY:Int;
 
-	public setOffset(offset:Rect | null):Void {
+	/**
+	 * Sets the bitmap offset, this is, a region inside relative to which pixel read and write operations are made.
+	 	 * If null the whole bitmap will be read/write, this is, the region will be the entire bitmap (0x0,widthxheight)
+	**/
+	public function setOffset(?offset:Rect):Void {
 		if (offset == null) {
 			width = originalWidth;
 			height = originalHeight;
 			offsetX = 0;
-      offsetY=0;
+			offsetY = 0;
 		} else {
-			width = offset.width;
-			height = offset.height;
-      offsetX = offset.x;
-      offsetY=offset.y;
+			width = offset.w;
+			height = offset.h;
+			offsetX = offset.x;
+			offsetY = offset.y;
 		}
 	}
 
@@ -47,13 +47,13 @@ class Bitmap {
 	 * Internal method used to create a bitmap instance of given amount of pixels.
 	 * @param length mount of pixels in the new bitmap (width * height).
 	**/
-	private static createBitmapOfLength(w:Int, h:Int, length:Int) {
+	static function createBitmapOfLength(w:Int, h:Int, length:Int):Bitmap {
 		var bitmap = new Bitmap();
 		bitmap.width = w;
 		bitmap.height = h;
-		butmap.originalWidth = w;
-		butmap.originalHeight = h;
-		bitmap.data = new Vector(lenght));
+		bitmap.originalWidth = w;
+		bitmap.originalHeight = h;
+		bitmap.data = new Vector(length);
 		return bitmap;
 	}
 
@@ -89,11 +89,15 @@ class Bitmap {
 	public static inline function createFromBytes(w:Int, h:Int, bytes:Bytes):Bitmap {
 		Sure.sure(bytes != null);
 		Sure.sure(bytes.length == w * h * 4); // Assume 4-byte RGBA8888 pixel format
-		var bitmap = createBitmapOfLength(w, h, Std.int(bytes.length / 4) var i:Int = 0; var x:Int = 0; while (i < bytes.length) {
+		var bitmap = createBitmapOfLength(w, h, Std.int(bytes.length / 4));
+		var i:Int = 0;
+		var x:Int = 0;
+		while (i < bytes.length) {
 			bitmap.data.set(x, Rgba.create(bytes.get(i), bytes.get(i + 1), bytes.get(i + 2), bytes.get(i + 3)));
 			i += 4;
 			x++;
-		} return bitmap;
+		}
+		return bitmap;
 	}
 
 	/**
@@ -121,8 +125,11 @@ class Bitmap {
 	 * @return	The pixel color value.
 	 */
 	public inline function getPixel(x:Int, y:Int):Rgba {
-		// if (offs)
-			return data.get(width * y + x);
+		var absoluteStart = offsetY * originalWidth + x;
+		var absoluteXDiff = (originalWidth - width) * y; // TODO: maybe *(y-1)
+		var relativeIndex = width * y + x;
+		var index = absoluteStart + relativeIndex - absoluteXDiff - offsetX;
+		return data.get(index);
 	}
 
 	/**
@@ -132,13 +139,11 @@ class Bitmap {
 	 * @param	color	The color value to set at the given coordinate.
 	 */
 	public inline function setPixel(x:Int, y:Int, color:Rgba):Void {
-		// if (offset != null) {
-		// 	var absoluteStart = offset.y * originalWidth + x;
-		// 	var absoluteXDiff = (originalWidth - width) * y;
-		// 	data.set(absoluteStart + width * y + x - absoluteXDiff, color);
-		// } else {
-			data.set((width * y + x), color);
-		// }
+		var absoluteStart = offsetY * originalWidth + x;
+		var absoluteXDiff = (originalWidth - width) * y; // TODO: maybe *(y-1)
+		var relativeIndex = width * y + x;
+		var index = absoluteStart + relativeIndex - absoluteXDiff - offsetX;
+		data.set(index, color);
 	}
 
 	/**

@@ -18,9 +18,8 @@ typedef Point = {
  */
 typedef Rect = {
 	> Point,
-	;
-	w:Int;
-	h:Int;
+	w:Int,
+	h:Int
 }
 
 /**
