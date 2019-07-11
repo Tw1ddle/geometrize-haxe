@@ -9,22 +9,31 @@ import geometrize.shape.ShapeType;
 @:expose
 typedef ImageRunnerOptions = {
 	/**
-	 * The types of shapes to use when generating the image.
+	 * The types of shapes to use when generating the image. By default `[ShapeType.TRIANGLE]`.
 	 */
-	var shapeTypes:Array<ShapeType>;
-	
+	@:optional var shapeTypes:Array<ShapeType>;
+
 	/**
-	 * The opacity of the shapes (0-255).
+	 * The opacity of the shapes (0-255). By default `128`.
 	 */
-	var alpha:Int;
-	
+	@:optional var alpha:Int;
+
 	/**
-	 * The number of candidate shapes to try per model step.
+	 * The number of candidate shapes to try per model step. By default `50`.
 	 */
-	var candidateShapesPerStep:Int;
-	
+	@:optional var candidateShapesPerStep:Int;
+
 	/**
-	 * The number of times to mutate each candidate shape.
+	 * The number of times to mutate each candidate shape. By default `100`.
 	 */
-	var shapeMutationsPerStep:Int;
+	@:optional var shapeMutationsPerStep:Int;
+}
+
+class Default {
+	public static var options:ImageRunnerOptions = {
+		shapeTypes: [ShapeType.TRIANGLE],
+		candidateShapesPerStep: 50,
+		shapeMutationsPerStep: 100,
+		alpha: 128
+	};
 }
