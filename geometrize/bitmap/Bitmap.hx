@@ -2,7 +2,7 @@ package geometrize.bitmap;
 
 import haxe.ds.Vector;
 import haxe.io.Bytes;
-import geometrize.Util.Rect;
+import geometrize.Util;
 
 /**
  * Helper class for working with bitmap data.
@@ -27,17 +27,21 @@ class Bitmap {
 
 	/**
 	 * Sets the bitmap offset, this is, a region inside relative to which pixel read and write operations are made.
-	 	 * If null the whole bitmap will be read/write, this is, the region will be the entire bitmap (0x0,widthxheight)
+	 * Calling this method without parameters will remove the offset and reset to default behavior.
 	**/
-	public function setOffset(?offset:Rect):Void {
+	public function setOffset(?offset:Util.Rect):Void {
 		if (offset == null) {
 			width = originalWidth;
 			height = originalHeight;
 			offsetX = 0;
 			offsetY = 0;
 		} else {
-			width = offset.w;
-			height = offset.h;
+      Sure.sure(offset.width>0 && offset.x+offset.width<=originalWidth);
+      Sure.sure(offset.height>0 && offset.y+offset.height<=originalHeight);
+      Sure.sure(offset.x>=0);
+      Sure.sure(offset.y>=0);
+			width = offset.width;
+			height = offset.height;
 			offsetX = offset.x;
 			offsetY = offset.y;
 		}
@@ -53,6 +57,8 @@ class Bitmap {
 		bitmap.height = h;
 		bitmap.originalWidth = w;
 		bitmap.originalHeight = h;
+    bitmap.offsetX=0;
+    bitmap.offsetY=0;
 		bitmap.data = new Vector(length);
 		return bitmap;
 	}
@@ -125,11 +131,7 @@ class Bitmap {
 	 * @return	The pixel color value.
 	 */
 	public inline function getPixel(x:Int, y:Int):Rgba {
-		var absoluteStart = offsetY * originalWidth + x;
-		var absoluteXDiff = (originalWidth - width) * y; // TODO: maybe *(y-1)
-		var relativeIndex = width * y + x;
-		var index = absoluteStart + relativeIndex - absoluteXDiff - offsetX;
-		return data.get(index);
+		return data.get(getCoordsIndex(x,y));
 	}
 
 	/**
@@ -139,13 +141,16 @@ class Bitmap {
 	 * @param	color	The color value to set at the given coordinate.
 	 */
 	public inline function setPixel(x:Int, y:Int, color:Rgba):Void {
-		var absoluteStart = offsetY * originalWidth + x;
-		var absoluteXDiff = (originalWidth - width) * y; // TODO: maybe *(y-1)
-		var relativeIndex = width * y + x;
-		var index = absoluteStart + relativeIndex - absoluteXDiff - offsetX;
-		data.set(index, color);
+		data.set(getCoordsIndex(x,y), color);
 	}
 
+private inline function getCoordsIndex(x:Int, y:Int){
+		var absoluteStart = offsetY * originalWidth + offsetX;
+		var absoluteXDiff = (originalWidth * y) + x + offsetX;// + ()  (originalWidth - width) * y; // TODO: maybe *(y-1)
+		var relativeIndex = 0;//width * y + x;
+		var index = absoluteStart + relativeIndex + absoluteXDiff - offsetX;
+    return index;
+}
 	/**
 	 * Makes a deep copy of the bitmap whole data (without considering its offset).
 	 * @return	The deep copy of the bitmap data.
