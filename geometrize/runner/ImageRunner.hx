@@ -4,7 +4,6 @@ import geometrize.Model;
 import geometrize.Model.ShapeResult;
 import geometrize.bitmap.Bitmap;
 import geometrize.bitmap.Rgba;
-import geometrize.Util;
 import geometrize.runner.ImageRunnerOptions.Default;
 
 /**
