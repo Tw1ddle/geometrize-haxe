@@ -34,7 +34,9 @@ A user provides a target image, and the algorithm finds shapes to approximate th
 
 ## JavaScript Usage
 
-If you are working in JavaScript, check out the [geometrize-js](https://github.com/cancerberoSgx/geometrizejs) API and [npm](https://www.npmjs.com/package/geometrizejs) package.
+If you are working in JavaScript, check out [geometrizejs](https://www.npmjs.com/package/geometrizejs) which provides JavaScript API and types for this library, tested on browser and Node.js.
+
+On top of it, [geometrizejs-cli](https://www.npmjs.com/package/geometrizejs-cli) tool provides command line interface and support for common image formats.
 
 ## Haxe Install
 
