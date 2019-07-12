@@ -26,7 +26,8 @@ class Line implements Shape {
 		this.xBound = xBound;
 		this.yBound = yBound;
 	}
-	
+		public function translate(vector:Util.Point) {}
+
 	public function rasterize():Array<Scanline> {
 		var lines:Array<Scanline> = [];
 		

@@ -30,7 +30,8 @@ class Triangle implements Shape {
 		this.xBound = xBound;
 		this.yBound = yBound;
 	}
-	
+		public function translate(vector:Util.Point) {}
+
 	public function rasterize():Array<Scanline> {
 		return Scanline.trim(Rasterizer.scanlinesForPolygon([ { x: x1, y: y1 }, { x: x2, y: y2 }, { x: x3, y: y3 } ]), xBound, yBound);
 	}

@@ -27,28 +27,32 @@ class Model {
 	 * Width of the target bitmap.
 	 */
 	public var width(default, null):Int;
+
 	/**
 	 * Height of the target bitmap.
 	 */
 	public var height(default, null):Int;
+
 	/**
 	 * The target bitmap, the bitmap we aim to approximate.
 	 */
 	public var target(default, null):Bitmap;
+
 	/**
 	 * The current bitmap.
 	 */
 	public var current(default, null):Bitmap;
+
 	/**
 	 * Buffer bitmap.
 	 */
 	public var buffer(default, null):Bitmap;
-	
+
 	/**
 	 * Score derived from calculating the difference between bitmaps.
 	 */
 	private var score(default, null):Float;
-	
+
 	/**
 	 * Creates a new model.
 	 * @param	target	The target bitmap.
@@ -56,16 +60,20 @@ class Model {
 	 */
 	public function new(target:Bitmap, backgroundColor:Rgba) {
 		Sure.sure(target != null);
-		
+
 		this.width = target.width;
 		this.height = target.height;
 		this.target = target;
+		target.saveOffSet(true);
 		this.current = Bitmap.create(target.width, target.height, backgroundColor);
 		this.buffer = Bitmap.create(target.width, target.height, backgroundColor);
-		
+		target.restoreOffset();
+		this.current.setOffset(target.getOffSet());
+		this.buffer.setOffset(target.getOffSet());
+
 		this.score = Core.differenceFull(target, current);
 	}
-	
+
 	/**
 	 * Steps the optimization/fitting algorithm.
 	 * @param	shapeType	The shape types to use.
@@ -79,7 +87,7 @@ class Model {
 		var results:Array<ShapeResult> = [ addShape(state.shape, state.alpha) ];
 		return results;
 	}
-	
+
 	/**
 	 * Adds a shape to the model.
 	 * @param	shape	The shape to add.
@@ -88,16 +96,23 @@ class Model {
 	 */
 	public function addShape(shape:Shape, alpha:Int):ShapeResult {
 		Sure.sure(shape != null);
-		
+
 		var before:Bitmap = current.clone();
 		var lines:Array<Scanline> = shape.rasterize();
 		var color:Rgba = Core.computeColor(target, current, lines, alpha);
 		Rasterizer.drawLines(current, color, lines);
-		
+
 		score = Core.differencePartial(target, before, current, score, lines);
-		
+
+		var currentOffset = current.getOffSet();
+		if (currentOffset != null) {
+			shape.translate(currentOffset);
+		}
+    
 		var result:ShapeResult = {
-			score: score, color: color, shape: shape
+			score: score,
+			color: color,
+			shape: shape
 		};
 		return result;
 	}

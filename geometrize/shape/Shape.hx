@@ -7,6 +7,7 @@ import geometrize.rasterizer.Scanline;
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 interface Shape {
+  	public function translate(vector:Util.Point):Void;
 	/**
 	 * Creates a raster scanline representation of the shape.
 	 * @return	Array of raster scanlines representing the shape.

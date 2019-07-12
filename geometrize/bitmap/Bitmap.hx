@@ -4,12 +4,7 @@ import haxe.ds.Vector;
 import haxe.io.Bytes;
 import geometrize.Util;
 
-/**
- * Helper class for working with bitmap data.
- * @author Sam Twidale (http://samcodes.co.uk/)
- */
-@:expose
-class Bitmap {
+class OffsetArea {
 	/**
 	 * The width of the bitmap considering its offset, if any.
 	 */
@@ -24,28 +19,64 @@ class Bitmap {
 	private var originalHeight:Int;
 	private var offsetX:Int;
 	private var offsetY:Int;
-
+	@:optional private var savedOffset:Util.Rect;
 	/**
 	 * Sets the bitmap offset, this is, a region inside relative to which pixel read and write operations are made.
 	 * Calling this method without parameters will remove the offset and reset to default behavior.
 	**/
-	public function setOffset(?offset:Util.Rect):Void {
+	public inline function setOffset(?offset:Util.Rect):Void {
 		if (offset == null) {
 			width = originalWidth;
 			height = originalHeight;
 			offsetX = 0;
 			offsetY = 0;
 		} else {
-      Sure.sure(offset.width>0 && offset.x+offset.width<=originalWidth);
-      Sure.sure(offset.height>0 && offset.y+offset.height<=originalHeight);
-      Sure.sure(offset.x>=0);
-      Sure.sure(offset.y>=0);
+      trace((offset.x + offset.width)+' - '+originalWidth);
+			Sure.sure(offset.width>0);
+      Sure.sure(offset.x + offset.width <= originalWidth);
+			Sure.sure(offset.height > 0);
+      Sure.sure(offset.y + offset.height <= originalHeight);
+			Sure.sure(offset.x >= 0);
+			Sure.sure(offset.y >= 0);
 			width = offset.width;
 			height = offset.height;
 			offsetX = offset.x;
 			offsetY = offset.y;
 		}
 	}
+public inline function getOffSet()  {
+  if(width!=originalWidth||height!=originalHeight||offsetX!=0||offsetY!=0){
+    return {x:offsetX, y: offsetY, width: width, height: height };
+  }
+  return null;
+}
+
+public function saveOffSet(?resetOffset: Bool) {
+  savedOffset=getOffSet();
+  if(resetOffset){
+    setOffset();
+  }
+}
+
+public function restoreOffset() {
+  if(savedOffset!=null){
+  setOffset(savedOffset);
+  }
+}
+
+}
+
+/**
+ * Helper class for working with bitmap data.
+ * @author Sam Twidale (http://samcodes.co.uk/)
+ */
+@:expose
+class Bitmap extends OffsetArea {
+
+	/**
+	 * The bitmap data.
+	 */
+	private var data:Vector<Rgba>;
 
 	/**
 	 * Internal method used to create a bitmap instance of given amount of pixels.
@@ -57,16 +88,11 @@ class Bitmap {
 		bitmap.height = h;
 		bitmap.originalWidth = w;
 		bitmap.originalHeight = h;
-    bitmap.offsetX=0;
-    bitmap.offsetY=0;
+		bitmap.offsetX = 0;
+		bitmap.offsetY = 0;
 		bitmap.data = new Vector(length);
 		return bitmap;
 	}
-
-	/**
-	 * The bitmap data.
-	 */
-	private var data:Vector<Rgba>;
 
 	/**
 	 * Creates a new bitmap, filled with the given color.
@@ -131,7 +157,7 @@ class Bitmap {
 	 * @return	The pixel color value.
 	 */
 	public inline function getPixel(x:Int, y:Int):Rgba {
-		return data.get(getCoordsIndex(x,y));
+		return data.get(getCoordsIndex(x, y));
 	}
 
 	/**
@@ -141,22 +167,23 @@ class Bitmap {
 	 * @param	color	The color value to set at the given coordinate.
 	 */
 	public inline function setPixel(x:Int, y:Int, color:Rgba):Void {
-		data.set(getCoordsIndex(x,y), color);
+		data.set(getCoordsIndex(x, y), color);
 	}
 
-private inline function getCoordsIndex(x:Int, y:Int){
+	private inline function getCoordsIndex(x:Int, y:Int) {
 		var absoluteStart = offsetY * originalWidth + offsetX;
-		var absoluteXDiff = (originalWidth * y) + x + offsetX;// + ()  (originalWidth - width) * y; // TODO: maybe *(y-1)
-		var relativeIndex = 0;//width * y + x;
-		var index = absoluteStart + relativeIndex + absoluteXDiff - offsetX;
-    return index;
-}
+		var absoluteIndex = (originalWidth * y)  + x -offsetX;//-(originalWidth-offsetX);  
+		var index = absoluteStart + absoluteIndex ;
+		return index;
+	}
+
 	/**
 	 * Makes a deep copy of the bitmap whole data (without considering its offset).
 	 * @return	The deep copy of the bitmap data.
 	 */
 	public inline function clone():Bitmap {
 		var bitmap = createBitmapOfLength(originalWidth, originalHeight, data.length);
+    bitmap.setOffset(getOffSet());
 		for (i in 0...data.length) {
 			bitmap.data.set(i, data.get(i));
 		}

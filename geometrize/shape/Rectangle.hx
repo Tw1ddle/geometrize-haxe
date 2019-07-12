@@ -26,6 +26,13 @@ class Rectangle implements Shape {
 		this.yBound = yBound;
 	}
 	
+  public function translate(vector:Util.Point) {
+    x1= x1+vector.x;
+    x2=x2+vector.x;
+    y1=y1+vector.y;
+    y2=y2+vector.y;
+    trace('translate');
+  }
 	public function rasterize():Array<Scanline> {
 		var lines:Array<Scanline> = [];
 		var yMin:Int = Util.min(y1, y2);
