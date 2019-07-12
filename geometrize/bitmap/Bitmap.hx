@@ -2,26 +2,35 @@ package geometrize.bitmap;
 
 import haxe.ds.Vector;
 import haxe.io.Bytes;
+import geometrize.Util;
 
 /**
  * Helper class for working with bitmap data.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 @:expose
-class Bitmap {
-	/**
-	 * The width of the bitmap.
-	 */
-	public var width:Int;
-	/**
-	 * The height of the bitmap.
-	 */
-	public var height:Int;
+class Bitmap extends OffsetArea {
 	/**
 	 * The bitmap data.
 	 */
 	private var data:Vector<Rgba>;
-	
+
+	/**
+	 * Internal method used to create a bitmap instance of given amount of pixels.
+	 * @param length mount of pixels in the new bitmap (width * height).
+	**/
+	static function createBitmapOfLength(w:Int, h:Int, length:Int):Bitmap {
+		var bitmap = new Bitmap();
+		bitmap.width = w;
+		bitmap.height = h;
+		bitmap.originalWidth = w;
+		bitmap.originalHeight = h;
+		bitmap.offsetX = 0;
+		bitmap.offsetY = 0;
+		bitmap.data = new Vector(length);
+		return bitmap;
+	}
+
 	/**
 	 * Creates a new bitmap, filled with the given color.
 	 * @param	w		The width of the bitmap.
@@ -30,10 +39,7 @@ class Bitmap {
 	 * @return	The new bitmap.
 	 */
 	public static inline function create(w:Int, h:Int, color:Rgba):Bitmap {
-		var bitmap = new Bitmap();
-		bitmap.width = w;
-		bitmap.height = h;
-		bitmap.data = new Vector<Rgba>(w * h);
+		var bitmap = createBitmapOfLength(w, h, w * h);
 		var i:Int = 0;
 		while (i < bitmap.data.length) {
 			bitmap.data.set(i, color);
@@ -41,7 +47,7 @@ class Bitmap {
 		}
 		return bitmap;
 	}
-	
+
 	/**
 	 * Creates a new bitmap from the supplied byte data.
 	 * @param	w		The width of the bitmap.
@@ -50,12 +56,9 @@ class Bitmap {
 	 * @return	The new bitmap.
 	 */
 	public static inline function createFromBytes(w:Int, h:Int, bytes:Bytes):Bitmap {
-		var bitmap = new Bitmap();
 		Sure.sure(bytes != null);
 		Sure.sure(bytes.length == w * h * 4); // Assume 4-byte RGBA8888 pixel format
-		bitmap.width = w;
-		bitmap.height = h;
-		bitmap.data = new Vector(Std.int(bytes.length / 4));
+		var bitmap = createBitmapOfLength(w, h, Std.int(bytes.length / 4));
 		var i:Int = 0;
 		var x:Int = 0;
 		while (i < bytes.length) {
@@ -65,7 +68,7 @@ class Bitmap {
 		}
 		return bitmap;
 	}
-	
+
 	/**
 	 * Creates a new bitmap from the supplied array of bytes. Useful for target language consumers
 	 * that don't have direct access to the Bytes Haxe standard library class.
@@ -83,44 +86,42 @@ class Bitmap {
 		}
 		return Bitmap.createFromBytes(w, h, data);
 	}
-	
+
 	/**
-	 * Gets a pixel at the given coordinate.
+	 * Gets a pixel at the given coordinate considering its offset, if any.
 	 * @param	x	The x-coordinate.
 	 * @param	y	The y-coordinate.
 	 * @return	The pixel color value.
 	 */
 	public inline function getPixel(x:Int, y:Int):Rgba {
-		return data.get(width * y + x);
+		return data.get(getCoordsIndex(x, y));
 	}
-	
+
 	/**
-	 * Sets a pixel at the given coordinate.
+	 * Sets a pixel at the given coordinate considering its offset, if any.
 	 * @param	x	The x-coordinate.
 	 * @param	y	The y-coordinate.
 	 * @param	color	The color value to set at the given coordinate.
 	 */
 	public inline function setPixel(x:Int, y:Int, color:Rgba):Void {
-		data.set((width * y + x), color);
+		data.set(getCoordsIndex(x, y), color);
 	}
-	
+
 	/**
-	 * Makes a deep copy of the bitmap data.
+	 * Makes a deep copy of the bitmap whole data (without considering its offset).
 	 * @return	The deep copy of the bitmap data.
 	 */
 	public inline function clone():Bitmap {
-		var bitmap = new Bitmap();
-		bitmap.width = width;
-		bitmap.height = height;
-		bitmap.data = new Vector(data.length);
+		var bitmap = createBitmapOfLength(originalWidth, originalHeight, data.length);
+		bitmap.setOffset(getOffSet());
 		for (i in 0...data.length) {
 			bitmap.data.set(i, data.get(i));
 		}
 		return bitmap;
 	}
-	
+
 	/**
-	 * Fills the bitmap with the given color.
+	 * Fills the whole bitmap with the given color without consider its offset.
 	 * @param	color The color to fill the bitmap with.
 	 */
 	public inline function fill(color:Rgba):Void {
@@ -133,9 +134,9 @@ class Bitmap {
 			idx += 4;
 		}
 	}
-	
+
 	/**
-	 * Gets the raw bitmap data bytes.
+	 * Gets the raw bitmap data bytes of the whole bitmap without considering its offset.
 	 * @return	The bitmap data.
 	 */
 	public inline function getBytes():Bytes {
@@ -151,7 +152,7 @@ class Bitmap {
 		}
 		return bytes;
 	}
-	
+
 	/**
 	 * Private constructor.
 	 */

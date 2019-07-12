@@ -14,7 +14,7 @@ class Circle extends Ellipse {
 		rx = Std.random(32) + 1;
 		ry = rx;
 	}
-	
+
 	override public function mutate():Void {
 		var r = Std.random(2);
 		switch (r) {

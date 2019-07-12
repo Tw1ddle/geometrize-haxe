@@ -108,4 +108,11 @@ class RotatedRectangle implements Shape {
 		
 		return [ { x : ulx, y : uly }, { x : urx, y : ury }, { x : brx, y : bry }, { x : blx, y : bly } ];
 	}
+
+  public function translate(vector:Util.Point) {
+		x1 = x1 + vector.x;
+		x2 = x2 + vector.x;
+		y1 = y1 + vector.y;
+		y2 = y2 + vector.y;
+	}
 }

@@ -97,6 +97,7 @@ class Core {
 			}
 		}
 		var result:Float = Math.sqrt(total / (width * height * 4.0)) / 255;
+    // trace('differenceFull: '+total+", "+width+", "+height+", "+result+", "+Math.isFinite(result));
 		Sure.sure(Math.isFinite(result));
 		return result;
 	}
@@ -144,6 +145,8 @@ class Core {
 			}
 		}
 		var result:Float = Math.sqrt(total / rgbaCount) / 255;
+    // trace('differencePartial: '+total+", "+rgbaCount+", "+result+", "+Math.isFinite(result));
+
 		Sure.sure(Math.isFinite(result));
 		return result;
 	}

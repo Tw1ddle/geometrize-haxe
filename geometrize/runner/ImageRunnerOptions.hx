@@ -1,6 +1,7 @@
 package geometrize.runner;
 
 import geometrize.shape.ShapeType;
+import geometrize.Util.Rect;
 
 /**
  * Encapsulates the parameters that may be passed to an image runner.
@@ -27,6 +28,7 @@ typedef ImageRunnerOptions = {
 	 * The number of times to mutate each candidate shape. By default `100`.
 	 */
 	@:optional var shapeMutationsPerStep:Int;
+
 }
 
 class Default {

@@ -72,4 +72,13 @@ class Triangle implements Shape {
 	public function getSvgShapeData():String {
 		return "<polygon points=\"" + x1 + "," + y1 + " " + x2 + "," + y2 + " " + x3 + "," + y3 + "\" " + SvgExporter.SVG_STYLE_HOOK + "/>";
 	}
+
+  public function translate(vector:Util.Point) {
+		x1 = x1 + vector.x;
+		x2 = x2 + vector.x;
+		x3 = x3 + vector.x;
+		y1 = y1 + vector.y;
+		y2 = y2 + vector.y;
+		y3 = y3 + vector.y;
+	}
 }

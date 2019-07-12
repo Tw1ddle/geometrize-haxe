@@ -25,7 +25,7 @@ class Ellipse implements Shape {
 		this.xBound = xBound;
 		this.yBound = yBound;
 	}
-	
+
 	public function rasterize():Array<Scanline> {
 		var lines:Array<Scanline> = [];
 		var aspect:Float = rx / ry;
@@ -92,4 +92,11 @@ class Ellipse implements Shape {
 	public function getSvgShapeData():String {
 		return "<ellipse cx=\"" + x + "\" cy=\"" + y + "\" rx=\"" + rx + "\" ry=\"" + ry + "\" " + SvgExporter.SVG_STYLE_HOOK + " />";
 	}
+
+  public function translate(vector:Util.Point) {
+		x = x + vector.x;
+		rx = rx + vector.x;
+		y = y + vector.y;
+		ry = ry + vector.y;
+  }
 }
