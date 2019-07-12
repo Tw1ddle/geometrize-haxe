@@ -29,13 +29,6 @@ class RotatedEllipse implements Shape {
 		this.yBound = yBound;
 	}
 	
-  public function translate(vector:Util.Point) {
-		x = x + vector.x;
-		rx = rx + vector.x;
-		y = y + vector.y;
-		ry = ry + vector.y;
-  }
-  
 	public function rasterize():Array<Scanline> {
 		var pointCount:Int = 20;
 		var points:Array<{x : Int, y: Int}> = [];
@@ -97,4 +90,12 @@ class RotatedEllipse implements Shape {
 		s += "</g>";
 		return s;
 	}
+
+  public function translate(vector:Util.Point) {
+		x = x + vector.x;
+		rx = rx + vector.x;
+		y = y + vector.y;
+		ry = ry + vector.y;
+  }
+  
 }

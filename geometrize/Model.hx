@@ -74,10 +74,11 @@ class Model {
 
 		this.score = Core.differenceFull(target, current);
 	}
-  
+
   /**
    * The algorithm will only consider a region of the entire bitmap. 
    * New shapes will be generated randombly but only inside this region.
+   * If null is passed it will reset the offset (default behaviour)
   **/
 	public inline function setOffset(?offset:Util.Rect):Void {
 		this.current.setOffset(offset);

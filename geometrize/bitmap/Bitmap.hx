@@ -4,93 +4,12 @@ import haxe.ds.Vector;
 import haxe.io.Bytes;
 import geometrize.Util;
 
-class OffsetArea {
-	/**
-	 * The width of the bitmap considering its offset, if any.
-	 */
-	public var width:Int;
-
-	/**
-	 * The height of the bitmap considering its offset, if any.
-	 */
-	public var height:Int;
-
-	private var originalWidth:Int;
-	private var originalHeight:Int;
-	private var offsetX:Int;
-	private var offsetY:Int;
-	@:optional private var savedOffset:Util.Rect;
-
-	/**
-	 * Sets the bitmap offset, this is, a region inside relative to which pixel read and write operations are made.
-	 * Calling this method without parameters will remove the offset and reset to default behavior.
-	**/
-	public inline function setOffset(?offset:Util.Rect):Void {
-		if (offset == null) {
-			width = originalWidth;
-			height = originalHeight;
-			offsetX = 0;
-			offsetY = 0;
-		} else {
-			Sure.sure(offset.width>0);
-      Sure.sure(offset.x + offset.width <= originalWidth);
-			Sure.sure(offset.height > 0);
-      Sure.sure(offset.y + offset.height <= originalHeight);
-			Sure.sure(offset.x >= 0);
-			Sure.sure(offset.y >= 0);
-			width = offset.width;
-			height = offset.height;
-			offsetX = offset.x;
-			offsetY = offset.y;
-		}
-	}
-  
-  /**
-  * @returns current offset or null if none.
-  **/
-  public inline function getOffSet()  {
-    if(width!=originalWidth||height!=originalHeight||offsetX!=0||offsetY!=0){
-      return {x:offsetX, y: offsetY, width: width, height: height };
-    }
-    return null;
-  }
-
-  /**
-  * Saves current offset overriding previous saves.
-  * @param reset if given it will also remove current offset.
-  */
-  public function saveOffSet(?reset: Bool) {
-    savedOffset=getOffSet();
-    if(reset){
-      setOffset();
-    }
-  }
-
-  /**
-  * Restores previously saved offset, if any.
-  */
-  public function restoreOffset() {
-    if(savedOffset!=null){
-    setOffset(savedOffset);
-    }
-  }
-
-	private inline function getCoordsIndex(x:Int, y:Int) {
-		var absoluteStart = offsetY * originalWidth + offsetX;
-		var absoluteIndex = (originalWidth * y)  + x; 
-		var index = absoluteStart + absoluteIndex ;
-		return index;
-	}
-
-}
-
 /**
  * Helper class for working with bitmap data.
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 @:expose
 class Bitmap extends OffsetArea {
-
 	/**
 	 * The bitmap data.
 	 */
@@ -194,7 +113,7 @@ class Bitmap extends OffsetArea {
 	 */
 	public inline function clone():Bitmap {
 		var bitmap = createBitmapOfLength(originalWidth, originalHeight, data.length);
-    bitmap.setOffset(getOffSet());
+		bitmap.setOffset(getOffSet());
 		for (i in 0...data.length) {
 			bitmap.data.set(i, data.get(i));
 		}

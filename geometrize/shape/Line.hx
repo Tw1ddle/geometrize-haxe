@@ -27,12 +27,6 @@ class Line implements Shape {
 		this.yBound = yBound;
 	}	
   
-  public function translate(vector:Util.Point) {
-		x1 = x1 + vector.x;
-		x2 = x2 + vector.x;
-		y1 = y1 + vector.y;
-		y2 = y2 + vector.y;
-	}
 	public function rasterize():Array<Scanline> {
 		var lines:Array<Scanline> = [];
 		
@@ -75,5 +69,12 @@ class Line implements Shape {
 	
 	public function getSvgShapeData():String {
 		return "<line x1=\"" + x1 + "\" y1=\"" + y1 + "\" x2=\"" + x2 + "\" y2=\"" + y2 + "\" " + SvgExporter.SVG_STYLE_HOOK + " />";
+	}
+  
+  public function translate(vector:Util.Point) {
+		x1 = x1 + vector.x;
+		x2 = x2 + vector.x;
+		y1 = y1 + vector.y;
+		y2 = y2 + vector.y;
 	}
 }

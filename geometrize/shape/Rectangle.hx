@@ -26,13 +26,6 @@ class Rectangle implements Shape {
 		this.yBound = yBound;
 	}
 
-	public function translate(vector:Util.Point) {
-		x1 = x1 + vector.x;
-		x2 = x2 + vector.x;
-		y1 = y1 + vector.y;
-		y2 = y2 + vector.y;
-	}
-
 	public function rasterize():Array<Scanline> {
 		var lines:Array<Scanline> = [];
 		var yMin:Int = Util.min(y1, y2);
@@ -79,5 +72,12 @@ class Rectangle implements Shape {
 	public function getSvgShapeData():String {
 		return "<rect x=\"" + Util.min(x1, x2) + "\" y=\"" + Util.min(y1, y2) + "\" width=\"" + (Util.max(x1, x2) - Util.min(x1, x2)) + "\" height=\"" + (Util
 			.max(y1, y2) - Util.min(y1, y2)) + "\" " + SvgExporter.SVG_STYLE_HOOK + " />";
+	}
+
+	public function translate(vector:Util.Point) {
+		x1 = x1 + vector.x;
+		x2 = x2 + vector.x;
+		y1 = y1 + vector.y;
+		y2 = y2 + vector.y;
 	}
 }
