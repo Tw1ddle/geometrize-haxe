@@ -20,6 +20,7 @@ class OffsetArea {
 	private var offsetX:Int;
 	private var offsetY:Int;
 	@:optional private var savedOffset:Util.Rect;
+
 	/**
 	 * Sets the bitmap offset, this is, a region inside relative to which pixel read and write operations are made.
 	 * Calling this method without parameters will remove the offset and reset to default behavior.
@@ -31,7 +32,6 @@ class OffsetArea {
 			offsetX = 0;
 			offsetY = 0;
 		} else {
-      trace((offset.x + offset.width)+' - '+originalWidth);
 			Sure.sure(offset.width>0);
       Sure.sure(offset.x + offset.width <= originalWidth);
 			Sure.sure(offset.height > 0);
@@ -44,6 +44,10 @@ class OffsetArea {
 			offsetY = offset.y;
 		}
 	}
+  
+  /**
+  @returns current offset or null if none.
+  **/
 public inline function getOffSet()  {
   if(width!=originalWidth||height!=originalHeight||offsetX!=0||offsetY!=0){
     return {x:offsetX, y: offsetY, width: width, height: height };
@@ -51,13 +55,20 @@ public inline function getOffSet()  {
   return null;
 }
 
-public function saveOffSet(?resetOffset: Bool) {
+/**
+ * Saves current offset overriding previous saves.
+ * @param reset if given it will also remove current offset.
+ */
+public function saveOffSet(?reset: Bool) {
   savedOffset=getOffSet();
-  if(resetOffset){
+  if(reset){
     setOffset();
   }
 }
 
+/**
+ * Restores previously saved offset, if any.
+ */
 public function restoreOffset() {
   if(savedOffset!=null){
   setOffset(savedOffset);

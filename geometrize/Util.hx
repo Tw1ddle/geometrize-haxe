@@ -4,7 +4,7 @@ import geometrize.bitmap.Bitmap;
 import geometrize.bitmap.Rgba;
 
 /**
- * Represents a point in 2D space.
+ * Represents a point or vector in 2D space. 
  * @author Sam Twidale (http://samcodes.co.uk/)
  */
 typedef Point = {

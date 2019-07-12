@@ -29,8 +29,7 @@ class RotatedRectangle implements Shape {
 		this.xBound = xBound;
 		this.yBound = yBound;
 	}
-		public function translate(vector:Util.Point) {}
-
+	
 	public function rasterize():Array<Scanline> {
 		return Scanline.trim(Rasterizer.scanlinesForPolygon(getCornerPoints()), xBound, yBound);
 	}
@@ -108,5 +107,12 @@ class RotatedRectangle implements Shape {
 		var bry:Int = Std.int(ox2 * s + oy2 * c + cy);
 		
 		return [ { x : ulx, y : uly }, { x : urx, y : ury }, { x : brx, y : bry }, { x : blx, y : bly } ];
+	}
+
+  public function translate(vector:Util.Point) {
+		x1 = x1 + vector.x;
+		x2 = x2 + vector.x;
+		y1 = y1 + vector.y;
+		y2 = y2 + vector.y;
 	}
 }

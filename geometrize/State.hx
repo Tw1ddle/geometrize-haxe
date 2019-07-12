@@ -11,10 +11,12 @@ class State {
 	 * The geometric shape owned by the state.
 	 */
 	public var shape(default, null):Shape;
+
 	/**
 	 * The alpha of the shape.
 	 */
 	public var alpha(default, null):Int;
+  
 	/**
 	 * The score of the state, a measure of the improvement applying the state to the current bitmap will have.
 	 */
