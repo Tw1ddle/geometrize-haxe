@@ -7,7 +7,7 @@ import geometrize.Util;
  * internal rectangular offset (offsetX, offsetY, width, height). 
  **/
 class OffsetArea {
-  
+
 	/**
 	 * The width of the bitmap considering its offset, if any.
 	 */
@@ -85,9 +85,9 @@ class OffsetArea {
 	}
 
   /**
-   * Convert coordinates relative relative to the offset into absolute coordinatess.
+   * Convert coordinates relative to the offset into absolute coordinates in array index coordinates.
    **/
-	private inline function getCoordsIndex(x:Int, y:Int) {
+	public inline function getCoordsIndex(x:Int, y:Int) {
 		var absoluteStart = offsetY * originalWidth + offsetX;
 		var absoluteIndex = (originalWidth * y) + x;
 		var index = absoluteStart + absoluteIndex;
