@@ -7,6 +7,7 @@ import geometrize.rasterizer.Scanline;
 import geometrize.shape.Shape;
 import geometrize.shape.ShapeType;
 import geometrize.rasterizer.Rasterizer;
+import geometrize.Util;
 
 /**
  * Container for info about a shape added to the model.
@@ -73,6 +74,19 @@ class Model {
 
 		this.score = Core.differenceFull(target, current);
 	}
+  
+  /**
+   * The algorithm will only consider a region of the entire bitmap. 
+   * New shapes will be generated randombly but only inside this region.
+  **/
+	public inline function setOffset(?offset:Util.Rect):Void {
+		this.current.setOffset(offset);
+		this.current.setOffset(offset);
+		this.target.setOffset(offset);
+		this.width = target.width;
+		this.height = target.height;
+		this.score = Core.differenceFull(target, current);
+	}
 
 	/**
 	 * Steps the optimization/fitting algorithm.
@@ -84,7 +98,7 @@ class Model {
 	 */
 	public function step(shapeTypes:Array<ShapeType>, alpha:Int, n:Int, age:Int):Array<ShapeResult> {
 		var state = Core.bestHillClimbState(shapeTypes, alpha, n, age, target, current, buffer, score);
-		var results:Array<ShapeResult> = [ addShape(state.shape, state.alpha) ];
+		var results:Array<ShapeResult> = [addShape(state.shape, state.alpha)];
 		return results;
 	}
 
@@ -108,7 +122,7 @@ class Model {
 		if (currentOffset != null) {
 			shape.translate(currentOffset);
 		}
-    
+
 		var result:ShapeResult = {
 			score: score,
 			color: color,

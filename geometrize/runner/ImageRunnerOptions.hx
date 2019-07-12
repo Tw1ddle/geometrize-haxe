@@ -29,10 +29,6 @@ typedef ImageRunnerOptions = {
 	 */
 	@:optional var shapeMutationsPerStep:Int;
 
-  /**
-   * The algorithm will only consider a region of the entire bitmap. New shapes will be generated randombly but only inside this region.
-  **/
-	@:optional var bitmapOffset:Rect;
 }
 
 class Default {

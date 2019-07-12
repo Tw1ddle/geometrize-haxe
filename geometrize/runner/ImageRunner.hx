@@ -3,6 +3,7 @@ package geometrize.runner;
 import geometrize.Model;
 import geometrize.Model.ShapeResult;
 import geometrize.bitmap.Bitmap;
+import geometrize.Util;
 import geometrize.bitmap.Rgba;
 import geometrize.runner.ImageRunnerOptions.Default;
 
@@ -23,6 +24,14 @@ class ImageRunner {
 	 */
 	public function new(inputImage:Bitmap, backgroundColor:Rgba) {
 		model = new Model(inputImage, backgroundColor);
+	}
+
+  /**
+   * The algorithm will only consider a region of the entire bitmap. 
+   * New shapes will be generated randombly but only inside this region.
+  **/
+	public inline function setOffset(?offset:Util.Rect):Void {
+		model.setOffset(offset);
 	}
 
 	/**

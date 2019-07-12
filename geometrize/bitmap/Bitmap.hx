@@ -46,34 +46,41 @@ class OffsetArea {
 	}
   
   /**
-  @returns current offset or null if none.
+  * @returns current offset or null if none.
   **/
-public inline function getOffSet()  {
-  if(width!=originalWidth||height!=originalHeight||offsetX!=0||offsetY!=0){
-    return {x:offsetX, y: offsetY, width: width, height: height };
+  public inline function getOffSet()  {
+    if(width!=originalWidth||height!=originalHeight||offsetX!=0||offsetY!=0){
+      return {x:offsetX, y: offsetY, width: width, height: height };
+    }
+    return null;
   }
-  return null;
-}
 
-/**
- * Saves current offset overriding previous saves.
- * @param reset if given it will also remove current offset.
- */
-public function saveOffSet(?reset: Bool) {
-  savedOffset=getOffSet();
-  if(reset){
-    setOffset();
+  /**
+  * Saves current offset overriding previous saves.
+  * @param reset if given it will also remove current offset.
+  */
+  public function saveOffSet(?reset: Bool) {
+    savedOffset=getOffSet();
+    if(reset){
+      setOffset();
+    }
   }
-}
 
-/**
- * Restores previously saved offset, if any.
- */
-public function restoreOffset() {
-  if(savedOffset!=null){
-  setOffset(savedOffset);
+  /**
+  * Restores previously saved offset, if any.
+  */
+  public function restoreOffset() {
+    if(savedOffset!=null){
+    setOffset(savedOffset);
+    }
   }
-}
+
+	private inline function getCoordsIndex(x:Int, y:Int) {
+		var absoluteStart = offsetY * originalWidth + offsetX;
+		var absoluteIndex = (originalWidth * y)  + x; 
+		var index = absoluteStart + absoluteIndex ;
+		return index;
+	}
 
 }
 
@@ -179,13 +186,6 @@ class Bitmap extends OffsetArea {
 	 */
 	public inline function setPixel(x:Int, y:Int, color:Rgba):Void {
 		data.set(getCoordsIndex(x, y), color);
-	}
-
-	private inline function getCoordsIndex(x:Int, y:Int) {
-		var absoluteStart = offsetY * originalWidth + offsetX;
-		var absoluteIndex = (originalWidth * y)  + x -offsetX;//-(originalWidth-offsetX);  
-		var index = absoluteStart + absoluteIndex ;
-		return index;
 	}
 
 	/**

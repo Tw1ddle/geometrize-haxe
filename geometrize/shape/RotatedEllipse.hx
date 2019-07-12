@@ -33,7 +33,7 @@ class RotatedEllipse implements Shape {
 		x = x + vector.x;
 		rx = rx + vector.x;
 		y = y + vector.y;
-		ry = ry + vector.y
+		ry = ry + vector.y;
   }
   
 	public function rasterize():Array<Scanline> {
