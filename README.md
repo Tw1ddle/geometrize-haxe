@@ -1,12 +1,11 @@
 [![Project logo](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/logo.png?raw=true "Geometrize Haxe - recreating images as geometric shapes logo")](https://www.geometrize.co.uk/)
 
 [![Haxelib Version](https://img.shields.io/github/tag/Tw1ddle/geometrize-haxe.svg?style=flat-square&label=haxelib)](https://lib.haxe.org/p/geometrize-haxe)
-[![Travis Unit Test Build Status](https://img.shields.io/travis/Tw1ddle/geometrize-haxe-unit-tests.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/geometrize-haxe-unit-tests)
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/geometrize-haxe/blob/master/LICENSE)
 
 Geometrize Haxe is a Haxe library for recreating images with geometric primitives. Run the demo [in your browser](https://www.samcodes.co.uk/project/geometrize-haxe-web/).
 
-Geometrize Haxe is part of [Geometrize](https://www.geometrize.co.uk/), and is based on the [primitive](https://github.com/fogleman/primitive) Go library.
+Geometrize Haxe is part of [Geometrize](https://www.geometrize.co.uk/) and was inspired by the [primitive](https://github.com/fogleman/primitive) Go library.
 
 [![Geometrized Cat 500 Triangles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/cat.gif?raw=true "Geometrized Cat - 500 Geometric Primitives")](https://www.geometrize.co.uk/)
 
