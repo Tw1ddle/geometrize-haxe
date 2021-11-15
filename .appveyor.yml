@@ -23,25 +23,27 @@ install:
   - tar -xf haxe-4.2.4-linux64.tar.gz -C $HAXE_INSTALLDIR
   - export PATH=$PATH:$HAXE_INSTALLDIR/haxe_20211022152000_ab0c054
   - mkdir $HAXELIB_ROOT && haxelib setup $HAXELIB_ROOT
-  - haxelib install dox
+  - haxelib install sure
+  - haxelib install dox # For documentation generation
   - haxelib list
 
 build_script:
   - cd $APPVEYOR_BUILD_FOLDER
   
-  # Build the docs
+  # Build the documentation
   - pushd dox
   - chmod +x generate_docs.sh
   - ./generate_docs.sh
+  - popd
 
-# Deploy the site to the GitHub pages branch
+# Deploy the documentation to the GitHub pages branch
 deploy_script:
+  # Important: this goes one level above the original build folder to avoid accidentally trashing the master branch
+  # Then clones the gh-pages repo, resets the history, copies the newly-generated docs and pushes back to gh-pages
+
   # Configure CI bot git email/username
   - git config --global user.name "AppVeyor CI Bot"
   - git config --global user.email "appveyor@appveyor.org"
-
-  # Important: this goes one level above the original build folder to avoid accidentally trashing the master branch
-  # Then clones the gh-pages repo, resets the history, copies the newly-generated site and pushes back to gh-pages
   
   - cd $APPVEYOR_BUILD_FOLDER
   - cd ..
@@ -61,9 +63,9 @@ deploy_script:
   # Move the newly-generated site to the gh-pages folder
   - cd $APPVEYOR_BUILD_FOLDER/dox/generated_docs
   - (shopt -s dotglob && mv * ../../../gh-pages)
-  - cd ../../gh-pages
+  - cd ../../../gh-pages
 
   # Note that when there is nothing to commit, git commit exits with 1 (but that should never happen here)
   - git add -A
-  - git commit -m "Build bot updating site"
+  - git commit -m "Build bot updating documentation"
   - git push -f origin gh-pages
