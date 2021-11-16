@@ -11,7 +11,7 @@ Geometrize Haxe is part of [Geometrize](https://www.geometrize.co.uk/) and was i
 [![Geometrized Cat 500 Triangles](https://github.com/Tw1ddle/geometrize-haxe/blob/master/screenshots/cat.gif?raw=true "Geometrized Cat - 500 Geometric Primitives")](https://www.geometrize.co.uk/)
 
 ## Features
-* Recreate images as geometric primitives - rectangles, rotated rectangles, triangles, circles, ellipses, rotated ellipses and lines are supported.
+* Recreate images as geometric primitives - rectangles, rotated rectangles, triangles, circles, ellipses, rotated ellipses, lines and beziers are supported.
 * Export generated shape data to JSON.
 * Export geometrized images as SVGs.
 * All Haxe targets are supported.
