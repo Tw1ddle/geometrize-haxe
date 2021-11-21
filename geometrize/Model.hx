@@ -10,7 +10,7 @@ import geometrize.rasterizer.Rasterizer;
 
 /**
  * Container for info about a shape added to the model.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 typedef ShapeResult = {
 	var score:Float;

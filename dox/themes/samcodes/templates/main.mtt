@@ -72,7 +72,7 @@
 		<div class="copyright">
 			<p ::cond api.isDefined("version")::>This documentation is generated for version ::api.getValue('version')::</p>
 			<p>
-			<a href="http://www.samcodes.co.uk/project/geometrize-haxe-web/" title="Geometrize Haxe Demo" class="hf-link">Geometrize Haxe Website</a> |&nbsp;
+			<a href="https://www.samcodes.co.uk/project/geometrize-haxe-web/" title="Geometrize Haxe Demo" class="hf-link">Geometrize Haxe Website</a> |&nbsp;
 			<a href="https://github.com/Tw1ddle/geometrize-haxe" title="Geometrize Haxe on Github">Contribute to Geometrize Haxe</a> |&nbsp;
 			<a href="https://twitter.com/Sam_Twidale" title="Contact Sam">Contact Sam</a>
 			</p>

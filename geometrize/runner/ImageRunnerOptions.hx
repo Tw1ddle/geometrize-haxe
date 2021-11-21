@@ -4,7 +4,7 @@ import geometrize.shape.ShapeType;
 
 /**
  * Encapsulates the parameters that may be passed to an image runner.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 @:expose
 typedef ImageRunnerOptions = {

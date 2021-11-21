@@ -11,7 +11,7 @@ using haxe.macro.Tools;
 
 /**
  * Abstract enum tools.
- * Based on http://code.haxe.org/category/macros/enum-abstract-values.html by Dan Korostelev
+ * Based on https://code.haxe.org/category/macros/enum-abstract-values.html by Dan Korostelev
  */
 class AbstractEnumTools {
 	/**

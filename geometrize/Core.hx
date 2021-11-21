@@ -10,7 +10,7 @@ import geometrize.shape.ShapeType;
 
 /**
  * The core functions in Geometrize Haxe.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 class Core {
 	/**

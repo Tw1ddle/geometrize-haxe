@@ -7,7 +7,7 @@ import geometrize.exporter.SvgExporter;
 
 /**
  * A quadratic bezier curve.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 class QuadraticBezier implements Shape {
 	public var cx:Int;

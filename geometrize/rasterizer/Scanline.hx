@@ -2,7 +2,7 @@ package geometrize.rasterizer;
 
 /**
  * Represents a scanline, a row of pixels running across a bitmap.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 class Scanline {
 	/**

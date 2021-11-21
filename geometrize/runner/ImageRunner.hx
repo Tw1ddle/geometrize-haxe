@@ -8,7 +8,7 @@ import geometrize.runner.ImageRunnerOptions.Default;
 
 /**
  * Helper class for creating a set of shapes that approximate a source image.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 @:expose
 class ImageRunner {

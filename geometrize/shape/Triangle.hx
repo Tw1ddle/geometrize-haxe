@@ -6,7 +6,7 @@ import geometrize.rasterizer.Scanline;
 
 /**
  * A triangle.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 class Triangle implements Shape {
 	public var x1:Int;

@@ -6,7 +6,7 @@ import geometrize.exporter.SvgExporter;
 
 /**
  * A line.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 class Line implements Shape {
 	public var x1:Int;

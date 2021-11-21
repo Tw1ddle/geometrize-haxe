@@ -5,7 +5,7 @@ import haxe.io.Bytes;
 
 /**
  * Helper class for working with bitmap data.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 @:expose
 class Bitmap {

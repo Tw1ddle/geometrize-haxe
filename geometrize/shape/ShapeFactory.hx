@@ -2,7 +2,7 @@ package geometrize.shape;
 
 /**
  * Helper class for creating shapes.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 class ShapeFactory {
 	/**

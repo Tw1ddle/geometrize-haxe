@@ -2,7 +2,7 @@ package geometrize.bitmap;
 
 /**
  * Represents a color in RGBA8888 format with underlying type Int.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 abstract Rgba(Int) from Int to Int {
 	/**

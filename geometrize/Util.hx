@@ -5,7 +5,7 @@ import geometrize.bitmap.Rgba;
 
 /**
  * Represents a point in 2D space.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 typedef Point = {
 	var x:Int;

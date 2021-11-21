@@ -7,7 +7,7 @@ import geometrize.Util;
 
 /**
  * A rotated rectangle.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 class RotatedRectangle implements Shape {
 	public var x1:Int;

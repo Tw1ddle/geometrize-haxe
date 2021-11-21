@@ -8,7 +8,7 @@ import geometrize.Util;
 
 /**
  * Rasterization helper functions.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 class Rasterizer {
 	/**

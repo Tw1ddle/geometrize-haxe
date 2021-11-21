@@ -4,7 +4,7 @@ import geometrize.rasterizer.Scanline;
 
 /**
  * Interface for shape rasterization and manipulation.
- * @author Sam Twidale (http://samcodes.co.uk/)
+ * @author Sam Twidale (https://samcodes.co.uk/)
  */
 interface Shape {
 	/**
